@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bsuornuq5k0m4"]
+
+[ext_resource type="Script" uid="uid://c1eaf43i4ogo4" path="res://ui_controller.gd" id="1_3ga5c"]
+[ext_resource type="PackedScene" uid="uid://mpd5mdbmxpe7" path="res://scenes/login_screen/login_screen.tscn" id="2_1ajqp"]
+
+[node name="ui_controller" type="Control" unique_id=1713897045]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3ga5c")
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2018975771]
+
+[node name="login_screen" parent="CanvasLayer" unique_id=1124121847 instance=ExtResource("2_1ajqp")]

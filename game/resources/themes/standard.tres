@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://13i4ei1xpjx3"]
+
+[ext_resource type="FontFile" uid="uid://bwbbhi3v2x4v0" path="res://assets/jbmono_extrabold.ttf" id="1_uu0a6"]
+
+[resource]
+default_font = ExtResource("1_uu0a6")

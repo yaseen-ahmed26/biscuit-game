@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://mpd5mdbmxpe7"]
+
+[ext_resource type="Theme" uid="uid://13i4ei1xpjx3" path="res://resources/themes/standard.tres" id="1_82p65"]
+
+[node name="login_screen" type="Control" unique_id=1124121847]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_82p65")
+metadata/_edit_use_anchors_ = true
+
+[node name="background" type="ColorRect" parent="." unique_id=1539352208]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="welcome" type="RichTextLabel" parent="." unique_id=1853734327]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -901.0
+offset_top = -444.0
+offset_right = 901.0
+offset_bottom = -305.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 46
+text = "Log into your account at <website-url> and and navigate to \"Login with Code\" and enter the 7 alphanumerical code below:
+"
+horizontal_alignment = 1
+
+[node name="disclaimer" type="RichTextLabel" parent="." unique_id=1673228179]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0796875
+anchor_top = 0.73796296
+anchor_right = 0.9203125
+anchor_bottom = 0.9305556
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 34
+text = "Once connected, your save data will be associated with this account. You cannot unlink your data from your account. 
+
+Create an account if you do not have one.
+"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="code" type="RichTextLabel" parent="." unique_id=741930022]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -805.0
+offset_top = -182.0
+offset_right = 809.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 100
+text = "ABCD123
+"
+horizontal_alignment = 1
