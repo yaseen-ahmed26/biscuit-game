@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://mpd5mdbmxpe7"]
 
 [ext_resource type="Theme" uid="uid://13i4ei1xpjx3" path="res://resources/themes/standard.tres" id="1_82p65"]
+[ext_resource type="Script" uid="uid://c5ibjck0btnpq" path="res://scenes/login_screen/login_screen.gd" id="2_5b8vt"]
 
 [node name="login_screen" type="Control" unique_id=1124121847]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_82p65")
+script = ExtResource("2_5b8vt")
 metadata/_edit_use_anchors_ = true
 
 [node name="background" type="ColorRect" parent="." unique_id=1539352208]
@@ -35,7 +37,7 @@ offset_bottom = -305.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 46
-text = "Log into your account at <website-url> and and navigate to \"Login with Code\" and enter the 7 alphanumerical code below:
+text = "Log into your account at <website-url> and navigate to \"Login with Code\" and enter the 7 alphanumerical code below:
 "
 horizontal_alignment = 1
 
@@ -70,6 +72,7 @@ offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 100
-text = "ABCD123
+bbcode_enabled = true
+text = "[color=green]ABCD123
 "
 horizontal_alignment = 1
