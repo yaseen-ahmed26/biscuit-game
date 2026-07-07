@@ -1,5 +1,12 @@
 extends Node
 
+@onready var hbox_container: HBoxContainer = $background/HBoxContainer
+@onready var continue_btn: Button = $background/continue_btn
+
+# UI
+var type_selected: String
+
+# Websocket
 const COUNTRIES: Dictionary[String, String] = {
 	"GB": "United Kingdom"
 }
@@ -12,26 +19,18 @@ var websocket_url: String = ""
 
 var connected = false
 
+# Local saves
+var config = ConfigFile.new()
+
 func _ready() -> void:
 	websocket_url = read_json(SECRETS_PATH).websocket_url
 	
-	var os_name: String = OS.get_name()
-	var country_name: String = _get_user_country()
-	
-	var websocket_metadata = {
-		"os": os_name,
-		"country": country_name
-	}
-	
-	var query_string = client.query_string_from_dict(websocket_metadata)
+	for item in hbox_container.get_children():
+		if not item is Button: continue
+		
+		item.pressed.connect(_save_selected.bind(item))
 
-	var error = socket.connect_to_url(websocket_url + "?" + query_string)
-	
-	if error != OK:
-		print("filaed to connect to the websocket: ", error)
-		set_process(false)
-
-func _process(_delta: float) -> void:
+func _process(_delta: float) -> void:	
 	socket.poll()
 	
 	var state = socket.get_ready_state()
@@ -54,6 +53,30 @@ func _process(_delta: float) -> void:
 		
 		print("websocket closed: (%d) %s" % [code, reason])
 		set_process(false)
+
+func _start_websocket():
+	Signals.change_screen.emit("pick_save", "online_save")
+	
+	var os_name: String = OS.get_name()
+	var country_name: String = _get_user_country()
+	
+	var websocket_metadata = {
+		"os": os_name,
+		"country": country_name
+	}
+	
+	var query_string = client.query_string_from_dict(websocket_metadata)
+	
+	set_process(true)
+	
+	var error = socket.connect_to_url(websocket_url + "?" + query_string)
+	
+	if error != OK:
+		print("filaed to connect to the websocket: ", error)
+		set_process(false)
+	
+func _start_local_save():
+	pass
 
 func _get_user_country() -> String:
 	var locale_parts: PackedStringArray = OS.get_locale().split("_")
@@ -85,7 +108,6 @@ func _on_connected() -> void:
 	# socket.send_text(json_string)
 	pass
 
-
 func read_json(path: String) -> Variant:
 	if FileAccess.file_exists(path):
 		var file = FileAccess.open(path, FileAccess.READ)
@@ -95,3 +117,14 @@ func read_json(path: String) -> Variant:
 			return json.get_data()
 			
 	return null
+	
+# UI stuff
+func _save_selected(item: Button):
+	type_selected = item.name
+	continue_btn.disabled = false
+	continue_btn.text = "Continue with " + type_selected.capitalize()
+	
+func _on_continue_btn_pressed():
+	match type_selected:
+		"online": _start_websocket()
+		"local": _start_local_save()

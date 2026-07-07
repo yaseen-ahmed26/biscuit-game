@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://mpd5mdbmxpe7"]
 
 [ext_resource type="Theme" uid="uid://13i4ei1xpjx3" path="res://resources/themes/standard.tres" id="1_82p65"]
-[ext_resource type="Script" uid="uid://c5ibjck0btnpq" path="res://scenes/login_screen/login_screen.gd" id="2_5b8vt"]
+[ext_resource type="Script" uid="uid://c5ibjck0btnpq" path="res://scenes/login_screen/online_save.gd" id="2_5b8vt"]
 
-[node name="login_screen" type="Control" unique_id=1124121847]
+[node name="online_save" type="Control" unique_id=1124121847]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

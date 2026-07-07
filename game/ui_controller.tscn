@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bsuornuq5k0m4"]
 
 [ext_resource type="Script" uid="uid://c1eaf43i4ogo4" path="res://ui_controller.gd" id="1_3ga5c"]
-[ext_resource type="PackedScene" uid="uid://mpd5mdbmxpe7" path="res://scenes/login_screen/login_screen.tscn" id="2_1ajqp"]
+[ext_resource type="PackedScene" uid="uid://b0jv3byjpmtw3" path="res://scenes/pick_save/pick_save.tscn" id="2_1ajqp"]
+[ext_resource type="PackedScene" uid="uid://mpd5mdbmxpe7" path="res://scenes/login_screen/online_save.tscn" id="3_rlpp8"]
 
 [node name="ui_controller" type="Control" unique_id=1713897045]
 layout_mode = 3
@@ -15,4 +16,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2018975771]
 
-[node name="login_screen" parent="CanvasLayer" unique_id=1124121847 instance=ExtResource("2_1ajqp")]
+[node name="pick_save" parent="CanvasLayer" unique_id=1547500409 instance=ExtResource("2_1ajqp")]
+
+[node name="online_save" parent="CanvasLayer" unique_id=1124121847 instance=ExtResource("3_rlpp8")]
+visible = false

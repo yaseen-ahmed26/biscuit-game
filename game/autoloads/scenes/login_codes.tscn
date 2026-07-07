@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://dirpwy0pvhsrb"]
-
-[ext_resource type="Script" uid="uid://ncirepv6q73n" path="res://autoloads/scenes/login_codes.gd" id="1_t5uke"]
-
-[node name="LoginCodes" type="Node" unique_id=209395530]
-script = ExtResource("1_t5uke")

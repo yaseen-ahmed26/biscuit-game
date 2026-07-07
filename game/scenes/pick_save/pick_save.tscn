@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://b0jv3byjpmtw3"]
+
+[ext_resource type="Theme" uid="uid://13i4ei1xpjx3" path="res://resources/themes/standard.tres" id="1_ca105"]
+[ext_resource type="Script" uid="uid://ncirepv6q73n" path="res://scenes/pick_save/pick_save.gd" id="1_dv5pr"]
+
+[node name="pick_save" type="Control" unique_id=1547500409]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ca105")
+script = ExtResource("1_dv5pr")
+
+[node name="background" type="ColorRect" parent="." unique_id=1069530482]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="title" type="RichTextLabel" parent="background" unique_id=12722496]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -697.0
+offset_top = 88.0
+offset_right = 697.0
+offset_bottom = 155.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 42
+text = "Where would you like to save your game data?"
+horizontal_alignment = 1
+
+[node name="background2" type="ColorRect" parent="background" unique_id=57413459]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 958.0
+offset_top = 227.0
+offset_right = -958.0
+offset_bottom = -339.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="background" unique_id=1563838402]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -625.0
+offset_top = -284.0
+offset_right = 625.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="online" type="Button" parent="background/HBoxContainer" unique_id=917962563]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 46
+text = "Online"
+
+[node name="online_desc" type="RichTextLabel" parent="background/HBoxContainer/online" unique_id=1005848825]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -290.0
+offset_top = 188.0
+offset_right = 290.0
+offset_bottom = 468.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 34
+text = "Your game data will be saved to a server. This means you can login to another device and access your data there. This requires an account."
+horizontal_alignment = 1
+
+[node name="local" type="Button" parent="background/HBoxContainer" unique_id=1668521045]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 46
+text = "Local"
+
+[node name="local_desc" type="RichTextLabel" parent="background/HBoxContainer/local" unique_id=176786831]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -290.0
+offset_top = 188.0
+offset_right = 290.0
+offset_bottom = 425.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 34
+text = "Your game data will be saved locally on your device. Your data is restricted to this device only."
+horizontal_alignment = 1
+
+[node name="continue_btn" type="Button" parent="background" unique_id=2044642271]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -352.0
+offset_top = -164.0
+offset_right = 352.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 42
+disabled = true
+text = "Select an option"
+
+[connection signal="pressed" from="background/continue_btn" to="." method="_on_continue_btn_pressed"]

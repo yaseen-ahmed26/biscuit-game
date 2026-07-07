@@ -11,13 +11,12 @@ config_version=5
 [application]
 
 config/name="game"
-run/main_scene="res://scenes/login_screen/login_screen.tscn"
+run/main_scene="uid://bsuornuq5k0m4"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-LoginCodes="*uid://dirpwy0pvhsrb"
 Signals="*uid://clct323nvt7ds"
 
 [display]
