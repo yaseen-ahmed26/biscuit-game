@@ -16,7 +16,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2018975771]
 
-[node name="pick_save" parent="CanvasLayer" unique_id=1547500409 instance=ExtResource("2_1ajqp")]
+[node name="pick_save" parent="CanvasLayer" unique_id=1547500409 node_paths=PackedStringArray("online_save_scene") instance=ExtResource("2_1ajqp")]
+online_save_scene = NodePath("../online_save")
 
 [node name="online_save" parent="CanvasLayer" unique_id=1124121847 instance=ExtResource("3_rlpp8")]
 visible = false
