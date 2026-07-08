@@ -39,7 +39,7 @@ func _process(_delta: float) -> void:
 		var reason = socket.get_close_reason()
 		
 		print("websocket closed: (%d) %s" % [code, reason])
-		#set_process(false)
+		set_process(false)
 
 func start_websocket():
 	var os_name: String = OS.get_name()
