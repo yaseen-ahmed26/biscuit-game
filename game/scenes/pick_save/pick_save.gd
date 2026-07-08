@@ -22,7 +22,7 @@ func _save_selected(item: Button):
 func _on_continue_btn_pressed():
 	match type_selected:
 		"online": 
-			Signals.change_screen.emit("pick_save", "online_save")
+			Signals.change_screen.emit("online_save")
 			online_save_scene.call("start_websocket") 
 		"local": pass
 	

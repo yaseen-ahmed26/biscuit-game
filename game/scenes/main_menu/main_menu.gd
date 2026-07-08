@@ -10,4 +10,4 @@ func _play_intro():
 	
 	await animation_player.animation_finished
 	
-	Signals.change_screen.emit("main_menu", "pick_save")
+	Signals.change_screen.emit("pick_save")
