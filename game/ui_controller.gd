@@ -10,7 +10,7 @@ func _ready() -> void:
 	Signals.change_screen.connect(_on_change_screen)
 	
 func _on_change_screen(to_show: String):
-	fade.mouse_filter = Control.MOUSE_FILTER_STOP
+	fade.mouse_filter = MouseFilter.MOUSE_FILTER_STOP
 	
 	var new_screen = canvas_layer.get_node_or_null(to_show)
 	
@@ -32,4 +32,4 @@ func _on_change_screen(to_show: String):
 	tween_out.tween_property(fade, "self_modulate:a", 0.0, 0.5)
 	await tween_out.finished
 	
-	fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	fade.mouse_filter = MouseFilter.MOUSE_FILTER_IGNORE

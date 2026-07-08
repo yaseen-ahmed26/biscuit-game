@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c1eaf43i4ogo4" path="res://ui_controller.gd" id="1_3ga5c"]
 [ext_resource type="PackedScene" uid="uid://b0jv3byjpmtw3" path="res://scenes/pick_save/pick_save.tscn" id="2_1ajqp"]
-[ext_resource type="PackedScene" uid="uid://ddyetqyxkhfn8" path="res://scenes/main_menu/main_menu.tscn" id="2_dy358"]
+[ext_resource type="PackedScene" uid="uid://1x5v2og6yriv" path="res://scenes/main_menu/main_menu.tscn" id="2_dy358"]
 [ext_resource type="PackedScene" uid="uid://mpd5mdbmxpe7" path="res://scenes/login_screen/online_save.tscn" id="3_rlpp8"]
 
 [node name="ui_controller" type="Control" unique_id=1713897045]
@@ -35,4 +35,5 @@ offset_top = -3.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
