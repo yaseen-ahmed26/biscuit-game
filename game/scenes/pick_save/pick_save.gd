@@ -13,7 +13,6 @@ func _ready() -> void:
 		
 		item.pressed.connect(_save_selected.bind(item))
 	
-# UI stuff
 func _save_selected(item: Button):
 	type_selected = item.name
 	continue_btn.disabled = false
@@ -24,6 +23,6 @@ func _on_continue_btn_pressed():
 		"online": 
 			Signals.change_screen.emit("online_save")
 			online_save_scene.call("start_websocket") 
-		"local": pass
+		"local": Signals.change_screen.emit("local_save")
 	
 	continue_btn.disabled = true
