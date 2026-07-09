@@ -2,29 +2,16 @@
 
 [ext_resource type="Theme" uid="uid://13i4ei1xpjx3" path="res://resources/themes/standard.tres" id="1_7vrkn"]
 [ext_resource type="Script" uid="uid://bfxlqjo0nk8yn" path="res://scenes/main_menu/main_menu.gd" id="2_fu7sn"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ebjn"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+[ext_resource type="StyleBox" uid="uid://dip8aehtt75n5" path="res://resources/buttons/standard.tres" id="3_uqeha"]
+[ext_resource type="StyleBox" uid="uid://cjoum2urk02bg" path="res://resources/buttons/pressed.tres" id="4_3ovsr"]
+[ext_resource type="StyleBox" uid="uid://dxryx6wa4aksi" path="res://resources/buttons/hover.tres" id="4_wem23"]
 
 [sub_resource type="Animation" id="Animation_uqeha"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("background/game_name:modulate")
+tracks/0/path = NodePath("game_name:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("background/engine:modulate")
+tracks/1/path = NodePath("engine:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -48,7 +35,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("background/menu_options:modulate")
+tracks/2/path = NodePath("menu_options:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -64,7 +51,7 @@ length = 5.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("background/game_name:modulate")
+tracks/0/path = NodePath("game_name:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,7 +63,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("background/engine:modulate")
+tracks/1/path = NodePath("engine:modulate")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -88,7 +75,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("background/menu_options:modulate")
+tracks/2/path = NodePath("menu_options:modulate")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -114,16 +101,7 @@ grow_vertical = 2
 theme = ExtResource("1_7vrkn")
 script = ExtResource("2_fu7sn")
 
-[node name="background" type="ColorRect" parent="." unique_id=210241634]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="game_name" type="RichTextLabel" parent="background" unique_id=372926204]
+[node name="game_name" type="RichTextLabel" parent="." unique_id=372926204]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -138,12 +116,13 @@ offset_bottom = 87.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/normal_font_size = 120
 text = "BISCUIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="engine" type="ColorRect" parent="background" unique_id=414322945]
+[node name="engine" type="ColorRect" parent="." unique_id=414322945]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -160,7 +139,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="made_with" type="RichTextLabel" parent="background/engine" unique_id=647881487]
+[node name="made_with" type="RichTextLabel" parent="engine" unique_id=647881487]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -174,12 +153,13 @@ offset_bottom = 82.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/normal_font_size = 80
 text = "Made with Godot"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="menu_options" type="VBoxContainer" parent="background" unique_id=1917798327]
+[node name="menu_options" type="VBoxContainer" parent="." unique_id=1917798327]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -193,16 +173,24 @@ theme_override_constants/separation = 24
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="play" type="Button" parent="background/menu_options" unique_id=627449760]
+[node name="play" type="Button" parent="menu_options" unique_id=627449760]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 42
-theme_override_styles/normal = SubResource("StyleBoxFlat_0ebjn")
+theme_override_styles/normal = ExtResource("3_uqeha")
+theme_override_styles/pressed = ExtResource("4_3ovsr")
+theme_override_styles/hover = ExtResource("4_wem23")
 text = "NEW GAME"
 
-[node name="quit" type="Button" parent="background/menu_options" unique_id=2093205398]
+[node name="quit" type="Button" parent="menu_options" unique_id=2093205398]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 42
-theme_override_styles/normal = SubResource("StyleBoxFlat_0ebjn")
+theme_override_styles/normal = ExtResource("3_uqeha")
+theme_override_styles/pressed = ExtResource("4_3ovsr")
+theme_override_styles/hover = ExtResource("4_wem23")
 text = "QUIT"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1758939705]

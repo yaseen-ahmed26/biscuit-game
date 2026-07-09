@@ -26,15 +26,6 @@ theme = ExtResource("1_82p65")
 script = ExtResource("2_5b8vt")
 metadata/_edit_use_anchors_ = true
 
-[node name="background" type="ColorRect" parent="." unique_id=1539352208]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="welcome" type="RichTextLabel" parent="." unique_id=1853734327]
 layout_mode = 1
 anchors_preset = 8
@@ -48,6 +39,7 @@ offset_right = 901.0
 offset_bottom = -305.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 46
 text = "Log into your account at <website-url> and navigate to \"Login with Code\" and enter the 7 alphanumerical code below:
 "
@@ -62,13 +54,13 @@ anchor_right = 0.9203125
 anchor_bottom = 0.9305556
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 34
 text = "Once connected, your save data will be associated with this account. You cannot unlink your data from your account. 
 
 Create an account if you do not have one.
 "
 horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="code" type="RichTextLabel" parent="." unique_id=741930022]
 layout_mode = 1
@@ -83,6 +75,7 @@ offset_right = 809.0
 offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "-------
@@ -90,6 +83,7 @@ text = "-------
 horizontal_alignment = 1
 
 [node name="link_success" type="Panel" parent="." unique_id=773163091]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15

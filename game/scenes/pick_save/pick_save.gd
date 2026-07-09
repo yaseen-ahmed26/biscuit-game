@@ -2,8 +2,8 @@ extends Node
 
 @export var online_save_scene: Control
 
-@onready var hbox_container: HBoxContainer = $background/HBoxContainer
-@onready var continue_btn: Button = $background/continue_btn
+@onready var hbox_container: HBoxContainer = $HBoxContainer
+@onready var continue_btn: Button = $continue_btn
 
 var type_selected: String
 

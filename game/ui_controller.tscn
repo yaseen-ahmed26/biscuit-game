@@ -21,6 +21,25 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2018975771]
 
+[node name="background" type="ColorRect" parent="CanvasLayer" unique_id=1557548143]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.30014852, 0.6636234, 1)
+
+[node name="inner" type="ColorRect" parent="CanvasLayer/background" unique_id=144167998]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 21.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1.9059777e-05, 0.4037879, 0.8719074, 1)
+
 [node name="main_menu" parent="CanvasLayer" unique_id=1672685815 instance=ExtResource("2_dy358")]
 
 [node name="pick_save" parent="CanvasLayer" unique_id=1547500409 node_paths=PackedStringArray("online_save_scene") instance=ExtResource("2_1ajqp")]
@@ -46,4 +65,4 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0.17054084, 0.39849842, 1)
