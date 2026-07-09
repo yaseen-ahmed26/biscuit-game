@@ -1,5 +1,8 @@
 extends Control
 
+@onready var link_success: Panel = $link_success
+@onready var welcome: RichTextLabel = $link_success/welcome
+
 const COUNTRIES: Dictionary[String, String] = {
 	"GB": "United Kingdom"
 }
@@ -70,6 +73,16 @@ func _get_user_country() -> String:
 	var country_name: String = COUNTRIES.get(country_code, country_code)
 	
 	return country_name
+
+func _account_link_success(username: String):
+	welcome.text = "[color=green]Account Linked: Hello, %s!" % username
+	
+	var tween_in: Tween = create_tween()
+	tween_in.tween_property(link_success, "modulate:a", 1.0, 0.7)
+	
+	await get_tree().create_timer(4.0).timeout
+		
+	Signals.change_screen.emit("game")
 	
 func _on_message_received(message):
 	var parsed = JSON.parse_string(message)
@@ -79,10 +92,7 @@ func _on_message_received(message):
 	elif parsed.type == "user_data":
 		SaveManager.store_online_data(parsed)
 		
-		$code.text = "[color=red] Account Connected: Hello, %s" % parsed.username
-		await get_tree().create_timer(4.0).timeout
-		
-		Signals.change_screen.emit("game")
+		_account_link_success(parsed.username)
 
 func _send_message(message: String) -> void:
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:

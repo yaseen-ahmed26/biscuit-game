@@ -3,6 +3,18 @@
 [ext_resource type="Theme" uid="uid://13i4ei1xpjx3" path="res://resources/themes/standard.tres" id="1_82p65"]
 [ext_resource type="Script" uid="uid://c5ibjck0btnpq" path="res://scenes/login_screen/online_save.gd" id="2_5b8vt"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qrgy"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [node name="online_save" type="Control" unique_id=1124121847]
 layout_mode = 3
 anchors_preset = 15
@@ -76,3 +88,33 @@ bbcode_enabled = true
 text = "-------
 "
 horizontal_alignment = 1
+
+[node name="link_success" type="Panel" parent="." unique_id=773163091]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0qrgy")
+
+[node name="welcome" type="RichTextLabel" parent="link_success" unique_id=872139639]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -866.0
+offset_top = -316.0
+offset_right = 866.0
+offset_bottom = 316.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[color=green]Account Linked: Hello, username!"
+horizontal_alignment = 1
+vertical_alignment = 1
