@@ -31,3 +31,4 @@ func _on_user_input_text_changed(new_text: String) -> void:
 
 func _on_continue_btn_pressed():
 	SaveManager.store_local_save({"username": user_input.text})
+	Signals.change_screen.emit("game")

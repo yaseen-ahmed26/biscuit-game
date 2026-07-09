@@ -27,10 +27,8 @@ func _on_option_pressed(btn: Button):
 		"play":
 			if action == "pick":
 				Signals.change_screen.emit("pick_save")
-			elif action == "online":
-				Signals.change_screen.emit("online_save")
-			elif action == "local":
-				print("local not yet made")
+			else:
+				Signals.change_screen.emit("game")
 		"quit":
 			get_tree().quit()
 

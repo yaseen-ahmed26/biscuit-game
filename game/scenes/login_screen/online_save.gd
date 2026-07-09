@@ -78,6 +78,11 @@ func _on_message_received(message):
 		$code.text = "[color=green]%s" % parsed.login_code
 	elif parsed.type == "user_data":
 		SaveManager.store_online_data(parsed)
+		
+		$code.text = "[color=red] Account Connected: Hello, %s" % parsed.username
+		await get_tree().create_timer(4.0).timeout
+		
+		Signals.change_screen.emit("game")
 
 func _send_message(message: String) -> void:
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
