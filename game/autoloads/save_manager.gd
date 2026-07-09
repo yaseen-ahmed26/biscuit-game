@@ -1,26 +1,18 @@
 extends Node
 
-# save manager
-"""
-
-look for a config.cfg file
--> if none exists, default to pick
--> if found, determine whether it is local or online
-config.get_value("Save", "save_type")
-if save == "online" .. look for a session ID and
-make a GET request
-elif save == "local" .. load all the user data into a dictionary
-
-could have a dedicated player_manager that data goes into
-
-"""
-
 const CONFIG_FILE_PATH: String = "user://config.cfg"
 
 var config: ConfigFile = ConfigFile.new()
 var action: String
 
 var save_id: String
+
+func store_online_data(data):
+	config.set_value("DeviceConfig", "save_type", "online")
+	config.set_value("DeviceConfig", "save_id", data.save_id)
+	config.set_value("DeviceConfig", "player_username", data.username)
+	print("this is a test")
+	config.save(CONFIG_FILE_PATH)
 
 func _get_local_save():
 	pass
