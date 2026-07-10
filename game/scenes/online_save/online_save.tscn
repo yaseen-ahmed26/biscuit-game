@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://mpd5mdbmxpe7"]
 
 [ext_resource type="Theme" uid="uid://13i4ei1xpjx3" path="res://resources/themes/standard.tres" id="1_82p65"]
-[ext_resource type="Script" uid="uid://c5ibjck0btnpq" path="res://scenes/login_screen/online_save.gd" id="2_5b8vt"]
+[ext_resource type="Script" uid="uid://c5ibjck0btnpq" path="res://scenes/online_save/online_save.gd" id="2_5b8vt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qrgy"]
 content_margin_left = 0.0

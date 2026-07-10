@@ -143,7 +143,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.013353116
 anchor_top = 0.42857143
-anchor_right = 0.30118695
+anchor_right = 0.3093146
 anchor_bottom = 0.43349755
 grow_horizontal = 2
 grow_vertical = 2
@@ -157,9 +157,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -371.0
-offset_top = 50.5
+offset_top = 53.5
 offset_right = -223.0
-offset_bottom = 86.5
+offset_bottom = 89.5
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -186,51 +186,44 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mabxk")
 
-[node name="stat_changes" type="VBoxContainer" parent="info_panel" unique_id=850412285]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -61.5
-offset_top = -42.5
-offset_right = 61.5
-offset_bottom = 42.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="1" type="RichTextLabel" parent="info_panel/stat_changes" unique_id=141543332]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/normal_font_size = 15
-text = "TEXT HERE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="2" type="RichTextLabel" parent="info_panel/stat_changes" unique_id=1640947641]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/normal_font_size = 15
-text = "TEXT HERE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="3" type="RichTextLabel" parent="info_panel/stat_changes" unique_id=921457882]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/normal_font_size = 15
-text = "TEXT HERE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="info_panel" unique_id=421074098]
+[node name="level_name" type="RichTextLabel" parent="info_panel" unique_id=141543332]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 18.0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 140.0
+offset_bottom = 35.0
+size_flags_vertical = 3
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 15
+text = "LEVEL NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level_description" type="RichTextLabel" parent="info_panel" unique_id=1640947641]
+layout_mode = 0
+offset_left = 12.5
+offset_top = 35.0
+offset_right = 135.5
+offset_bottom = 81.0
+size_flags_vertical = 3
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 12
+text = "DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level_cost" type="RichTextLabel" parent="info_panel" unique_id=921457882]
+layout_mode = 0
+offset_left = 12.5
+offset_top = 90.0
+offset_right = 135.5
+offset_bottom = 116.0
+size_flags_vertical = 3
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 15
+text = "30 Biscuits"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="upgrade_name" type="RichTextLabel" parent="." unique_id=948938705]
 layout_mode = 1
@@ -249,10 +242,10 @@ metadata/_edit_use_anchors_ = true
 [node name="description" type="RichTextLabel" parent="." unique_id=1166369466]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.013353116
-anchor_top = 0.4679802
-anchor_right = 0.31458703
-anchor_bottom = 0.94581276
+anchor_left = 0.029877018
+anchor_top = 0.48768467
+anchor_right = 0.3022848
+anchor_bottom = 0.9261083
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/normal_font_size = 12
 text = "description"
@@ -287,7 +280,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_dm52w")
 theme_override_styles/disabled = ExtResource("3_gevct")
 text = "+1"
 
-[node name="add_one2" type="Button" parent="level_btns" unique_id=1419820581]
+[node name="add_ten" type="Button" parent="level_btns" unique_id=1419820581]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 4
@@ -298,7 +291,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_dm52w")
 theme_override_styles/disabled = ExtResource("3_gevct")
 text = "+10"
 
-[node name="add_one3" type="Button" parent="level_btns" unique_id=1796701253]
+[node name="add_all" type="Button" parent="level_btns" unique_id=1796701253]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 4
@@ -404,3 +397,5 @@ grow_vertical = 2
 text = "V"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="buy_btn" to="." method="_on_buy_btn_pressed"]

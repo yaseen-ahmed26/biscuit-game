@@ -1,0 +1,30 @@
+[
+	{
+		"id": "test_upgrade",
+		"name": "Test Upgrade",
+		"description": "This is simply a test upgrade that increses your clicks by 1.",
+		"icon": "",
+		"levels": [
+			{
+				"name": "Level I",
+				"description": "+1 cookies per click",
+				"cost": 10,
+				"effect": {
+					"type": "add",
+					"target": "cookies_per_click",
+					"value": 1
+				},
+			},
+			{
+				"name": "Level II",
+				"description": "+1 cookies per click",
+				"cost": 20,
+				"effect": {
+					"type": "add",
+					"target": "cookies_per_click",
+					"value": 1
+				},
+			}
+		]
+	}
+]
