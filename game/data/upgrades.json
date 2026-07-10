@@ -5,6 +5,7 @@
 		"description": "This is simply a test upgrade that increses your clicks by 1.",
 		"icon": "",
 		"total_levels": 2,
+		"group": "clicker",
 		"levels": [
 			{
 				"name": "Level I",

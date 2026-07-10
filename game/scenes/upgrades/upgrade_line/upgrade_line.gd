@@ -11,18 +11,6 @@ var current_level: int
 
 var green_panel: StyleBoxFlat = preload("res://resources/panels/green.tres")
 
-func _ready() -> void:
-	# TEMPORARY
-
-	if FileAccess.file_exists("res://data/upgrades.json"):
-		var file = FileAccess.open("res://data/upgrades.json", FileAccess.READ)
-		var json = JSON.new()
-		
-		if json.parse(file.get_as_text()) == OK:
-			var data = json.get_data()
-			
-			set_up_line(data[0], 0)
-
 func _get_current_level_data():
 	return upgrade_data.levels[current_level]
 
@@ -46,6 +34,9 @@ func set_up_line(data: Dictionary, saved_level: int):
 	description.text = data.description
 			
 	self.set_meta("id", data.id)
+	self.set_meta("group", data.group)
+	self.name = data.id
+	
 	_display_level()
 
 func _on_buy_btn_pressed():
