@@ -20,8 +20,11 @@ func _ready() -> void:
 			
 			set_up_line(data[0], 0)
 
+func _get_current_level_data():
+	return upgrade_data.levels[current_level]
+
 func _display_level():
-	var level_info: Dictionary = upgrade_data.levels[current_level]
+	var level_info: Dictionary = _get_current_level_data()
 	
 	$info_panel/level_name.text = level_info.name
 	$info_panel/level_description.text = level_info.description
@@ -38,5 +41,11 @@ func set_up_line(data: Dictionary, saved_level: int):
 	_display_level()
 
 func _on_buy_btn_pressed():
-	current_level += 1
-	_display_level()
+	var level_info: Dictionary = _get_current_level_data()
+	
+	if PlayerManager.can_purchase(level_info.cost):
+		current_level += 1
+		PlayerManager.apply_effect(level_info.effect)
+		_display_level()
+	else:
+		print("not enough")

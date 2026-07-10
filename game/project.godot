@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Signals="*uid://clct323nvt7ds"
 SaveManager="*uid://c2gdadhem7y8g"
+PlayerManager="*uid://baalclsuo4y42"
 
 [display]
 

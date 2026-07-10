@@ -5,6 +5,7 @@
 [ext_resource type="StyleBox" uid="uid://dip8aehtt75n5" path="res://resources/buttons/standard.tres" id="3_lfrn8"]
 [ext_resource type="StyleBox" uid="uid://cjoum2urk02bg" path="res://resources/buttons/pressed.tres" id="4_5i0tg"]
 [ext_resource type="StyleBox" uid="uid://dxryx6wa4aksi" path="res://resources/buttons/hover.tres" id="5_bdhmt"]
+[ext_resource type="PackedScene" uid="uid://catl42v0psqwm" path="res://scenes/upgrades/upgrade_line/upgrade_line.tscn" id="6_5i0tg"]
 
 [node name="game" type="Control" unique_id=806070042]
 layout_mode = 3
@@ -48,5 +49,15 @@ theme_override_font_sizes/normal_font_size = 42
 text = "COOKIES: 0.0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="upgrade_line" parent="." unique_id=1190958676 instance=ExtResource("6_5i0tg")]
+layout_mode = 1
+anchor_left = 0.027604166
+anchor_top = 0.76111114
+anchor_right = 0.32395834
+anchor_bottom = 0.9490741
+offset_top = -6.1035156e-05
+offset_right = 0.0
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="clicker_btn" to="." method="_on_clicker_btn_pressed"]

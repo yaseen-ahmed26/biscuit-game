@@ -1,0 +1,29 @@
+extends Node
+
+var stats: Dictionary = {
+	"biscuits": 30.0,
+	"total_biscuits": 0.0,
+	
+	"per_click": 1.0,
+}
+
+func apply_effect(effect: Dictionary):	
+	if not stats[effect.target]:
+		print("'%s' stat not found" % effect.target)
+		Signals.stats_changed.emit(stats)
+		return
+	
+	match effect.type:
+		"add": stats[effect.target] += effect.value
+		"subtract": stats[effect.target] -= effect.value
+		"multiply": stats[effect.target] *= effect.value
+		"divide": stats[effect.target] /= effect.value
+	
+	Signals.stats_changed.emit(stats)
+
+func can_purchase(target: float) -> bool:
+	if stats.get("biscuits") >= target:
+		stats["biscuits"] -= target
+		return true
+		
+	return false

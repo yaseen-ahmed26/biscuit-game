@@ -11,7 +11,7 @@
 				"cost": 10,
 				"effect": {
 					"type": "add",
-					"target": "cookies_per_click",
+					"target": "per_click",
 					"value": 1
 				},
 			},
@@ -21,7 +21,7 @@
 				"cost": 20,
 				"effect": {
 					"type": "add",
-					"target": "cookies_per_click",
+					"target": "per_click",
 					"value": 1
 				},
 			}
