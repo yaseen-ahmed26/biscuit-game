@@ -319,9 +319,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 4
+bbcode_enabled = true
 text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Node" type="Node" parent="levels/1" unique_id=368390931]
 
 [node name="2" type="Panel" parent="levels" unique_id=1431556252]
 layout_mode = 2
@@ -336,6 +339,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 4
+bbcode_enabled = true
 text = "II"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -353,6 +357,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 4
+bbcode_enabled = true
 text = "III"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -370,6 +375,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 4
+bbcode_enabled = true
 text = "IV"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -387,6 +393,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 4
+bbcode_enabled = true
 text = "V"
 horizontal_alignment = 1
 vertical_alignment = 1

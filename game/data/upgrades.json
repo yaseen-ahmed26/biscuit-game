@@ -4,6 +4,7 @@
 		"name": "Test Upgrade",
 		"description": "This is simply a test upgrade that increses your clicks by 1.",
 		"icon": "",
+		"total_levels": 2,
 		"levels": [
 			{
 				"name": "Level I",
@@ -24,7 +25,7 @@
 					"target": "per_click",
 					"value": 1
 				},
-			}
+			},
 		]
 	}
 ]

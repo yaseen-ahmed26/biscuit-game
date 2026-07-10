@@ -52,11 +52,11 @@ vertical_alignment = 1
 
 [node name="upgrade_line" parent="." unique_id=1190958676 instance=ExtResource("6_5i0tg")]
 layout_mode = 1
-anchor_left = 0.027604166
-anchor_top = 0.76111114
-anchor_right = 0.32395834
-anchor_bottom = 0.9490741
-offset_top = -6.1035156e-05
+anchor_left = 0.017708333
+anchor_top = 0.7787037
+anchor_right = 0.275
+anchor_bottom = 0.96666664
+offset_top = 0.0
 offset_right = 0.0
 metadata/_edit_use_anchors_ = true
 

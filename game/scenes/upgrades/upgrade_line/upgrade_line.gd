@@ -27,6 +27,11 @@ func _get_current_level_data():
 	return upgrade_data.levels[current_level]
 
 func _display_level():
+	if current_level == upgrade_data.total_levels:
+		$buy_btn.text = "MAX"
+		$buy_btn.disabled = true
+		return
+	
 	var level_info: Dictionary = _get_current_level_data()
 	
 	$info_panel/level_name.text = level_info.name
@@ -39,7 +44,7 @@ func set_up_line(data: Dictionary, saved_level: int):
 	
 	upgrade_name.text = data.name
 	description.text = data.description
-	
+			
 	self.set_meta("id", data.id)
 	_display_level()
 
