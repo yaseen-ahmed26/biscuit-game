@@ -27,3 +27,9 @@ func can_purchase(target: float) -> bool:
 		return true
 		
 	return false
+
+func click_cookie():
+	stats["biscuits"] += stats["per_click"]
+	stats["total_biscuits"] += stats["biscuits"]
+	
+	Signals.stats_changed.emit(stats)
