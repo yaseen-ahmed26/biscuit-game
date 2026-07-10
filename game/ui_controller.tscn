@@ -65,4 +65,4 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0.17054084, 0.39849842, 1)
+color = Color(0, 0, 0, 1)

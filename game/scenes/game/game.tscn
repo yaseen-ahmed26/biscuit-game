@@ -2,6 +2,9 @@
 
 [ext_resource type="Theme" uid="uid://13i4ei1xpjx3" path="res://resources/themes/standard.tres" id="1_7h61r"]
 [ext_resource type="Script" uid="uid://eapyxellpqhu" path="res://game.gd" id="1_sul5r"]
+[ext_resource type="StyleBox" uid="uid://dip8aehtt75n5" path="res://resources/buttons/standard.tres" id="3_lfrn8"]
+[ext_resource type="StyleBox" uid="uid://cjoum2urk02bg" path="res://resources/buttons/pressed.tres" id="4_5i0tg"]
+[ext_resource type="StyleBox" uid="uid://dxryx6wa4aksi" path="res://resources/buttons/hover.tres" id="5_bdhmt"]
 
 [node name="game" type="Control" unique_id=806070042]
 layout_mode = 3
@@ -13,15 +16,6 @@ grow_vertical = 2
 theme = ExtResource("1_7h61r")
 script = ExtResource("1_sul5r")
 
-[node name="background" type="ColorRect" parent="." unique_id=6164188]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="clicker_btn" type="Button" parent="." unique_id=1643822088]
 layout_mode = 1
 anchors_preset = 8
@@ -29,13 +23,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -555.0
-offset_top = -108.0
-offset_right = 555.0
-offset_bottom = 108.0
+offset_left = -268.0
+offset_top = -78.0
+offset_right = 268.0
+offset_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 120
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = ExtResource("3_lfrn8")
+theme_override_styles/pressed = ExtResource("4_5i0tg")
+theme_override_styles/hover = ExtResource("5_bdhmt")
 text = "CLICK ME"
 
 [node name="cookie_counter" type="RichTextLabel" parent="." unique_id=950647285]
@@ -44,6 +43,7 @@ offset_left = 26.0
 offset_top = 26.0
 offset_right = 437.0
 offset_bottom = 111.0
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 42
 text = "COOKIES: 0.0"
 horizontal_alignment = 1
