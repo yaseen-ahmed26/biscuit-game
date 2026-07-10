@@ -1,11 +1,13 @@
 extends Control
 
+@onready var cookie_counter: RichTextLabel = $cookie_counter
+@onready var clicker_btn: Button = $clicker_btn
 
-# Called when the node enters the scene tree for the first time.
+var cookies: float = 0.0
+
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
 	pass
+
+func _on_clicker_btn_pressed() -> void:
+	cookies += 1
+	cookie_counter.text = "COOKIES: %.1f" % cookies
