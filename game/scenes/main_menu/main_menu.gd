@@ -3,9 +3,6 @@ extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var menu_options: VBoxContainer = $menu_options
 
-const CONFIG_FILE_PATH: String = "user://config.cfg"
-
-var config: ConfigFile = ConfigFile.new()
 var action: String
 
 func _ready() -> void:

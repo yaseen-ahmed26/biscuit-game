@@ -52,9 +52,11 @@ vertical_alignment = 1
 
 [node name="upgrade_screen" parent="." unique_id=706605568 instance=ExtResource("6_5i0tg")]
 layout_mode = 1
-anchor_left = 0.0020833334
+anchor_left = 0.003125
 anchor_top = 1.0055555
-anchor_right = 0.38333333
+anchor_right = 0.384375
 anchor_bottom = 1.574074
+offset_left = -2.0
+offset_right = -2.0
 
 [connection signal="pressed" from="clicker_btn" to="." method="_on_clicker_btn_pressed"]

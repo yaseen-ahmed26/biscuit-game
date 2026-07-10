@@ -17,7 +17,7 @@ var connected = false
 
 func _ready() -> void:
 	set_process(false)
-	websocket_url = read_json(SECRETS_PATH).websocket_url
+	websocket_url = GameManager.read_json(SECRETS_PATH).websocket_url
 
 func _process(_delta: float) -> void:
 	socket.poll()
@@ -110,13 +110,3 @@ func _on_connected() -> void:
 
 func check_save():
 	pass
-
-func read_json(path: String) -> Variant:
-	if FileAccess.file_exists(path):
-		var file = FileAccess.open(path, FileAccess.READ)
-		var json = JSON.new()
-		
-		if json.parse(file.get_as_text()) == OK:
-			return json.get_data()
-			
-	return null
