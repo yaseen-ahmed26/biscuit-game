@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dvohdkqlbvpt0" path="res://scenes/upgrades/upgrade_line/upgrade_line.gd" id="1_45spe"]
 [ext_resource type="StyleBox" uid="uid://cjoum2urk02bg" path="res://resources/buttons/pressed.tres" id="2_cfrxm"]
 [ext_resource type="StyleBox" uid="uid://cbglphv31xjd0" path="res://resources/buttons/disabled.tres" id="3_gevct"]
+[ext_resource type="StyleBox" uid="uid://dnrjpk35ff1yi" path="res://resources/panels/red.tres" id="4_gevct"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfrxm"]
 content_margin_left = 0.0
@@ -64,24 +65,11 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gevct"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.9308499, 0, 0.122611366, 1)
-corner_detail = 5
-
 [node name="upgrade_line" type="Control" unique_id=1190958676]
 layout_mode = 3
 anchor_left = 0.32447916
 anchor_top = 0.41759259
-anchor_right = 0.67552084
+anchor_right = 0.63645834
 anchor_bottom = 0.5824074
 offset_top = -25.0
 offset_right = -105.0
@@ -117,9 +105,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -99.5
+offset_left = -71.0
 offset_top = -100.5
-offset_right = -97.5
+offset_right = -69.0
 offset_bottom = 100.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -131,9 +119,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 155.5
+offset_left = 188.0
 offset_top = -100.5
-offset_right = 157.5
+offset_right = 190.0
 offset_bottom = 100.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -143,7 +131,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.013353116
 anchor_top = 0.42857143
-anchor_right = 0.3093146
+anchor_right = 0.3360324
 anchor_bottom = 0.43349755
 grow_horizontal = 2
 grow_vertical = 2
@@ -156,9 +144,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -371.0
+offset_left = -303.0
 offset_top = 53.5
-offset_right = -223.0
+offset_right = -155.0
 offset_bottom = 89.5
 grow_horizontal = 0
 grow_vertical = 2
@@ -178,9 +166,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -371.0
+offset_left = -303.0
 offset_top = -91.5
-offset_right = -223.0
+offset_right = -155.0
 offset_bottom = 43.5
 grow_horizontal = 0
 grow_vertical = 2
@@ -228,9 +216,9 @@ vertical_alignment = 1
 [node name="upgrade_name" type="RichTextLabel" parent="." unique_id=948938705]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.14587
+anchor_left = 0.17004053
 anchor_top = 0.06403944
-anchor_right = 0.31634456
+anchor_right = 0.34615391
 anchor_bottom = 0.37438428
 theme_override_constants/outline_size = 4
 text = "upgrade
@@ -260,9 +248,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -213.0
+offset_left = -145.0
 offset_top = -91.5
-offset_right = -141.0
+offset_right = -73.0
 offset_bottom = 86.5
 grow_horizontal = 0
 grow_vertical = 2
@@ -309,9 +297,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -115.0
+offset_left = -47.0
 offset_top = -91.5
-offset_right = -12.0
+offset_right = -13.0
 offset_bottom = 90.5
 grow_horizontal = 0
 grow_vertical = 2
@@ -321,7 +309,7 @@ alignment = 1
 [node name="1" type="Panel" parent="levels" unique_id=1583403838]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_gevct")
+theme_override_styles/panel = ExtResource("4_gevct")
 
 [node name="label" type="RichTextLabel" parent="levels/1" unique_id=749844712]
 layout_mode = 1
@@ -330,6 +318,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 4
 text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -337,7 +326,7 @@ vertical_alignment = 1
 [node name="2" type="Panel" parent="levels" unique_id=1431556252]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_gevct")
+theme_override_styles/panel = ExtResource("4_gevct")
 
 [node name="label" type="RichTextLabel" parent="levels/2" unique_id=1541113080]
 layout_mode = 1
@@ -346,6 +335,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 4
 text = "II"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -353,7 +343,7 @@ vertical_alignment = 1
 [node name="3" type="Panel" parent="levels" unique_id=1276058667]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_gevct")
+theme_override_styles/panel = ExtResource("4_gevct")
 
 [node name="label" type="RichTextLabel" parent="levels/3" unique_id=848340632]
 layout_mode = 1
@@ -362,6 +352,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 4
 text = "III"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -369,7 +360,7 @@ vertical_alignment = 1
 [node name="4" type="Panel" parent="levels" unique_id=1095038134]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_gevct")
+theme_override_styles/panel = ExtResource("4_gevct")
 
 [node name="label" type="RichTextLabel" parent="levels/4" unique_id=1468565328]
 layout_mode = 1
@@ -378,6 +369,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 4
 text = "IV"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -385,7 +377,7 @@ vertical_alignment = 1
 [node name="5" type="Panel" parent="levels" unique_id=34060101]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_gevct")
+theme_override_styles/panel = ExtResource("4_gevct")
 
 [node name="label" type="RichTextLabel" parent="levels/5" unique_id=876398887]
 layout_mode = 1
@@ -394,6 +386,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 4
 text = "V"
 horizontal_alignment = 1
 vertical_alignment = 1

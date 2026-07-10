@@ -4,9 +4,12 @@ extends Control
 @onready var info_panel: Panel = $info_panel
 @onready var upgrade_name: RichTextLabel = $upgrade_name
 @onready var description: RichTextLabel = $description
+@onready var levels: VBoxContainer = $levels
 
 var upgrade_data: Dictionary
 var current_level: int
+
+var green_panel: StyleBoxFlat = preload("res://resources/panels/green.tres")
 
 func _ready() -> void:
 	# TEMPORARY
@@ -44,6 +47,9 @@ func _on_buy_btn_pressed():
 	var level_info: Dictionary = _get_current_level_data()
 	
 	if PlayerManager.can_purchase(level_info.cost):
+		var panel: Panel = levels.get_node(str(current_level + 1))
+		panel.add_theme_stylebox_override("panel", green_panel)
+		
 		current_level += 1
 		PlayerManager.apply_effect(level_info.effect)
 		_display_level()
