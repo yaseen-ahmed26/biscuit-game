@@ -306,12 +306,12 @@ grow_vertical = 2
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="1" type="Panel" parent="levels" unique_id=1583403838]
+[node name="0" type="Panel" parent="levels" unique_id=1583403838]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("4_gevct")
 
-[node name="label" type="RichTextLabel" parent="levels/1" unique_id=749844712]
+[node name="label" type="RichTextLabel" parent="levels/0" unique_id=749844712]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -324,12 +324,12 @@ text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="2" type="Panel" parent="levels" unique_id=1431556252]
+[node name="1" type="Panel" parent="levels" unique_id=1431556252]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("4_gevct")
 
-[node name="label" type="RichTextLabel" parent="levels/2" unique_id=1541113080]
+[node name="label" type="RichTextLabel" parent="levels/1" unique_id=1541113080]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -342,12 +342,12 @@ text = "II"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="3" type="Panel" parent="levels" unique_id=1276058667]
+[node name="2" type="Panel" parent="levels" unique_id=1276058667]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("4_gevct")
 
-[node name="label" type="RichTextLabel" parent="levels/3" unique_id=848340632]
+[node name="label" type="RichTextLabel" parent="levels/2" unique_id=848340632]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -360,12 +360,12 @@ text = "III"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="4" type="Panel" parent="levels" unique_id=1095038134]
+[node name="3" type="Panel" parent="levels" unique_id=1095038134]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("4_gevct")
 
-[node name="label" type="RichTextLabel" parent="levels/4" unique_id=1468565328]
+[node name="label" type="RichTextLabel" parent="levels/3" unique_id=1468565328]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -378,12 +378,12 @@ text = "IV"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="5" type="Panel" parent="levels" unique_id=34060101]
+[node name="4" type="Panel" parent="levels" unique_id=34060101]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("4_gevct")
 
-[node name="label" type="RichTextLabel" parent="levels/5" unique_id=876398887]
+[node name="label" type="RichTextLabel" parent="levels/4" unique_id=876398887]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

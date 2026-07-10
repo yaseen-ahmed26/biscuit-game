@@ -14,18 +14,22 @@ var upgrade_data: Array
 func _ready() -> void:
 	upgrade_data = GameManager.read_json(UPGRADES_FILE_PATH)
 	
-	_set_upgrade_lines()
+	var inital_upgrades = PlayerManager.stats.get("bought_upgrades", {})
+	_set_upgrade_lines(inital_upgrades)
 
-func _set_upgrade_lines():
+func _set_upgrade_lines(saved_upgrades: Dictionary):
 	var total_upgrades = upgrade_data.size()
 	
 	for i in total_upgrades:
 		var upgrade = upgrade_data[i]
-		
+		var saved_level = 0
 		var line = holder.get_node_or_null(str(i))
 		
+		if saved_upgrades.get(upgrade.id):
+			saved_level = saved_upgrades[upgrade.id]
+		
 		if line:
-			line.call("set_up_line", upgrade, 0)
+			line.call("set_up_line", upgrade, saved_level)
 		else:
 			push_warning("Not enough upgrade lines")
 

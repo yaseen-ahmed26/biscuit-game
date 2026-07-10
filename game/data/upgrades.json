@@ -4,7 +4,7 @@
 		"name": "Test Upgrade",
 		"description": "This is simply a test upgrade that increses your clicks by 1.",
 		"icon": "",
-		"total_levels": 2,
+		"total_levels": 4,
 		"group": "clicker",
 		"levels": [
 			{
@@ -25,6 +25,26 @@
 					"type": "add",
 					"target": "per_click",
 					"value": 1
+				},
+			},
+			{
+				"name": "Level III",
+				"description": "+1 cookies per click",
+				"cost": 20,
+				"effect": {
+					"type": "add",
+					"target": "per_click",
+					"value": 2
+				},
+			},
+			{
+				"name": "Level IV",
+				"description": "+1 cookies per click",
+				"cost": 20,
+				"effect": {
+					"type": "add",
+					"target": "per_click",
+					"value": 5
 				},
 			},
 		]
