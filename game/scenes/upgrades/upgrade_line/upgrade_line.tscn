@@ -1,0 +1,406 @@
+[gd_scene format=3 uid="uid://catl42v0psqwm"]
+
+[ext_resource type="Script" uid="uid://dvohdkqlbvpt0" path="res://scenes/upgrades/upgrade_line/upgrade_line.gd" id="1_45spe"]
+[ext_resource type="StyleBox" uid="uid://cjoum2urk02bg" path="res://resources/buttons/pressed.tres" id="2_cfrxm"]
+[ext_resource type="StyleBox" uid="uid://cbglphv31xjd0" path="res://resources/buttons/disabled.tres" id="3_gevct"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfrxm"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0.3019608, 0.6627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+corner_detail = 5
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_l7yjw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45spe"]
+bg_color = Color(0.17280158, 0.51884127, 0.9999768, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dm52w"]
+bg_color = Color(0, 0.35288173, 0.7714368, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mabxk"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gevct"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9308499, 0, 0.122611366, 1)
+corner_detail = 5
+
+[node name="upgrade_line" type="Control" unique_id=1190958676]
+layout_mode = 3
+anchor_left = 0.32447916
+anchor_top = 0.41759259
+anchor_right = 0.67552084
+anchor_bottom = 0.5824074
+offset_top = -25.0
+offset_right = -105.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_45spe")
+
+[node name="Panel" type="Panel" parent="." unique_id=1111239538]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cfrxm")
+
+[node name="icon" type="TextureRect" parent="." unique_id=697229710]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -91.5
+offset_right = 79.0
+offset_bottom = -21.5
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_l7yjw")
+
+[node name="seperator" type="ColorRect" parent="." unique_id=1281911216]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.5
+offset_top = -100.5
+offset_right = -97.5
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="seperator3" type="ColorRect" parent="." unique_id=1796113960]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 155.5
+offset_top = -100.5
+offset_right = 157.5
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="seperator2" type="ColorRect" parent="." unique_id=1084925640]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.013353116
+anchor_top = 0.42857143
+anchor_right = 0.30118695
+anchor_bottom = 0.43349755
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="buy_btn" type="Button" parent="." unique_id=1150172518]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -371.0
+offset_top = 50.5
+offset_right = -223.0
+offset_bottom = 86.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_45spe")
+theme_override_styles/pressed = ExtResource("2_cfrxm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dm52w")
+theme_override_styles/disabled = ExtResource("3_gevct")
+text = "BUY"
+
+[node name="info_panel" type="Panel" parent="." unique_id=2089823802]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -371.0
+offset_top = -91.5
+offset_right = -223.0
+offset_bottom = 43.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mabxk")
+
+[node name="stat_changes" type="VBoxContainer" parent="info_panel" unique_id=850412285]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.5
+offset_top = -42.5
+offset_right = 61.5
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="RichTextLabel" parent="info_panel/stat_changes" unique_id=141543332]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 15
+text = "TEXT HERE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="2" type="RichTextLabel" parent="info_panel/stat_changes" unique_id=1640947641]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 15
+text = "TEXT HERE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="3" type="RichTextLabel" parent="info_panel/stat_changes" unique_id=921457882]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 15
+text = "TEXT HERE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="info_panel" unique_id=421074098]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 18.0
+
+[node name="upgrade_name" type="RichTextLabel" parent="." unique_id=948938705]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14587
+anchor_top = 0.06403944
+anchor_right = 0.31634456
+anchor_bottom = 0.37438428
+theme_override_constants/outline_size = 4
+text = "upgrade
+name"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="description" type="RichTextLabel" parent="." unique_id=1166369466]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.013353116
+anchor_top = 0.4679802
+anchor_right = 0.31458703
+anchor_bottom = 0.94581276
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 12
+text = "description"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="level_btns" type="VBoxContainer" parent="." unique_id=1207950726]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = -91.5
+offset_right = -141.0
+offset_bottom = 86.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="add_one" type="Button" parent="level_btns" unique_id=459621881]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_45spe")
+theme_override_styles/pressed = ExtResource("2_cfrxm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dm52w")
+theme_override_styles/disabled = ExtResource("3_gevct")
+text = "+1"
+
+[node name="add_one2" type="Button" parent="level_btns" unique_id=1419820581]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_45spe")
+theme_override_styles/pressed = ExtResource("2_cfrxm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dm52w")
+theme_override_styles/disabled = ExtResource("3_gevct")
+text = "+10"
+
+[node name="add_one3" type="Button" parent="level_btns" unique_id=1796701253]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_45spe")
+theme_override_styles/pressed = ExtResource("2_cfrxm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dm52w")
+theme_override_styles/disabled = ExtResource("3_gevct")
+text = "MAX"
+
+[node name="levels" type="VBoxContainer" parent="." unique_id=605563700]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -91.5
+offset_right = -12.0
+offset_bottom = 90.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="1" type="Panel" parent="levels" unique_id=1583403838]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gevct")
+
+[node name="label" type="RichTextLabel" parent="levels/1" unique_id=749844712]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="2" type="Panel" parent="levels" unique_id=1431556252]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gevct")
+
+[node name="label" type="RichTextLabel" parent="levels/2" unique_id=1541113080]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "II"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="3" type="Panel" parent="levels" unique_id=1276058667]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gevct")
+
+[node name="label" type="RichTextLabel" parent="levels/3" unique_id=848340632]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "III"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4" type="Panel" parent="levels" unique_id=1095038134]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gevct")
+
+[node name="label" type="RichTextLabel" parent="levels/4" unique_id=1468565328]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "IV"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="5" type="Panel" parent="levels" unique_id=34060101]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gevct")
+
+[node name="label" type="RichTextLabel" parent="levels/5" unique_id=876398887]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "V"
+horizontal_alignment = 1
+vertical_alignment = 1
