@@ -1,7 +1,7 @@
 extends Node
 
 var stats: Dictionary = {
-	"biscuits": 50.0,
+	"biscuits": 0.0,
 	"total_biscuits": 0.0,
 	
 	"per_click": 1.0,
@@ -9,6 +9,9 @@ var stats: Dictionary = {
 
 	"bought_upgrades": {}
 }
+
+func _ready() -> void:
+	Signals.data_loaded.connect(_on_data_loaded)
 
 func apply_effect(effect: Dictionary):	
 	if not stats[effect.target]:
@@ -46,3 +49,11 @@ func get_data_to_save():
 	stats["total_playtime"] = total_playtime
 	
 	return stats
+
+func _on_data_loaded(save_stats: Dictionary):
+	if save_stats.is_empty():
+		return
+	
+	stats = save_stats
+	stats.erase("total_playtime")
+	

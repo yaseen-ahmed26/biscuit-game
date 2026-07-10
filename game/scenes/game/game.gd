@@ -31,3 +31,6 @@ func _on_clicker_btn_pressed() -> void:
 func _on_stats_changed(stats):
 	cookie_counter.text = "COOKIES: %.1f" % stats.biscuits
 	$effect.text = "+%d" % stats.per_click
+
+func _on_quit_btn_pressed() -> void:
+	get_tree().quit()

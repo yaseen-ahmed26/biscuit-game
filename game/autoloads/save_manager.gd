@@ -38,7 +38,27 @@ func online_save():
 	pass
 
 func _get_local_save():
-	pass
+	var save_config: ConfigFile = ConfigFile.new()
+	
+	if FileAccess.file_exists(SAVE_FILE_PATH):
+		var error = save_config.load(SAVE_FILE_PATH)
+		
+		if error != OK:
+			print("An error occurred whilst laoding existing save file: ", error)
+			action = "pick"
+			return
+			
+		var save_data: Array = save_config.get_section_keys("LocalSave")
+		var stats = {}
+		
+		for k in save_data:
+			var v = save_config.get_value("LocalSave", k)
+			
+			stats[k] = v
+			
+		Signals.data_loaded.emit(stats)
+	else:
+		save_config.save(SAVE_FILE_PATH)
 	
 func _get_online_save():
 	if save_id == "none":
