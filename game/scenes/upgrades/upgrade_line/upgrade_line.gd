@@ -48,6 +48,7 @@ func _on_buy_btn_pressed():
 		
 		current_level += 1
 		PlayerManager.apply_effect(level_info.effect)
+		PlayerManager.bought_upgrade(self.get_meta("id"), current_level)
 		_display_level()
 	else:
 		print("not enough")

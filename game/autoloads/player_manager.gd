@@ -1,10 +1,13 @@
 extends Node
 
 var stats: Dictionary = {
-	"biscuits": 30.0,
+	"biscuits": 50.0,
 	"total_biscuits": 0.0,
 	
 	"per_click": 1.0,
+	"multiplier": 1.0,
+
+	"bought_upgrades": {}
 }
 
 func apply_effect(effect: Dictionary):	
@@ -28,8 +31,18 @@ func can_purchase(target: float) -> bool:
 		
 	return false
 
+func bought_upgrade(upgrade_id: String, level: int):
+	stats["bought_upgrades"][upgrade_id] = level
+
 func click_cookie():
 	stats["biscuits"] += stats["per_click"]
 	stats["total_biscuits"] += stats["biscuits"]
 	
 	Signals.stats_changed.emit(stats)
+
+func get_data_to_save():
+	var total_playtime: float = GameManager.get_time_played()
+	
+	stats["total_playtime"] = total_playtime
+	
+	return stats

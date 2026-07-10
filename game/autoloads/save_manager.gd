@@ -1,11 +1,15 @@
 extends Node
 
 const CONFIG_FILE_PATH: String = "user://config.cfg"
+const SAVE_FILE_PATH: String = "user://save.cfg"
 
 var config: ConfigFile = ConfigFile.new()
 var action: String
 
 var save_id: String
+
+func _ready() -> void:
+	get_tree().set_auto_accept_quit(false)
 
 func store_online_data(data):
 	config.set_value("DeviceConfig", "save_type", "online")
@@ -19,6 +23,19 @@ func store_local_save(data):
 	config.set_value("DeviceConfig", "player_username", data.username)
 	
 	config.save(CONFIG_FILE_PATH)
+
+func local_save(data_to_save: Dictionary):
+	var save_config: ConfigFile = ConfigFile.new()
+	
+	for k in data_to_save.keys():
+		var v = data_to_save.get(k)
+		
+		save_config.set_value("LocalSave", k, v)
+		
+	save_config.save(SAVE_FILE_PATH)
+	
+func online_save():
+	pass
 
 func _get_local_save():
 	pass
@@ -53,3 +70,10 @@ func find_save_type() -> String:
 	_get_save_data()
 
 	return action
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		var data_to_save: Dictionary = PlayerManager.get_data_to_save()
+		
+		match action:
+			"local": local_save(data_to_save)

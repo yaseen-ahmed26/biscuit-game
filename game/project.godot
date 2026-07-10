@@ -18,9 +18,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 Signals="*uid://clct323nvt7ds"
-SaveManager="*uid://c2gdadhem7y8g"
-PlayerManager="*uid://baalclsuo4y42"
 GameManager="*uid://ic0pl4pmhhaf"
+PlayerManager="*uid://baalclsuo4y42"
+SaveManager="*uid://c2gdadhem7y8g"
 
 [display]
 
