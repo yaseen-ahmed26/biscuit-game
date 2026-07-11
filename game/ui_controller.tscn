@@ -70,3 +70,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="saving" type="RichTextLabel" parent="CanvasLayer" unique_id=1039942139]
+modulate = Color(1, 1, 1, 0)
+offset_left = 23.0
+offset_top = 216.0
+offset_right = 278.0
+offset_bottom = 280.0
+theme_override_font_sizes/normal_font_size = 46
+text = "SAVING.."
+horizontal_alignment = 1
+vertical_alignment = 1

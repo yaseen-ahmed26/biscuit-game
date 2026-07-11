@@ -2,12 +2,15 @@ extends Control
 
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var fade: ColorRect = $CanvasLayer/fade
+@onready var saving: RichTextLabel = $CanvasLayer/saving
 
 var current_screen: Control
 
 func _ready() -> void:
 	current_screen = $CanvasLayer/main_menu
+	
 	Signals.change_screen.connect(_on_change_screen)
+	Signals.data_saved.connect(_on_data_saved)
 	
 func _on_change_screen(to_show: String):
 	fade.mouse_filter = MouseFilter.MOUSE_FILTER_STOP
@@ -37,3 +40,12 @@ func _on_change_screen(to_show: String):
 	await tween_out.finished
 	
 	fade.mouse_filter = MouseFilter.MOUSE_FILTER_IGNORE
+
+func _on_data_saved():
+	var tween_in: Tween = create_tween()
+	tween_in.tween_property(saving, "modulate:a", 1.0, 0.5)
+	
+	await get_tree().create_timer(3.0).timeout
+	
+	var tween_out: Tween = create_tween()
+	tween_out.tween_property(saving, "modulate:a", 0.0, 0.5)

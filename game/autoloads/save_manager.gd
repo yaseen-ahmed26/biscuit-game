@@ -80,6 +80,8 @@ func save_game():
 		"local": store_local_save(data_to_save)
 		"online": store_online_save(data_to_save)
 		
+	Signals.data_saved.emit()
+		
 func load_game():
 	match action:
 		"local": load_local_save()
