@@ -1,99 +1,108 @@
 extends Node
 
-const CONFIG_FILE_PATH: String = "user://config.cfg"
-const SAVE_FILE_PATH: String = "user://save.cfg"
+const DEVICE_CFG_FILE_PATH: String = "user://device.cfg"
+const SAVE_CFG_FILE_PATH: String = "user://save.cfg"
+const DEFAULT_STATS_FILE_PATH = "res://data/default_stats.json"
 
-var config: ConfigFile = ConfigFile.new()
+var device_config: ConfigFile = ConfigFile.new()
+var save_config: ConfigFile = ConfigFile.new()
+
 var action: String
+var online_save_id: String
 
-var save_id: String
+var last_saved: float
 
 func _ready() -> void:
 	get_tree().set_auto_accept_quit(false)
-
-func store_online_data(data):
-	config.set_value("DeviceConfig", "save_type", "online")
-	config.set_value("DeviceConfig", "save_id", data.save_id)
-	config.set_value("DeviceConfig", "player_username", data.username)
 	
-	config.save(CONFIG_FILE_PATH)
-
-func store_local_save(data):
-	config.set_value("DeviceConfig", "save_type", "local")
-	config.set_value("DeviceConfig", "player_username", data.username)
+func setup_online_save(data):
+	device_config.set_value("DeviceConfig", "save_type", "online")
+	device_config.set_value("DeviceConfig", "save_id", data.save_id)
+	device_config.set_value("DeviceConfig", "player_username", data.username)
 	
-	config.save(CONFIG_FILE_PATH)
-
-func local_save(data_to_save: Dictionary):
-	var save_config: ConfigFile = ConfigFile.new()
+	device_config.save(DEVICE_CFG_FILE_PATH)
 	
-	for k in data_to_save.keys():
-		var v = data_to_save.get(k)
+func setup_local_save(data):
+	device_config.set_value("DeviceConfig", "save_type", "local")
+	device_config.set_value("DeviceConfig", "player_username", data.username)
+	
+	device_config.save(DEVICE_CFG_FILE_PATH)
+	
+func store_online_save(data):
+	pass	
+	
+func store_local_save(data):	
+	for k in data.keys():
+		var v = data.get(k)
 		
 		save_config.set_value("LocalSave", k, v)
 		
-	save_config.save(SAVE_FILE_PATH)
+	save_config.save(SAVE_CFG_FILE_PATH)
 	
-func online_save():
-	pass
-
-func _get_local_save():
-	var save_config: ConfigFile = ConfigFile.new()
-	
-	if FileAccess.file_exists(SAVE_FILE_PATH):
-		var error = save_config.load(SAVE_FILE_PATH)
-		
-		if error != OK:
-			print("An error occurred whilst laoding existing save file: ", error)
-			action = "pick"
-			return
-			
-		var save_data: Array = save_config.get_section_keys("LocalSave")
-		var stats = {}
-		
-		for k in save_data:
-			var v = save_config.get_value("LocalSave", k)
-			
-			stats[k] = v
-			
-		Signals.data_loaded.emit(stats)
-	else:
-		save_config.save(SAVE_FILE_PATH)
-	
-func _get_online_save():
-	if save_id == "none":
+func load_online_save():
+	if online_save_id == "none":
 		action = "pick"
 		return
 	
-func _get_save_data():
-	match action:
-		"local": _get_local_save()
-		"online": _get_online_save()
-		"pick": pass
+func load_local_save():	
+	var stats = GameManager.read_json(DEFAULT_STATS_FILE_PATH)
+	
+	if FileAccess.file_exists(SAVE_CFG_FILE_PATH):
+		var error = save_config.load(SAVE_CFG_FILE_PATH)
+		
+		if error != OK:
+			print("An error occurred whilst laoding existing save file: ", error)
+		else:
+			var save_data: Array = save_config.get_section_keys("LocalSave")
+			
+			if not save_data:
+				print("No 'LocalSave' section found in save.cfg")
+			else:
+				for k in save_data:
+					var v = save_config.get_value("LocalSave", k)
+					
+					stats[k] = v
+	else:
+		for k in stats:
+			var v = stats[k]
+			
+			save_config.set_value("LocalSave", k, v)
+		
+		save_config.save(SAVE_CFG_FILE_PATH)
+		
+	Signals.data_loaded.emit(stats)
 
-func find_save_type() -> String:
-	if FileAccess.file_exists(CONFIG_FILE_PATH):
-		var error = config.load(CONFIG_FILE_PATH)
+func save_game():
+	var data_to_save: Dictionary = PlayerManager.get_data_to_save()
+	
+	match action:
+		"local": store_local_save(data_to_save)
+		"online": store_online_save(data_to_save)
+		
+func load_game():
+	match action:
+		"local": load_local_save()
+		"online": load_online_save()
+
+func find_save_type():
+	if FileAccess.file_exists(DEVICE_CFG_FILE_PATH):
+		var error = device_config.load(DEVICE_CFG_FILE_PATH)
 		
 		if error != OK:
 			print("An error occurred whilst laoding existing config file: ", error)
 			action = "pick"
 		else:
-			action = config.get_value("DeviceConfig", "save_type", "pick")
+			action = device_config.get_value("DeviceConfig", "save_type", "pick")
 			
 			if action == "online":
-				save_id = config.get_value("DeviceConfig", "save_id", "none")
+				online_save_id = device_config.get_value("DeviceConfig", "save_id", "none")
 	else:
 		action = "pick"
-		config.save(CONFIG_FILE_PATH)
 	
-	_get_save_data()
+	load_game()
 
 	return action
-
+	
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
-		var data_to_save: Dictionary = PlayerManager.get_data_to_save()
-		
-		match action:
-			"local": local_save(data_to_save)
+		save_game()

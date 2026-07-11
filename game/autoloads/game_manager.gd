@@ -21,7 +21,9 @@ func get_time_played():
 	return time_played
 
 func _on_data_loaded(data: Dictionary):
-	time_played = data.total_playtime
+	if data.get("total_playtime"):
+		time_played = data.total_playtime
+		
 	set_process(true)
 
 func read_json(path: String):
