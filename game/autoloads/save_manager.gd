@@ -16,22 +16,30 @@ func _ready() -> void:
 	get_tree().set_auto_accept_quit(false)
 	
 func setup_online_save(data):
+	action = "online"
+	
 	device_config.set_value("DeviceConfig", "save_type", "online")
 	device_config.set_value("DeviceConfig", "save_id", data.save_id)
 	device_config.set_value("DeviceConfig", "player_username", data.username)
 	
+	load_and_save()
+	
 	device_config.save(DEVICE_CFG_FILE_PATH)
 	
 func setup_local_save(data):
+	action = "local"
+	
 	device_config.set_value("DeviceConfig", "save_type", "local")
 	device_config.set_value("DeviceConfig", "player_username", data.username)
+	
+	load_and_save()
 	
 	device_config.save(DEVICE_CFG_FILE_PATH)
 	
 func store_online_save(data):
 	pass	
 	
-func store_local_save(data):	
+func store_local_save(data):
 	for k in data.keys():
 		var v = data.get(k)
 		
@@ -62,14 +70,7 @@ func load_local_save():
 					var v = save_config.get_value("LocalSave", k)
 					
 					stats[k] = v
-	else:
-		for k in stats:
-			var v = stats[k]
-			
-			save_config.set_value("LocalSave", k, v)
-		
-		save_config.save(SAVE_CFG_FILE_PATH)
-		
+	
 	Signals.data_loaded.emit(stats)
 
 func save_game():
@@ -83,6 +84,10 @@ func load_game():
 	match action:
 		"local": load_local_save()
 		"online": load_online_save()
+		
+func load_and_save():
+	load_game()
+	save_game()
 
 func find_save_type():
 	if FileAccess.file_exists(DEVICE_CFG_FILE_PATH):
@@ -102,6 +107,11 @@ func find_save_type():
 	load_game()
 
 	return action
+	
+func update_action(new_action: String):
+	action = new_action
+	
+	load_game()
 	
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
