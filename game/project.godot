@@ -21,6 +21,7 @@ Signals="*uid://clct323nvt7ds"
 GameManager="*uid://ic0pl4pmhhaf"
 PlayerManager="*uid://baalclsuo4y42"
 SaveManager="*uid://c2gdadhem7y8g"
+RequestManager="*uid://b8cbshx1as8g0"
 
 [display]
 

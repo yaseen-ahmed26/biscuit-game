@@ -9,6 +9,7 @@ var save_config: ConfigFile = ConfigFile.new()
 
 var action: String
 var online_save_id: String
+var online_save_data: Dictionary = {}
 
 var last_saved: float
 
@@ -21,6 +22,8 @@ func setup_online_save(data):
 	device_config.set_value("DeviceConfig", "save_type", "online")
 	device_config.set_value("DeviceConfig", "save_id", data.save_id)
 	device_config.set_value("DeviceConfig", "player_username", data.username)
+	
+	online_save_data = data.save
 	
 	load_and_save()
 	
@@ -37,6 +40,7 @@ func setup_local_save(data):
 	device_config.save(DEVICE_CFG_FILE_PATH)
 	
 func store_online_save(data):
+	# HTTP POST request goes here
 	pass	
 	
 func store_local_save(data):
@@ -51,6 +55,16 @@ func load_online_save():
 	if online_save_id == "none":
 		action = "pick"
 		return
+		
+	if not online_save_data.is_empty():
+		Signals.data_loaded.emit(online_save_data)
+		return
+		
+	var save_id = device_config.get_value("DeviceConfig", "save_id")
+		
+	var saved_data = await RequestManager.get_saved_data(save_id)
+	
+	Signals.data_loaded.emit(saved_data)
 	
 func load_local_save():	
 	var stats = GameManager.read_json(DEFAULT_STATS_FILE_PATH)

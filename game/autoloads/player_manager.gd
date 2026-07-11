@@ -53,7 +53,7 @@ func get_data_to_save():
 func _on_data_loaded(save_stats: Dictionary):
 	if save_stats.is_empty():
 		return
-	
+	print(save_stats)
 	stats = save_stats
 	stats.erase("total_playtime")
 	
