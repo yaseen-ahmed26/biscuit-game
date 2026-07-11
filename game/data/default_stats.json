@@ -1,9 +1,7 @@
 {
 	"biscuits": 0.0,
 	"total_biscuits": 0.0,
-	
-	"per_click": 1.0,
-	"multiplier": 1.0,
-
-	"bought_upgrades": {}
+	"total_clicks": 0,
+	"bought_upgrades": {},
+	"completed_achievements": []
 }

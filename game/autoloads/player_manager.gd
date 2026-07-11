@@ -1,13 +1,9 @@
 extends Node
 
-var stats: Dictionary = {
-	"biscuits": 0.0,
-	"total_biscuits": 0.0,
-	
-	"per_click": 1.0,
-	"multiplier": 1.0,
+var stats: Dictionary
 
-	"bought_upgrades": {}
+var additonal_stats: Dictionary = {
+	"per_click": 1.0
 }
 
 func _ready() -> void:
@@ -52,8 +48,9 @@ func get_data_to_save():
 
 func _on_data_loaded(save_stats: Dictionary):
 	if save_stats.is_empty():
-		return
-	print(save_stats)
-	stats = save_stats
+		stats = GameManager.read_json("res://data/default_stats.json")
+	else:
+		stats = save_stats
+		
 	stats.erase("total_playtime")
-	
+	stats.merge(additonal_stats)
