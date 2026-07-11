@@ -26,6 +26,8 @@ func _on_option_pressed(btn: Button):
 				Signals.change_screen.emit("pick_save")
 			else:
 				Signals.change_screen.emit("game")
+		"settings":
+			Signals.change_screen.emit("settings")
 		"quit":
 			get_tree().quit()
 

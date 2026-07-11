@@ -183,6 +183,16 @@ theme_override_styles/pressed = ExtResource("4_3ovsr")
 theme_override_styles/hover = ExtResource("4_wem23")
 text = "NEW GAME"
 
+[node name="settings" type="Button" parent="menu_options" unique_id=1283049707]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = ExtResource("3_uqeha")
+theme_override_styles/pressed = ExtResource("4_3ovsr")
+theme_override_styles/hover = ExtResource("4_wem23")
+text = "SETTINGS"
+
 [node name="quit" type="Button" parent="menu_options" unique_id=2093205398]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)

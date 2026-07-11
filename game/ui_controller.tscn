@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://mpd5mdbmxpe7" path="res://scenes/online_save/online_save.tscn" id="3_rlpp8"]
 [ext_resource type="PackedScene" uid="uid://chr5pfem4oaqq" path="res://scenes/local_save/local_save.tscn" id="4_6nawd"]
 [ext_resource type="PackedScene" uid="uid://d261tlt78co74" path="res://scenes/game/game.tscn" id="7_5q4yu"]
+[ext_resource type="PackedScene" uid="uid://cqcu3iygflj3k" path="res://scenes/settings/settings.tscn" id="7_wxsgv"]
 
 [node name="ui_controller" type="Control" unique_id=1713897045]
 layout_mode = 3
@@ -41,6 +42,9 @@ grow_vertical = 2
 color = Color(1.9059777e-05, 0.4037879, 0.8719074, 1)
 
 [node name="main_menu" parent="CanvasLayer" unique_id=1672685815 instance=ExtResource("2_dy358")]
+
+[node name="settings" parent="CanvasLayer" unique_id=676005052 instance=ExtResource("7_wxsgv")]
+visible = false
 
 [node name="pick_save" parent="CanvasLayer" unique_id=1547500409 node_paths=PackedStringArray("online_save_scene") instance=ExtResource("2_1ajqp")]
 visible = false

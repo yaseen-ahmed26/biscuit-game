@@ -5,6 +5,8 @@ extends Control
 
 func _ready() -> void:
 	Signals.stats_changed.connect(_on_stats_changed)
+	
+	_on_stats_changed(PlayerManager.stats)
 
 func _on_clicker_btn_pressed() -> void:
 	PlayerManager.click_cookie()

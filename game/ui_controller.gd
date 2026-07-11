@@ -24,6 +24,10 @@ func _on_change_screen(to_show: String):
 
 	current_screen.visible = false
 	new_screen.visible = true
+	
+	if new_screen.has_method("on_screen_change"):
+		new_screen.call("on_screen_change")
+	
 	current_screen = new_screen
 	
 	await get_tree().create_timer(1.0).timeout
