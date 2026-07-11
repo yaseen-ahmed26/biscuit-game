@@ -2,6 +2,10 @@ extends Node
 
 var time_played: float = 0.0
 
+func _ready() -> void:
+	set_process(false)
+	Signals.data_loaded.connect(_on_data_loaded)
+
 func _process(delta: float) -> void:
 	time_played += delta
 	
@@ -15,6 +19,10 @@ func get_formatted_time() -> String:
 
 func get_time_played():
 	return time_played
+
+func _on_data_loaded(data: Dictionary):
+	time_played = data.total_playtime
+	set_process(true)
 
 func read_json(path: String):
 	if FileAccess.file_exists(path):
