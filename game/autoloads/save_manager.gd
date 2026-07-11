@@ -89,6 +89,28 @@ func load_and_save():
 	load_game()
 	save_game()
 
+func delete_config_file(file_path):
+	if FileAccess.file_exists(file_path):
+		var error = DirAccess.remove_absolute(file_path)
+		
+		if error == OK:
+			return true
+		else:
+			print("Failed to delete the file. ", error)
+	else:
+		print("File does not exist")
+		
+	return false
+
+func reset_data():	
+	var delete_config_success = delete_config_file(DEVICE_CFG_FILE_PATH)
+	var delete_save_success = delete_config_file(SAVE_CFG_FILE_PATH)
+	
+	if delete_config_success and delete_save_success:
+		Signals.change_screen.emit("pick_save")
+	else:
+		push_error("Fatal Error: Failed to delete either device.cfg or save.cfg")
+
 func find_save_type():
 	if FileAccess.file_exists(DEVICE_CFG_FILE_PATH):
 		var error = device_config.load(DEVICE_CFG_FILE_PATH)

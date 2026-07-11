@@ -16,6 +16,8 @@ func _ready() -> void:
 	
 	var inital_upgrades = PlayerManager.stats.get("bought_upgrades", {})
 	_set_upgrade_lines(inital_upgrades)
+	
+	Signals.data_loaded.connect(_on_data_loaded)
 
 func _set_upgrade_lines(saved_upgrades: Dictionary):
 	var total_upgrades = upgrade_data.size()
@@ -45,3 +47,7 @@ func _on_open_btn_pressed() -> void:
 	
 	var tween: Tween = create_tween()
 	tween.tween_property(self, "position", use_position, 0.3)
+
+func _on_data_loaded(_data):
+	for line in $ScrollContainer/holder.get_children():
+		line.call("reset_line")

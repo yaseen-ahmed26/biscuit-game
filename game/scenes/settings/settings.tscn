@@ -75,6 +75,7 @@ theme_override_styles/pressed = ExtResource("3_vghtj")
 theme_override_styles/hover = ExtResource("4_h6son")
 theme_override_styles/disabled = ExtResource("5_vimye")
 text = "Reset Account Data"
+metadata/action = "local"
 
 [node name="unlink_account" type="Button" parent="VBoxContainer" unique_id=29398127]
 layout_mode = 2
@@ -86,6 +87,7 @@ theme_override_styles/pressed = ExtResource("3_vghtj")
 theme_override_styles/hover = ExtResource("4_h6son")
 theme_override_styles/disabled = ExtResource("5_vimye")
 text = "Unlink Online Account"
+metadata/action = "online"
 
 [node name="migrate_data" type="Button" parent="VBoxContainer" unique_id=974782770]
 layout_mode = 2
@@ -97,6 +99,7 @@ theme_override_styles/pressed = ExtResource("3_vghtj")
 theme_override_styles/hover = ExtResource("4_h6son")
 theme_override_styles/disabled = ExtResource("5_vimye")
 text = "Migrate Data"
+metadata/action = "online"
 
 [node name="return_btn" type="Button" parent="." unique_id=1662207067]
 layout_mode = 1
