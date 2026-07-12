@@ -113,22 +113,23 @@ func delete_config_file(file_path):
 		var error = DirAccess.remove_absolute(file_path)
 		
 		if error == OK:
-			return true
+			pass
 		else:
 			print("Failed to delete the file. ", error)
 	else:
 		print("File does not exist")
-		
-	return false
 
-func reset_data():	
-	var delete_config_success = delete_config_file(DEVICE_CFG_FILE_PATH)
-	var delete_save_success = delete_config_file(SAVE_CFG_FILE_PATH)
-	
-	if delete_config_success and delete_save_success:
-		Signals.change_screen.emit("pick_save")
-	else:
-		push_error("Fatal Error: Failed to delete either device.cfg or save.cfg")
+func reset_data(reset_type: String):
+	match reset_type:
+		"reset_data":
+			delete_config_file(DEVICE_CFG_FILE_PATH)
+			delete_config_file(SAVE_CFG_FILE_PATH)
+			
+			Signals.change_screen.emit("pick_save")
+		"unlink_account":
+			delete_config_file(DEVICE_CFG_FILE_PATH)
+			
+			Signals.change_screen.emit("online_save")
 
 func find_save_type():
 	if FileAccess.file_exists(DEVICE_CFG_FILE_PATH):

@@ -21,8 +21,8 @@ func _set_up_btn(btn: Button):
 		
 func _on_setting_btn_clicked(btn: Button):
 	match btn.name:
-		"reset_data": SaveManager.reset_data()
-		"unlink_account": pass
+		"reset_data": SaveManager.reset_data("reset_data")
+		"unlink_account": SaveManager.reset_data("unlink_account")
 		"migrate_data": pass
 
 func on_screen_change():

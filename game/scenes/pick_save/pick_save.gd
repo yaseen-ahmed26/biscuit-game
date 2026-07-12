@@ -1,7 +1,5 @@
 extends Node
 
-@export var online_save_scene: Control
-
 @onready var hbox_container: HBoxContainer = $HBoxContainer
 @onready var continue_btn: Button = $continue_btn
 
@@ -22,7 +20,6 @@ func _on_continue_btn_pressed():
 	match type_selected:
 		"online": 
 			Signals.change_screen.emit("online_save")
-			online_save_scene.call("start_websocket") 
 		"local": Signals.change_screen.emit("local_save")
 	
 	continue_btn.disabled = true

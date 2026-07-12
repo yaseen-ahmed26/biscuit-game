@@ -107,5 +107,5 @@ func _on_connected() -> void:
 	print("websocket connected")
 	pass
 
-func check_save():
-	pass
+func on_screen_change():
+	start_websocket()
