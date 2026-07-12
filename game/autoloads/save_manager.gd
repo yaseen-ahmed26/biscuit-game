@@ -40,8 +40,11 @@ func setup_local_save(data):
 	device_config.save(DEVICE_CFG_FILE_PATH)
 	
 func store_online_save(data):
-	# HTTP POST request goes here
-	pass	
+	var save_id = device_config.get_value("DeviceConfig", "save_id")
+	var success = await RequestManager.send_put_request(save_id, data)	
+	
+	if success:
+		pass
 	
 func store_local_save(data):
 	for k in data.keys():
