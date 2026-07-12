@@ -95,7 +95,7 @@ func save_game():
 	
 	match action:
 		"local": store_local_save(data_to_save)
-		"online": store_online_save(data_to_save)
+		"online": await store_online_save(data_to_save)
 		
 	Signals.data_saved.emit()
 		
@@ -155,5 +155,10 @@ func update_action(new_action: String):
 	load_game()
 	
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_PREDELETE:
-		save_game()
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		safe_exit()
+
+func safe_exit():
+	set_process(false)
+	await save_game()
+	get_tree().quit()

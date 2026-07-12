@@ -33,4 +33,4 @@ func _on_stats_changed(stats):
 	$effect.text = "+%d" % stats.per_click
 
 func _on_quit_btn_pressed() -> void:
-	get_tree().quit()
+	SaveManager.safe_exit()

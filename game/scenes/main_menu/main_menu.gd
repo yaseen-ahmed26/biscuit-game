@@ -29,7 +29,7 @@ func _on_option_pressed(btn: Button):
 		"settings":
 			Signals.change_screen.emit("settings")
 		"quit":
-			get_tree().quit()
+			SaveManager.safe_exit()
 
 func _play_intro():
 	animation_player.play("intro_sequence")

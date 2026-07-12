@@ -1,14 +1,14 @@
 extends Node
 
-var http_request: HTTPRequest = HTTPRequest.new()
-
-var url
+var url: String = ""
 
 func _ready() -> void:
 	url = GameManager.read_json("res://secrets.json").saves_url
-	add_child(http_request)
 
 func get_saved_data(save_id: String):
+	var http_request: HTTPRequest = HTTPRequest.new()
+	add_child(http_request)
+	
 	var error = http_request.request("%s/%s" % [url ,save_id])
 	
 	if error != OK:
@@ -20,6 +20,8 @@ func get_saved_data(save_id: String):
 	var result = response[0]
 	var response_code = response[1]
 	var body = response[3]
+	
+	http_request.queue_free()
 
 	if result == HTTPRequest.RESULT_SUCCESS:
 		var json = JSON.parse_string(body.get_string_from_utf8())
@@ -29,6 +31,9 @@ func get_saved_data(save_id: String):
 		return GameManager.read_json("res://data/default_stats.json")
 
 func send_put_request(save_id, data_to_save: Dictionary):		
+	var http_request: HTTPRequest = HTTPRequest.new()
+	add_child(http_request)
+	
 	var json_query = JSON.stringify(data_to_save)
 	var headers = ["Content-Type: application/json"]
 		
@@ -43,6 +48,8 @@ func send_put_request(save_id, data_to_save: Dictionary):
 	var result = response[0]
 	var response_code = response[1]
 	var body = response[3]
+	
+	http_request.queue_free()
 	
 	if result == HTTPRequest.RESULT_SUCCESS:
 		var json = JSON.parse_string(body.get_string_from_utf8())
