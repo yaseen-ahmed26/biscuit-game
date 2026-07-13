@@ -3,7 +3,7 @@ extends Node
 var stats: Dictionary
 
 var additonal_stats: Dictionary = {
-	"per_click": 1.0
+	"per_click": 1.0,
 }
 
 func _ready() -> void:
@@ -34,8 +34,12 @@ func bought_upgrade(upgrade_id: String, level: int):
 	stats["bought_upgrades"][upgrade_id] = level
 
 func click_cookie():
-	stats["biscuits"] += stats["per_click"]
-	stats["total_biscuits"] += stats["biscuits"]
+	stats["total_clicks"] += 1
+	
+	var amount = stats["per_click"]
+	
+	stats["biscuits"] += amount
+	stats["total_biscuits"] += amount
 	
 	Signals.stats_changed.emit(stats)
 
