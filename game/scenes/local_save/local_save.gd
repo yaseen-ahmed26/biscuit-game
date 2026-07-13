@@ -30,5 +30,5 @@ func _on_user_input_text_changed(new_text: String) -> void:
 		_change_message("Username is valid", "green")
 
 func _on_continue_btn_pressed():
-	SaveManager.setup_local_save({"username": user_input.text})
+	SaveManager.setup_game("local", {"username": user_input.text})
 	Signals.change_screen.emit("game")

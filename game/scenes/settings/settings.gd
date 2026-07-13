@@ -3,8 +3,9 @@ extends Control
 var on_screen: bool = false
 
 func _ready() -> void:
-	for btn in $VBoxContainer.get_children():
-		_set_up_btn(btn)
+	#for btn in $VBoxContainer.get_children():
+		#_set_up_btn(btn)
+	pass
 
 func _process(_delta: float) -> void:
 	if on_screen:

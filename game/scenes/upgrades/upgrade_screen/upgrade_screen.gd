@@ -48,6 +48,7 @@ func _on_open_btn_pressed() -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(self, "position", use_position, 0.3)
 
-func _on_data_loaded(_data):
-	for line in $ScrollContainer/holder.get_children():
-		line.call("reset_line")
+func _on_data_loaded(data):
+	_set_upgrade_lines(data.bought_upgrades)
+	# for line in $ScrollContainer/holder.get_children():
+	#	line.call("reset_line")

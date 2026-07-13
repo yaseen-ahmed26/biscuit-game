@@ -11,8 +11,8 @@ func _ready() -> void:
 	for btn in menu_options.get_children():
 		btn.pressed.connect(_on_option_pressed.bind(btn))
 
-func _find_save():
-	action = SaveManager.find_save_type()
+func _change_start_btn():
+	action = SaveManager.save_type
 	
 	if action == "online" or action == "local":
 		$menu_options/play.text = "PLAY"
@@ -22,10 +22,10 @@ func _find_save():
 func _on_option_pressed(btn: Button):
 	match btn.name:
 		"play":
-			if action == "pick":
-				Signals.change_screen.emit("pick_save")
-			else:
+			if SaveManager.save_type != "none":
 				Signals.change_screen.emit("game")
+			else:
+				Signals.change_screen.emit("pick_save")
 		"settings":
 			Signals.change_screen.emit("settings")
 		"quit":
@@ -33,7 +33,5 @@ func _on_option_pressed(btn: Button):
 
 func _play_intro():
 	animation_player.play("intro_sequence")
-	
-	_find_save()
 	
 	await animation_player.animation_finished

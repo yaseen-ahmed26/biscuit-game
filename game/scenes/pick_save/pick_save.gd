@@ -20,6 +20,7 @@ func _on_continue_btn_pressed():
 	match type_selected:
 		"online": 
 			Signals.change_screen.emit("online_save")
-		"local": Signals.change_screen.emit("local_save")
+		"local": 
+			Signals.change_screen.emit("local_save")
 	
 	continue_btn.disabled = true

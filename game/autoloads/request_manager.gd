@@ -28,7 +28,7 @@ func get_saved_data(save_id: String):
 		return json
 	else:
 		print("Failed to get data ", response_code)
-		return GameManager.read_json("res://data/default_stats.json")
+		return {}
 
 func send_put_request(save_id, data_to_save: Dictionary):		
 	var http_request: HTTPRequest = HTTPRequest.new()

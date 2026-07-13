@@ -1,163 +1,182 @@
 extends Node
 
+# Constants
 const DEVICE_CFG_FILE_PATH: String = "user://device.cfg"
 const SAVE_CFG_FILE_PATH: String = "user://save.cfg"
 const DEFAULT_STATS_FILE_PATH = "res://data/default_stats.json"
 
+# Variables
 var device_config: ConfigFile = ConfigFile.new()
 var save_config: ConfigFile = ConfigFile.new()
 
-var action: String
-var online_save_id: String
-var online_save_data: Dictionary = {}
+var save_type = "none"
 
-var last_saved: float
+var default_stats: Dictionary
 
+var methods: Dictionary[String, Dictionary] = {
+	"load": {
+		"online": _load_online,
+		"local": _load_local
+	},
+	"save": {
+		"online": _save_online,
+		"local": _save_local
+	},
+	"setup": {
+		"online": _setup_online,
+		"local": _setup_local
+	}
+}
+
+# Godot
 func _ready() -> void:
-	get_tree().set_auto_accept_quit(false)
+	default_stats = GameManager.read_json(DEFAULT_STATS_FILE_PATH)
 	
-func setup_online_save(data):
-	action = "online"
+	_check_save_type()
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		safe_exit()
+
+# Helpers
+func _check_config_exists(file_path) -> bool:
+	if FileAccess.file_exists(file_path):
+		return true
+		
+	return false
+
+# Online Saves
+func _load_online():
+	var error = device_config.load(DEVICE_CFG_FILE_PATH)
+
+	if error != OK:
+		print("An error occurred whilst laoding existing save file: ", error)
+		return [false]
+	
+	var save_id: String = device_config.get_value("DeviceConfig", "save_id")
+		
+	if not save_id:
+		print("No save ID found")
+		return [false]
+		
+	var saved_stats = await RequestManager.get_saved_data(save_id)
+	
+	if saved_stats.is_empty():
+		print("An error occurred getting save data")
+		return [false]
+	
+	return [true, saved_stats]
+	
+func _save_online(data):
+	var save_id = device_config.get_value("DeviceConfig", "save_id")
+	var _success = await RequestManager.send_put_request(save_id, data)
+	
+func _setup_online(data):
+	save_type = "online"
 	
 	device_config.set_value("DeviceConfig", "save_type", "online")
 	device_config.set_value("DeviceConfig", "save_id", data.save_id)
 	device_config.set_value("DeviceConfig", "player_username", data.username)
-	
-	online_save_data = data.save
-	
-	load_and_save()
-	
+
 	device_config.save(DEVICE_CFG_FILE_PATH)
 	
-func setup_local_save(data):
-	action = "local"
+	await _save_online(data.save)
+	load_game()
 	
-	device_config.set_value("DeviceConfig", "save_type", "local")
-	device_config.set_value("DeviceConfig", "player_username", data.username)
+	return true
+
+# Local Saves
+func _load_local():	
+	var save_cfg_exists = _check_config_exists(SAVE_CFG_FILE_PATH)
 	
-	load_and_save()
+	if not save_cfg_exists:
+		print("save.cfg does not exist")
+		return [false]
+		
+	var error = save_config.load(SAVE_CFG_FILE_PATH)
+
+	if error != OK:
+		print("An error occurred whilst laoding existing save file: ", error)
+		return [false]
+		
+	var save_data: Array = save_config.get_section_keys("LocalSave")
 	
-	device_config.save(DEVICE_CFG_FILE_PATH)
+	if not save_data:
+		print("No 'LocalSave' section found in save.cfg")
+		return [false]
+		
+	var saved_stats = {}
 	
-func store_online_save(data):
-	var save_id = device_config.get_value("DeviceConfig", "save_id")
-	var success = await RequestManager.send_put_request(save_id, data)	
+	for k in save_data:
+		var v = save_config.get_value("LocalSave", k)
+		
+		saved_stats[k] = v
 	
-	if success:
-		pass
+	return [true, saved_stats]
 	
-func store_local_save(data):
-	for k in data.keys():
-		var v = data.get(k)
+func _save_local(stats):
+	for k in stats.keys():
+		var v = stats.get(k)
 		
 		save_config.set_value("LocalSave", k, v)
 		
 	save_config.save(SAVE_CFG_FILE_PATH)
 	
-func load_online_save():
-	if online_save_id == "none":
-		action = "pick"
-		return
-		
-	if not online_save_data.is_empty():
-		Signals.data_loaded.emit(online_save_data)
-		return
-		
-	var save_id = device_config.get_value("DeviceConfig", "save_id")
-		
-	var saved_data = await RequestManager.get_saved_data(save_id)
+func _setup_local(data):
+	save_type = "local"
 	
-	Signals.data_loaded.emit(saved_data)
+	device_config.set_value("DeviceConfig", "save_type", "local")
+	device_config.set_value("DeviceConfig", "player_username", data.username)
 	
-func load_local_save():	
-	var stats = GameManager.read_json(DEFAULT_STATS_FILE_PATH)
+	device_config.save(DEVICE_CFG_FILE_PATH)
 	
-	if FileAccess.file_exists(SAVE_CFG_FILE_PATH):
-		var error = save_config.load(SAVE_CFG_FILE_PATH)
-		
-		if error != OK:
-			print("An error occurred whilst laoding existing save file: ", error)
-		else:
-			var save_data: Array = save_config.get_section_keys("LocalSave")
-			
-			if not save_data:
-				print("No 'LocalSave' section found in save.cfg")
-			else:
-				for k in save_data:
-					var v = save_config.get_value("LocalSave", k)
-					
-					stats[k] = v
+	_save_local(default_stats)
+	load_game()
 	
-	Signals.data_loaded.emit(stats)
+	return true
+
+# Routers
+func load_game():
+	var method = methods.load.get(save_type)
+	var details = await method.call()
+	
+	if details[0]:
+		Signals.data_loaded.emit(details[1])
+	else:
+		push_error("Fatal Error: Failed to load saved data")
+		Signals.data_loaded.emit(default_stats)
 
 func save_game():
-	var data_to_save: Dictionary = PlayerManager.get_data_to_save()
+	var data_to_save = PlayerManager.get_data_to_save()
 	
-	match action:
-		"local": store_local_save(data_to_save)
-		"online": await store_online_save(data_to_save)
-		
+	var method = methods.save.get(save_type)
+	var success = await method.call(data_to_save)
+	
+	assert(success, "Fatal Error: Failed to save game")
+	
 	Signals.data_saved.emit()
+
+func setup_game(type_picked: String, data):
+	var method = methods.setup.get(type_picked)
+	method.call(data)
+
+# Main
+func _check_save_type():
+	var device_cfg_exists = _check_config_exists(DEVICE_CFG_FILE_PATH)
+	
+	if not device_cfg_exists:
+		print("No device.cfg file found")
+		return
 		
-func load_game():
-	match action:
-		"local": load_local_save()
-		"online": load_online_save()
+	var error = device_config.load(DEVICE_CFG_FILE_PATH)
 		
-func load_and_save():
+	if error != OK:
+		print("An error occurred whilst laoding existing config file: ", error)
+		return
+		
+	save_type = device_config.get_value("DeviceConfig", "save_type")
+
 	load_game()
-	save_game()
-
-func delete_config_file(file_path):
-	if FileAccess.file_exists(file_path):
-		var error = DirAccess.remove_absolute(file_path)
-		
-		if error == OK:
-			pass
-		else:
-			print("Failed to delete the file. ", error)
-	else:
-		print("File does not exist")
-
-func reset_data(reset_type: String):
-	match reset_type:
-		"reset_data":
-			delete_config_file(DEVICE_CFG_FILE_PATH)
-			delete_config_file(SAVE_CFG_FILE_PATH)
-			
-			Signals.change_screen.emit("pick_save")
-		"unlink_account":
-			delete_config_file(DEVICE_CFG_FILE_PATH)
-			
-			Signals.change_screen.emit("online_save")
-
-func find_save_type():
-	if FileAccess.file_exists(DEVICE_CFG_FILE_PATH):
-		var error = device_config.load(DEVICE_CFG_FILE_PATH)
-		
-		if error != OK:
-			print("An error occurred whilst laoding existing config file: ", error)
-			action = "pick"
-		else:
-			action = device_config.get_value("DeviceConfig", "save_type", "pick")
-			
-			if action == "online":
-				online_save_id = device_config.get_value("DeviceConfig", "save_id", "none")
-	else:
-		action = "pick"
-	
-	load_game()
-
-	return action
-	
-func update_action(new_action: String):
-	action = new_action
-	
-	load_game()
-	
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		safe_exit()
 
 func safe_exit():
 	set_process(false)

@@ -44,13 +44,14 @@ func get_data_to_save():
 	
 	stats["total_playtime"] = total_playtime
 	
+	for k in stats:
+		if additonal_stats.has(k):
+			stats.erase(k)
+	
 	return stats
 
 func _on_data_loaded(save_stats: Dictionary):
-	if save_stats.is_empty():
-		stats = GameManager.read_json("res://data/default_stats.json")
-	else:
-		stats = save_stats
+	stats = save_stats
 		
 	stats.erase("total_playtime")
 	stats.merge(additonal_stats)

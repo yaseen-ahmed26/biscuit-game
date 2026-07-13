@@ -89,8 +89,8 @@ func _on_message_received(message):
 	
 	if parsed.type == "information":
 		$code.text = "[color=green]%s" % parsed.login_code
-	elif parsed.type == "user_data":		
-		SaveManager.setup_online_save(parsed)
+	elif parsed.type == "user_data":	
+		SaveManager.setup_game("online", parsed)
 		_account_link_success(parsed.username)
 
 func _send_message(message: String) -> void:
