@@ -64,6 +64,18 @@ theme_override_constants/separation = 20
 [node name="0" parent="ScrollContainer/holder" unique_id=1190958676 instance=ExtResource("2_sxav6")]
 layout_mode = 2
 
+[node name="1" parent="ScrollContainer/holder" unique_id=1543382052 instance=ExtResource("2_sxav6")]
+layout_mode = 2
+
+[node name="2" parent="ScrollContainer/holder" unique_id=75635342 instance=ExtResource("2_sxav6")]
+layout_mode = 2
+
+[node name="3" parent="ScrollContainer/holder" unique_id=611877335 instance=ExtResource("2_sxav6")]
+layout_mode = 2
+
+[node name="4" parent="ScrollContainer/holder" unique_id=1858954153 instance=ExtResource("2_sxav6")]
+layout_mode = 2
+
 [node name="open_btn" type="Button" parent="." unique_id=350847119]
 layout_mode = 1
 anchors_preset = 5

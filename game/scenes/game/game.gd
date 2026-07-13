@@ -7,14 +7,15 @@ func _ready() -> void:
 	Signals.stats_changed.connect(_on_stats_changed)
 
 func _on_clicker_btn_pressed() -> void:
-	PlayerManager.click_cookie()
+	var amount = PlayerManager.click_cookie()
 	
 	var clone: RichTextLabel = $effect.duplicate()
 	
 	self.add_child(clone)
 	var starting_position = Vector2(randf_range(100, 1700), 1080)
 	var end_position = starting_position - Vector2(0, randf_range(200, 1000))
-	
+
+	clone.text = "+%.1f" % amount	
 	clone.position = starting_position
 	
 	var tween: Tween = create_tween()
@@ -30,7 +31,6 @@ func _on_clicker_btn_pressed() -> void:
 	
 func _on_stats_changed(stats):
 	cookie_counter.text = "COOKIES: %.1f" % stats.biscuits
-	$effect.text = "+%d" % stats.per_click
 
 func _on_quit_btn_pressed() -> void:
 	SaveManager.safe_exit()

@@ -1,10 +1,10 @@
 [
 	{
-		"id": "test_upgrade",
-		"name": "Test Upgrade",
-		"description": "This is simply a test upgrade that increses your clicks by 1.",
+		"id": "more_per_click",
+		"name": "Per Click",
+		"description": "Get more biscuits per click",
 		"icon": "",
-		"total_levels": 4,
+		"total_levels": 5,
 		"group": "clicker",
 		"levels": [
 			{
@@ -29,8 +29,8 @@
 			},
 			{
 				"name": "Level III",
-				"description": "+1 cookies per click",
-				"cost": 20,
+				"description": "+2 cookies per click",
+				"cost": 35,
 				"effect": {
 					"type": "add",
 					"target": "per_click",
@@ -39,14 +39,264 @@
 			},
 			{
 				"name": "Level IV",
-				"description": "+1 cookies per click",
-				"cost": 20,
+				"description": "+3 cookies per click",
+				"cost": 50,
+				"effect": {
+					"type": "add",
+					"target": "per_click",
+					"value": 3
+				},
+			},
+			{
+				"name": "Level IV",
+				"description": "+5 cookies per click",
+				"cost": 75,
 				"effect": {
 					"type": "add",
 					"target": "per_click",
 					"value": 5
+				}
+			}
+		]
+	},
+	{
+		"id": "larger_multiplier",
+		"name": "Multiply Multiply",
+		"description": "Add a multipler for all the Biscuits you get",
+		"icon": "",
+		"total_levels": 5,
+		"group": "clicker",
+		"levels": [
+			{
+				"name": "Level I",
+				"description": "Unlock a x1.1 Multiplier",
+				"cost": 110,
+				"effect": {
+					"type": "set",
+					"target": "multiplier",
+					"value": 1.1
 				},
 			},
+			{
+				"name": "Level II",
+				"description": "x1.1 -> x1.2 Multiplier",
+				"cost": 120,
+				"effect": {
+					"type": "add",
+					"target": "multiplier",
+					"value": 0.1
+				},
+			},
+			{
+				"name": "Level III",
+				"description": "x1.2 -> x1.3 Multiplier",
+				"cost": 130,
+				"effect": {
+					"type": "add",
+					"target": "multiplier",
+					"value": 0.1
+				},
+			},
+			{
+				"name": "Level IV",
+				"description": "x1.3 -> x1.5 Multiplier",
+				"cost": 160,
+				"effect": {
+					"type": "add",
+					"target": "multiplier",
+					"value": 0.2
+				},
+			},
+			{
+				"name": "Level IV",
+				"description": "x1.5% -> x1.8 Multiplier",
+				"cost": 200,
+				"effect": {
+					"type": "add",
+					"target": "multiplier",
+					"value": 0.3
+				}
+			}
+		]
+	},
+	{
+		"id": "double_chance",
+		"name": "Huh, Bonus?",
+		"description": "Increase the chance of getting double eggs!",
+		"icon": "",
+		"total_levels": 5,
+		"group": "clicker",
+		"levels": [
+			{
+				"name": "Level I",
+				"description": "Unlock a 2% Double Chance",
+				"cost": 200,
+				"effect": {
+					"type": "set",
+					"target": "double_chance",
+					"value": 2
+				},
+			},
+			{
+				"name": "Level II",
+				"description": "2% -> 4% Chance",
+				"cost": 235,
+				"effect": {
+					"type": "add",
+					"target": "double_chance",
+					"value": 2
+				},
+			},
+			{
+				"name": "Level III",
+				"description": "4% -> 8% Chance",
+				"cost": 280,
+				"effect": {
+					"type": "add",
+					"target": "double_chance",
+					"value": 4
+				},
+			},
+			{
+				"name": "Level IV",
+				"description": "8% -> 12% Chance",
+				"cost": 340,
+				"effect": {
+					"type": "add",
+					"target": "double_chance",
+					"value": 4
+				},
+			},
+			{
+				"name": "Level V",
+				"description": "12% -> 15% Chance",
+				"cost": 370,
+				"effect": {
+					"type": "add",
+					"target": "double_chance",
+					"value": 3
+				}
+			}
+		]
+	},
+	{
+		"id": "shrink_click_milestone",
+		"name": "Less Clicks..?",
+		"description": "Every 35th click, Biscuits are doubled, but you can shrink that right down!",
+		"icon": "",
+		"total_levels": 5,
+		"group": "clicker",
+		"levels": [
+			{
+				"name": "Level I",
+				"description": "35 -> 30 Clicks",
+				"cost": 200,
+				"effect": {
+					"type": "subtract",
+					"target": "bonus_per_milestone",
+					"value": 5
+				},
+			},
+			{
+				"name": "Level II",
+				"description": "30 -> 25 Clicks",
+				"cost": 250,
+				"effect": {
+					"type": "subtract",
+					"target": "bonus_per_milestone",
+					"value": 5
+				},
+			},
+			{
+				"name": "Level III",
+				"description": "25 -> 20 Clicks",
+				"cost": 300,
+				"effect": {
+					"type": "subtract",
+					"target": "bonus_per_milestone",
+					"value": 5
+				},
+			},
+			{
+				"name": "Level IV",
+				"description": "20 -> 15 Clicks",
+				"cost": 350,
+				"effect": {
+					"type": "subtract",
+					"target": "bonus_per_milestone",
+					"value": 5
+				},
+			},
+			{
+				"name": "Level V",
+				"description": "15 -> 10 Clicks",
+				"cost": 400,
+				"effect": {
+					"type": "subtract",
+					"target": "bonus_per_milestone",
+					"value": 5
+				}
+			}
+		]
+	},
+	{
+		"id": "shrink_click_milestone",
+		"name": "Click Bonus",
+		"description": "Wanna get more just buy clicking? Well, I mean that IS the point of the game.",
+		"icon": "",
+		"total_levels": 5,
+		"group": "clicker",
+		"levels": [
+			{
+				"name": "Level I",
+				"description": "x2 -> x2.5 Milestone Bonus",
+				"cost": 425,
+				"effect": {
+					"type": "add",
+					"target": "click_milestone_bonus",
+					"value": 0.5
+				},
+			},
+			{
+				"name": "Level II",
+				"description": "x2.5 -> x3 Milestone Bonus",
+				"cost": 500,
+				"effect": {
+					"type": "add",
+					"target": "click_milestone_bonus",
+					"value": 0.5
+				},
+			},
+			{
+				"name": "Level III",
+				"description": "x3 -> x4 Milestone Bonus",
+				"cost": 620,
+				"effect": {
+					"type": "add",
+					"target": "click_milestone_bonus",
+					"value": 1
+				},
+			},
+			{
+				"name": "Level IV",
+				"description": "x4 -> x5 Milestone Bonus",
+				"cost": 740,
+				"effect": {
+					"type": "add",
+					"target": "click_milestone_bonus",
+					"value": 1
+				},
+			},
+			{
+				"name": "Level V",
+				"description": "x5 -> x6.7 Milestone Bonus",
+				"cost": 967,
+				"effect": {
+					"type": "add",
+					"target": "click_milestone_bonus",
+					"value": 1.7
+				}
+			}
 		]
 	}
 ]
