@@ -152,7 +152,7 @@ func save_game():
 	var method = methods.save.get(save_type)
 	var success = await method.call(data_to_save)
 	
-	assert(success, "Fatal Error: Failed to save game")
+	assert(not success, "Fatal Error: Failed to save game")
 	
 	Signals.data_saved.emit()
 
