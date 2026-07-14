@@ -27,7 +27,7 @@ func get_saved_data(save_id: String):
 		var json = JSON.parse_string(body.get_string_from_utf8())
 		return json
 	else:
-		print("Failed to get data ", response_code)
+		print("Failed to update data. Response code: ", response_code)
 		return {}
 
 func send_put_request(save_id, data_to_save: Dictionary):		

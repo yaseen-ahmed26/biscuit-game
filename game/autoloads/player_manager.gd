@@ -5,7 +5,7 @@ var stats: Dictionary
 var additonal_stats: Dictionary = {
 	"per_click": 1.0,
 	"multiplier": 1.0,
-	"double_chance": 0.0,
+	"double_chance": 0.0000001,
 	"bonus_per_milestone": 35,
 	"click_milestone_bonus": 2.0,
 }
