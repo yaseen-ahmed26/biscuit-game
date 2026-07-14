@@ -4,6 +4,7 @@ extends Control
 @onready var clicker_btn: Button = $clicker_btn
 
 func _ready() -> void:
+	_on_stats_changed(PlayerManager.runtime_stats)
 	Signals.stats_changed.connect(_on_stats_changed)
 
 func _on_clicker_btn_pressed() -> void:
