@@ -93,8 +93,8 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 9.0
 offset_top = -91.5
-offset_right = 79.0
-offset_bottom = -21.5
+offset_right = 68.0
+offset_bottom = -32.5
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_l7yjw")
 
@@ -108,7 +108,7 @@ anchor_bottom = 0.5
 offset_left = -71.0
 offset_top = -100.5
 offset_right = -69.0
-offset_bottom = 100.5
+offset_bottom = 99.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -119,9 +119,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 188.0
+offset_left = 108.0
 offset_top = -100.5
-offset_right = 190.0
+offset_right = 110.0
 offset_bottom = 100.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -129,10 +129,10 @@ grow_vertical = 2
 [node name="seperator2" type="ColorRect" parent="." unique_id=1084925640]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.013353116
-anchor_top = 0.42857143
-anchor_right = 0.3360324
-anchor_bottom = 0.43349755
+anchor_left = 0.0020242992
+anchor_top = 0.36453202
+anchor_right = 0.3562753
+anchor_bottom = 0.36945814
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -216,13 +216,28 @@ vertical_alignment = 1
 [node name="upgrade_name" type="RichTextLabel" parent="." unique_id=948938705]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.17004053
-anchor_top = 0.06403944
-anchor_right = 0.34615391
-anchor_bottom = 0.37438428
+anchor_left = 0.01821867
+anchor_top = 0.40886703
+anchor_right = 0.34210533
+anchor_bottom = 0.6059114
 theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 14
 text = "upgrade
 name"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="group" type="RichTextLabel" parent="." unique_id=101612613]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14979762
+anchor_top = 0.049261123
+anchor_right = 0.34210533
+anchor_bottom = 0.3399015
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 16
+text = "Clicker"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -230,65 +245,15 @@ metadata/_edit_use_anchors_ = true
 [node name="description" type="RichTextLabel" parent="." unique_id=1166369466]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.029877018
-anchor_top = 0.48768467
-anchor_right = 0.3022848
-anchor_bottom = 0.9261083
+anchor_left = 0.018218562
+anchor_top = 0.6157634
+anchor_right = 0.3421052
+anchor_bottom = 0.92610824
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/normal_font_size = 10
 text = "description"
 horizontal_alignment = 1
-vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="level_btns" type="VBoxContainer" parent="." unique_id=1207950726]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -145.0
-offset_top = -91.5
-offset_right = -73.0
-offset_bottom = 86.5
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_constants/separation = 5
-alignment = 1
-
-[node name="add_one" type="Button" parent="level_btns" unique_id=459621881]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_45spe")
-theme_override_styles/pressed = ExtResource("2_cfrxm")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dm52w")
-theme_override_styles/disabled = ExtResource("3_gevct")
-text = "+1"
-
-[node name="add_ten" type="Button" parent="level_btns" unique_id=1419820581]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_45spe")
-theme_override_styles/pressed = ExtResource("2_cfrxm")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dm52w")
-theme_override_styles/disabled = ExtResource("3_gevct")
-text = "+10"
-
-[node name="add_all" type="Button" parent="level_btns" unique_id=1796701253]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_45spe")
-theme_override_styles/pressed = ExtResource("2_cfrxm")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dm52w")
-theme_override_styles/disabled = ExtResource("3_gevct")
-text = "MAX"
 
 [node name="levels" type="VBoxContainer" parent="." unique_id=605563700]
 layout_mode = 1
@@ -311,7 +276,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("4_gevct")
 
-[node name="label" type="RichTextLabel" parent="levels/0" unique_id=749844712]
+[node name="number" type="RichTextLabel" parent="levels/0" unique_id=749844712]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -324,12 +289,22 @@ text = "I"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="1" type="Panel" parent="levels" unique_id=1431556252]
+[node name="cost" type="RichTextLabel" parent="levels/0" unique_id=1237138675]
+layout_mode = 0
+offset_left = -82.0
+offset_right = -4.0
+offset_bottom = 32.0
+theme_override_font_sizes/normal_font_size = 10
+text = "200 Bisucits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="1" type="Panel" parent="levels" unique_id=986931731]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("4_gevct")
 
-[node name="label" type="RichTextLabel" parent="levels/1" unique_id=1541113080]
+[node name="number" type="RichTextLabel" parent="levels/1" unique_id=756332742]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -342,12 +317,22 @@ text = "II"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="2" type="Panel" parent="levels" unique_id=1276058667]
+[node name="cost" type="RichTextLabel" parent="levels/1" unique_id=1220568351]
+layout_mode = 0
+offset_left = -82.0
+offset_right = -4.0
+offset_bottom = 32.0
+theme_override_font_sizes/normal_font_size = 10
+text = "200 Bisucits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="2" type="Panel" parent="levels" unique_id=1232689123]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("4_gevct")
 
-[node name="label" type="RichTextLabel" parent="levels/2" unique_id=848340632]
+[node name="number" type="RichTextLabel" parent="levels/2" unique_id=481006583]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -360,12 +345,22 @@ text = "III"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="3" type="Panel" parent="levels" unique_id=1095038134]
+[node name="cost" type="RichTextLabel" parent="levels/2" unique_id=759448945]
+layout_mode = 0
+offset_left = -82.0
+offset_right = -4.0
+offset_bottom = 32.0
+theme_override_font_sizes/normal_font_size = 10
+text = "200 Bisucits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="3" type="Panel" parent="levels" unique_id=399435845]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("4_gevct")
 
-[node name="label" type="RichTextLabel" parent="levels/3" unique_id=1468565328]
+[node name="number" type="RichTextLabel" parent="levels/3" unique_id=1632461555]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -378,12 +373,22 @@ text = "IV"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="4" type="Panel" parent="levels" unique_id=34060101]
+[node name="cost" type="RichTextLabel" parent="levels/3" unique_id=1948458483]
+layout_mode = 0
+offset_left = -82.0
+offset_right = -4.0
+offset_bottom = 32.0
+theme_override_font_sizes/normal_font_size = 10
+text = "200 Bisucits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4" type="Panel" parent="levels" unique_id=2112114227]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("4_gevct")
 
-[node name="label" type="RichTextLabel" parent="levels/4" unique_id=876398887]
+[node name="number" type="RichTextLabel" parent="levels/4" unique_id=2050137917]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -393,6 +398,16 @@ grow_vertical = 2
 theme_override_constants/outline_size = 4
 bbcode_enabled = true
 text = "V"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cost" type="RichTextLabel" parent="levels/4" unique_id=1013300629]
+layout_mode = 0
+offset_left = -82.0
+offset_right = -4.0
+offset_bottom = 32.0
+theme_override_font_sizes/normal_font_size = 10
+text = "200 Bisucits"
 horizontal_alignment = 1
 vertical_alignment = 1
 

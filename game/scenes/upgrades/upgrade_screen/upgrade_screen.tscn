@@ -48,9 +48,9 @@ text = "CLICKER"
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=431858837]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.29918033
+anchor_left = 0.29508197
 anchor_top = 0.024429968
-anchor_right = 0.9795082
+anchor_right = 0.9836066
 anchor_bottom = 0.97557
 grow_horizontal = 0
 metadata/_edit_use_anchors_ = true
