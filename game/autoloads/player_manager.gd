@@ -1,5 +1,7 @@
 extends Node
 
+var stats_loaded = false
+
 var runtime_stats: Dictionary = {
 	"per_click": 1.0,
 	"multiplier": 1.0,
@@ -98,5 +100,6 @@ func set_runtime_stats(save_stats: Dictionary):
 		var v = save_stats_duplicate.get(k)
 		
 		runtime_stats[k] = v
-
+	
+	stats_loaded = true
 	Signals.data_loaded.emit(runtime_stats)
