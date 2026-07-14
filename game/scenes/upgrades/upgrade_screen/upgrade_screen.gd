@@ -14,9 +14,6 @@ var upgrade_data: Array
 func _ready() -> void:
 	upgrade_data = GameManager.read_json(UPGRADES_FILE_PATH)
 	
-	var inital_upgrades = PlayerManager.stats.get("bought_upgrades", {})
-	_set_upgrade_lines(inital_upgrades)
-	
 	Signals.data_loaded.connect(_on_data_loaded)
 
 func _set_upgrade_lines(saved_upgrades: Dictionary):
