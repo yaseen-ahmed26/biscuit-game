@@ -10,7 +10,6 @@ var open: bool = false
 
 var upgrade_data: Array
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	upgrade_data = GameManager.read_json(UPGRADES_FILE_PATH)
 	
@@ -47,5 +46,3 @@ func _on_open_btn_pressed() -> void:
 
 func _on_data_loaded(data):
 	_set_upgrade_lines(data.bought_upgrades)
-	# for line in $ScrollContainer/holder.get_children():
-	#	line.call("reset_line")
