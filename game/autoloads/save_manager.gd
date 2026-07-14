@@ -140,11 +140,15 @@ func load_game():
 	var method = methods.load.get(save_type)
 	var details = await method.call()
 	
+	var loaded_data = {}
+	
 	if details[0]:
-		Signals.data_loaded.emit(details[1])
+		loaded_data = details[1]
 	else:
 		push_error("Fatal Error: Failed to load saved data")
-		Signals.data_loaded.emit(default_stats)
+		loaded_data = default_stats
+		
+	PlayerManager.set_runtime_stats(loaded_data)
 
 func save_game():
 	var data_to_save = PlayerManager.get_data_to_save()

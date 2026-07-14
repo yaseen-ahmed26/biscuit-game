@@ -17,8 +17,8 @@ var runtime_stats: Dictionary = {
 var milestone_click = 0
 
 func _ready() -> void:
-	Signals.data_loaded.connect(_on_data_loaded)
-
+	pass
+	
 func apply_effect(effect: Dictionary):	
 	if not runtime_stats[effect.target]:
 		print("'%s' stat not found" % effect.target)
@@ -91,10 +91,12 @@ func get_data_to_save():
 
 	return stats_to_save
 
-func _on_data_loaded(save_stats: Dictionary):	
+func set_runtime_stats(save_stats: Dictionary):	
 	var save_stats_duplicate = save_stats.duplicate(true)
 	
 	for k in save_stats_duplicate:
 		var v = save_stats_duplicate.get(k)
 		
 		runtime_stats[k] = v
+
+	Signals.data_loaded.emit(runtime_stats)

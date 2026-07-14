@@ -13,7 +13,7 @@ var upgrade_data: Array
 func _ready() -> void:
 	upgrade_data = GameManager.read_json(UPGRADES_FILE_PATH)
 	
-	Signals.data_loaded.connect(_on_data_loaded)
+	_set_upgrade_lines(PlayerManager.runtime_stats.bought_upgrades)
 
 func _set_upgrade_lines(saved_upgrades: Dictionary):
 	var total_upgrades = upgrade_data.size()
@@ -43,6 +43,3 @@ func _on_open_btn_pressed() -> void:
 	
 	var tween: Tween = create_tween()
 	tween.tween_property(self, "position", use_position, 0.3)
-
-func _on_data_loaded(data):
-	_set_upgrade_lines(data.bought_upgrades)
