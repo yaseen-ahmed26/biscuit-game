@@ -12,8 +12,8 @@ func get_saved_data(save_id: String):
 	var error = http_request.request("%s/%s" % [url ,save_id])
 	
 	if error != OK:
-		print("An error occurred")
-		return GameManager.read_json("res://data/default_stats.json")
+		print("An error occurred making the HTTP request")
+		return
 
 	var response = await http_request.request_completed
 	
@@ -22,13 +22,17 @@ func get_saved_data(save_id: String):
 	var body = response[3]
 	
 	http_request.queue_free()
+	
+	if response_code == 400:
+		print("Save ID was invalid")
+		return
 
 	if result == HTTPRequest.RESULT_SUCCESS:
 		var json = JSON.parse_string(body.get_string_from_utf8())
 		return json
 	else:
-		print("Failed to update data. Response code: ", response_code)
-		return {}
+		print("Failed to get data. Response code: ", response_code)
+		return
 
 func send_put_request(save_id, data_to_save: Dictionary):		
 	var http_request: HTTPRequest = HTTPRequest.new()

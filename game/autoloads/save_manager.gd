@@ -61,7 +61,7 @@ func _load_online():
 		
 	var saved_stats = await RequestManager.get_saved_data(save_id)
 	
-	if saved_stats.is_empty():
+	if not saved_stats:
 		print("An error occurred getting save data")
 		return [false]
 	
