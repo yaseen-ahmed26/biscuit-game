@@ -8,7 +8,7 @@ func _ready() -> void:
 	add_child(autosave_timer)
 	
 	autosave_timer.one_shot = false
-	autosave_timer.wait_time = 15.0
+	autosave_timer.wait_time = Constants.AUTOSAVE_TIMER
 	
 	set_process(false)
 	Signals.data_loaded.connect(_on_data_loaded)

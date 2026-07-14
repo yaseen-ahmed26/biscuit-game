@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Signals="*uid://clct323nvt7ds"
+Constants="*uid://c44ccx0nxytpy"
 GameManager="*uid://ic0pl4pmhhaf"
 PlayerManager="*uid://baalclsuo4y42"
 RequestManager="*uid://b8cbshx1as8g0"

@@ -1,10 +1,5 @@
 extends Node
 
-# Constants
-const DEVICE_CFG_FILE_PATH: String = "user://device.cfg"
-const SAVE_CFG_FILE_PATH: String = "user://save.cfg"
-const DEFAULT_STATS_FILE_PATH = "res://data/default_stats.json"
-
 # Variables
 var device_config: ConfigFile = ConfigFile.new()
 var save_config: ConfigFile = ConfigFile.new()
@@ -30,7 +25,7 @@ var methods: Dictionary[String, Dictionary] = {
 
 # Godot
 func _ready() -> void:
-	default_stats = GameManager.read_json(DEFAULT_STATS_FILE_PATH)
+	default_stats = GameManager.read_json(Constants.DEFAULT_STATS_FILE_PATH)
 	
 	_check_save_type()
 
@@ -47,7 +42,7 @@ func _check_config_exists(file_path) -> bool:
 
 # Online Saves
 func _load_online():
-	var error = device_config.load(DEVICE_CFG_FILE_PATH)
+	var error = device_config.load(Constants.DEVICE_CFG_FILE_PATH)
 
 	if error != OK:
 		print("An error occurred whilst laoding existing save file: ", error)
@@ -78,7 +73,7 @@ func _setup_online(data):
 	device_config.set_value("DeviceConfig", "save_id", data.save_id)
 	device_config.set_value("DeviceConfig", "player_username", data.username)
 
-	device_config.save(DEVICE_CFG_FILE_PATH)
+	device_config.save(Constants.DEVICE_CFG_FILE_PATH)
 	
 	await _save_online(data.save)
 	load_game()
@@ -87,13 +82,13 @@ func _setup_online(data):
 
 # Local Saves
 func _load_local():	
-	var save_cfg_exists = _check_config_exists(SAVE_CFG_FILE_PATH)
+	var save_cfg_exists = _check_config_exists(Constants.SAVE_CFG_FILE_PATH)
 	
 	if not save_cfg_exists:
 		print("save.cfg does not exist")
 		return [false]
 		
-	var error = save_config.load(SAVE_CFG_FILE_PATH)
+	var error = save_config.load(Constants.SAVE_CFG_FILE_PATH)
 
 	if error != OK:
 		print("An error occurred whilst laoding existing save file: ", error)
@@ -120,7 +115,7 @@ func _save_local(stats):
 		
 		save_config.set_value("LocalSave", k, v)
 		
-	save_config.save(SAVE_CFG_FILE_PATH)
+	save_config.save(Constants.SAVE_CFG_FILE_PATH)
 	
 func _setup_local(data):
 	save_type = "local"
@@ -128,7 +123,7 @@ func _setup_local(data):
 	device_config.set_value("DeviceConfig", "save_type", "local")
 	device_config.set_value("DeviceConfig", "player_username", data.username)
 	
-	device_config.save(DEVICE_CFG_FILE_PATH)
+	device_config.save(Constants.DEVICE_CFG_FILE_PATH)
 	
 	_save_local(default_stats)
 	load_game()
@@ -166,13 +161,13 @@ func setup_game(type_picked: String, data):
 
 # Main
 func _check_save_type():
-	var device_cfg_exists = _check_config_exists(DEVICE_CFG_FILE_PATH)
+	var device_cfg_exists = _check_config_exists(Constants.DEVICE_CFG_FILE_PATH)
 	
 	if not device_cfg_exists:
 		print("No device.cfg file found")
 		return
 		
-	var error = device_config.load(DEVICE_CFG_FILE_PATH)
+	var error = device_config.load(Constants.DEVICE_CFG_FILE_PATH)
 		
 	if error != OK:
 		print("An error occurred whilst laoding existing config file: ", error)

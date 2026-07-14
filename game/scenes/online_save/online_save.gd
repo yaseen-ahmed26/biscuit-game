@@ -3,11 +3,6 @@ extends Control
 @onready var link_success: Panel = $link_success
 @onready var welcome: RichTextLabel = $link_success/welcome
 
-const COUNTRIES: Dictionary[String, String] = {
-	"GB": "United Kingdom"
-}
-const SECRETS_PATH: String = "res://secrets.json"
-
 var client: HTTPClient = HTTPClient.new()
 var socket: WebSocketPeer = WebSocketPeer.new()
 
@@ -17,7 +12,7 @@ var connected = false
 
 func _ready() -> void:
 	set_process(false)
-	websocket_url = GameManager.read_json(SECRETS_PATH).websocket_url
+	websocket_url = GameManager.read_json(Constants.SECRETS_PATH).websocket_url
 
 func _process(_delta: float) -> void:
 	socket.poll()
@@ -70,7 +65,7 @@ func _get_user_country() -> String:
 	if locale_parts.size() > 1:
 		country_code = locale_parts[1].left(2).to_upper() 
 	
-	var country_name: String = COUNTRIES.get(country_code, country_code)
+	var country_name: String = Constants.COUNTRIES.get(country_code, country_code)
 	
 	return country_name
 

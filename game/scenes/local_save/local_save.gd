@@ -19,9 +19,9 @@ func _on_user_input_text_changed(new_text: String) -> void:
 
 	if new_text.is_empty():
 		_change_message("Choose a username")
-	elif new_text.length() < 5:
+	elif new_text.length() < Constants.MIN_USERNAME_LENGTH:
 		_change_message("Username must be at least 5 characters long", "red")
-	elif new_text.length() > 24:
+	elif new_text.length() > Constants.MAX_USERNAME_LENGTH:
 		_change_message("Username cannot be longer than 24 characters", "red")
 	elif new_text.contains(" "):
 		_change_message("Username cannot have any spaces", "red")

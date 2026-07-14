@@ -2,16 +2,12 @@ extends Control
 
 @onready var holder: VBoxContainer = $ScrollContainer/holder
 
-const UPGRADES_FILE_PATH = "res://data/upgrades.json"
-const OPEN_POSITION: Vector2 = Vector2(4.0, 459.0)
-const HIDDEN_POSITION: Vector2 = Vector2(4.0, 1086.0)
-
 var open: bool = false
 
 var upgrade_data: Array
 
 func _ready() -> void:
-	upgrade_data = GameManager.read_json(UPGRADES_FILE_PATH)
+	upgrade_data = GameManager.read_json(Constants.UPGRADES_FILE_PATH)
 	
 	Signals.data_loaded.connect(_on_data_loaded)
 	
@@ -39,10 +35,10 @@ func _on_open_btn_pressed() -> void:
 	var use_position: Vector2
 	
 	if open:
-		use_position = HIDDEN_POSITION
+		use_position = Constants.HIDDEN_POSITION
 		open = false
 	else:
-		use_position = OPEN_POSITION
+		use_position = Constants.OPEN_POSITION
 		open = true
 	
 	var tween: Tween = create_tween()
