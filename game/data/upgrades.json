@@ -129,52 +129,52 @@
 		"levels": [
 			{
 				"name": "Level I",
-				"description": "Unlock a 2% Double Chance",
+				"description": "Unlock a 5% Double Chance",
 				"cost": 200,
 				"effect": {
 					"type": "set",
 					"target": "double_chance",
-					"value": 2
+					"value": 0.05
 				},
 			},
 			{
 				"name": "Level II",
-				"description": "2% -> 4% Chance",
+				"description": "5% -> 8% Chance",
 				"cost": 235,
 				"effect": {
 					"type": "add",
 					"target": "double_chance",
-					"value": 2
+					"value": 0.03
 				},
 			},
 			{
 				"name": "Level III",
-				"description": "4% -> 8% Chance",
+				"description": "8% -> 12% Chance",
 				"cost": 280,
 				"effect": {
 					"type": "add",
 					"target": "double_chance",
-					"value": 4
+					"value": 0.04
 				},
 			},
 			{
 				"name": "Level IV",
-				"description": "8% -> 12% Chance",
+				"description": "12% -> 15% Chance",
 				"cost": 340,
 				"effect": {
 					"type": "add",
 					"target": "double_chance",
-					"value": 4
+					"value": 0.03
 				},
 			},
 			{
 				"name": "Level V",
-				"description": "12% -> 15% Chance",
+				"description": "15% -> 20% Chance",
 				"cost": 370,
 				"effect": {
 					"type": "add",
 					"target": "double_chance",
-					"value": 3
+					"value": 0.05
 				}
 			}
 		]
