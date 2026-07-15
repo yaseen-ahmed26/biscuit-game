@@ -21,7 +21,10 @@ func _set_up_btn(btn: Button):
 		
 func _on_setting_btn_clicked(btn: Button):
 	match btn.name:
-		"unlink_account": SaveManager.unlink_online_account()
+		"unlink_account":
+			Signals.show_message_popup.emit("unlink_account")
+			await Signals.show_message_proceed
+			SaveManager.unlink_online_account()
 
 func on_screen_change():
 	on_screen = true

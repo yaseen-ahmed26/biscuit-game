@@ -32,5 +32,27 @@ const EFFECT_COLOURS: Dictionary = {
 	"MILE STONE": Color.GREEN,
 }
 
+# ui_controller.gd
+const MESSAGES: Dictionary = {
+	"unlink_account": {
+		"title": "WARNING",
+		"primary": "You are about to unlink this device from your online account. This does not erase your data.",
+		"secondary": "You must connect your account again via an invite code.",
+		"btn": "Proceed"
+	},
+	"no_data": {
+		"title": "FATAL ERROR",
+		"primary": "Your save data could not be retrieved from the server. Any progress you make will not be saved.",
+		"secondary": "Your existing data has not been deleted, please try logging on later.",
+		"btn": "Got it"
+	},
+	"invalid_online_id": {
+		"title": "FATAL ERROR",
+		"primary": "The Save ID associated with your account is invalid. Any progress you make will not be saved.",
+		"secondary": "Navigate to settings then click 'Switch Account' to relink your account.",
+		"btn": "Got it"
+	}
+}
+
 # Global
 const SECRETS_PATH: String = "res://secrets.json"

@@ -9,6 +9,79 @@
 [ext_resource type="PackedScene" uid="uid://d261tlt78co74" path="res://scenes/game/game.tscn" id="7_5q4yu"]
 [ext_resource type="PackedScene" uid="uid://cqcu3iygflj3k" path="res://scenes/settings/settings.tscn" id="7_wxsgv"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bahs"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.8392157)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxsgv"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 0.6862745)
+border_width_left = 8
+border_width_right = 8
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qx04s"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4p2l"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yodi"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.21950102, 0.21950102, 0.21950102, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+corner_detail = 5
+
 [node name="ui_controller" type="Control" unique_id=1713897045]
 layout_mode = 3
 anchors_preset = 15
@@ -46,9 +119,8 @@ color = Color(1.9059777e-05, 0.4037879, 0.8719074, 1)
 [node name="settings" parent="CanvasLayer" unique_id=676005052 instance=ExtResource("7_wxsgv")]
 visible = false
 
-[node name="pick_save" parent="CanvasLayer" unique_id=1547500409 node_paths=PackedStringArray("online_save_scene") instance=ExtResource("2_1ajqp")]
+[node name="pick_save" parent="CanvasLayer" unique_id=1547500409 instance=ExtResource("2_1ajqp")]
 visible = false
-online_save_scene = NodePath("../online_save")
 
 [node name="local_save" parent="CanvasLayer" unique_id=1165488124 instance=ExtResource("4_6nawd")]
 visible = false
@@ -71,13 +143,119 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="message_popup" type="Panel" parent="CanvasLayer" unique_id=585725863]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7bahs")
+
+[node name="background" type="Panel" parent="CanvasLayer/message_popup" unique_id=1566591721]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -506.0
+offset_top = -292.0
+offset_right = 506.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wxsgv")
+
+[node name="primary" type="RichTextLabel" parent="CanvasLayer/message_popup/background" unique_id=1669724258]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -241.0
+offset_right = 420.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 34
+text = "This is the default message you are getting. can it be this long? you tell me, im nbot sure"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="secondary" type="RichTextLabel" parent="CanvasLayer/message_popup/background" unique_id=955425941]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -41.0
+offset_right = 420.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 26
+text = "This action cannot be done"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="proceed_btn" type="Button" parent="CanvasLayer/message_popup/background" unique_id=1216300693]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = 185.0
+offset_right = 208.0
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_qx04s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p4p2l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4yodi")
+text = "Got it"
+
+[node name="message_title" type="RichTextLabel" parent="CanvasLayer/message_popup" unique_id=200269595]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -273.0
+offset_top = -390.0
+offset_right = 273.0
+offset_bottom = -302.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 52
+text = "MESSAGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="saving" type="RichTextLabel" parent="CanvasLayer" unique_id=1039942139]
 modulate = Color(1, 1, 1, 0)
-offset_left = 23.0
-offset_top = 216.0
-offset_right = 278.0
-offset_bottom = 280.0
+anchors_preset = -1
+anchor_left = 0.011979166
+anchor_top = 0.2
+anchor_right = 0.14479166
+anchor_bottom = 0.25925925
 theme_override_font_sizes/normal_font_size = 46
 text = "SAVING.."
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/message_popup/background/proceed_btn" to="." method="_on_proceed_btn_pressed"]

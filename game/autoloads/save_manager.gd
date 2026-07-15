@@ -140,7 +140,7 @@ func load_game():
 	if details[0]:
 		loaded_data = details[1]
 	else:
-		push_error("Fatal Error: Failed to load saved data")
+		Signals.show_message_popup.emit("no_data")
 		loaded_data = default_stats
 		
 	PlayerManager.set_runtime_stats(loaded_data)

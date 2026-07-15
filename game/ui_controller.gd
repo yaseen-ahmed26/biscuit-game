@@ -3,6 +3,7 @@ extends Control
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var fade: ColorRect = $CanvasLayer/fade
 @onready var saving: RichTextLabel = $CanvasLayer/saving
+@onready var message_popup: Panel = $CanvasLayer/message_popup
 
 var current_screen: Control
 
@@ -11,6 +12,7 @@ func _ready() -> void:
 	
 	Signals.change_screen.connect(_on_change_screen)
 	Signals.data_saved.connect(_on_data_saved)
+	Signals.show_message_popup.connect(_on_show_message_popup)
 	
 func _on_change_screen(to_show: String):
 	fade.mouse_filter = MouseFilter.MOUSE_FILTER_STOP
@@ -49,3 +51,23 @@ func _on_data_saved():
 	
 	var tween_out: Tween = create_tween()
 	tween_out.tween_property(saving, "modulate:a", 0.0, 0.5)
+
+func _on_show_message_popup(info_name: String):
+	var information = Constants.MESSAGES.get(info_name)
+	
+	if not information:
+		return
+	
+	$CanvasLayer/message_popup/background/primary.text = information.primary
+	$CanvasLayer/message_popup/background/secondary.text = information.secondary
+	$CanvasLayer/message_popup/background/proceed_btn.text = information.btn
+	$CanvasLayer/message_popup/message_title.text = information.title
+	
+	var tween_in: Tween = create_tween()
+	tween_in.tween_property(message_popup, "modulate:a", 1.0, 0.5)
+
+func _on_proceed_btn_pressed() -> void:
+	var tween_out: Tween = create_tween()
+	tween_out.tween_property(message_popup, "modulate:a", 0.0, 0.5)
+	
+	Signals.show_message_proceed.emit()
