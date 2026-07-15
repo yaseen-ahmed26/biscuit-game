@@ -27,6 +27,10 @@ func _on_option_pressed(btn: Button):
 		"quit":
 			SaveManager.safe_exit()
 
+func _enable_btns():
+	for btn in menu_options.get_children():
+		btn.disabled = false
+
 func _play_intro():
 	animation_player.play("intro_sequence")
 	
