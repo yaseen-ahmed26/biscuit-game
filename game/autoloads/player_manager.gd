@@ -50,6 +50,8 @@ func _get_chance(probability):
 	return randf() < probability
 
 func click_cookie():
+	var attribute: String = "REGULAR"
+	
 	runtime_stats["total_clicks"] += 1
 	milestone_click += 1
 	
@@ -57,17 +59,19 @@ func click_cookie():
 	
 	if _get_chance(runtime_stats["double_chance"]):
 		amount *= 2
+		attribute = "x2 CHANCE"
 		
 	if milestone_click == runtime_stats["bonus_per_milestone"]:
 		milestone_click = 0
 		amount *= runtime_stats["click_milestone_bonus"]
+		attribute = "MILE STONE"
 	
 	runtime_stats["biscuits"] += amount
 	runtime_stats["total_biscuits"] += amount
 	
 	Signals.stats_changed.emit(runtime_stats)
 	
-	return amount
+	return [amount, attribute]
 
 func get_data_to_save():
 	var total_playtime: float = GameManager.get_time_played()

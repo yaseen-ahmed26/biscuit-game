@@ -16,14 +16,18 @@ var current_level: int = 0
 func _get_current_level_data():
 	return upgrade_data.levels[current_level]
 
-func _change_panel_colour(panel_name, colour):
+func _update_panel(panel_name, colour):
 	var panel: Panel = levels.get_node(panel_name)
 	panel.add_theme_stylebox_override("panel", colour)
+	
+	var cost_label = panel.get_node("cost")
+		
+	cost_label.text = "BOUGHT"
 
 func _apply_effect():
 	var level_info: Dictionary = _get_current_level_data()
 	
-	_change_panel_colour(str(current_level), green_panel)
+	_update_panel(str(current_level), green_panel)
 	
 	current_level += 1
 	PlayerManager.apply_effect(level_info.effect)
@@ -31,7 +35,7 @@ func _apply_effect():
 
 func _update_ui():
 	if current_level >= upgrade_data.total_levels:
-		_change_panel_colour(str(current_level - 1), gold_panel)
+		_update_panel(str(current_level - 1), gold_panel)
 		
 		$info_panel/level_name.visible = false
 		$info_panel/level_description.visible = false
@@ -58,6 +62,8 @@ func reset_line():
 	$info_panel/level_cost.visible = true
 
 func set_up_line(data, saved_level):
+	var level_data = data.levels
+	
 	current_level = 0
 	
 	upgrade_data = data
@@ -68,9 +74,12 @@ func set_up_line(data, saved_level):
 	self.set_meta("id", data.id)
 	self.set_meta("group", data.group)
 	self.name = data.id
-
+	
 	for panel in levels.get_children():
 		panel.add_theme_stylebox_override("panel", red_panel)
+		var cost_label = panel.get_node("cost")
+		
+		cost_label.text = "%d Biscuits" % level_data[int(panel.name)].get("cost")
 	
 	for i in range(0, saved_level):
 		_apply_effect()

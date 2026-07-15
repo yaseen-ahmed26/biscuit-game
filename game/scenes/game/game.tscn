@@ -67,11 +67,28 @@ anchor_top = 0.22777778
 anchor_right = -0.020833334
 anchor_bottom = 0.32037038
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 64
-text = "+1"
-horizontal_alignment = 1
+theme_override_font_sizes/normal_font_size = 46
+text = "+1.0"
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="attribute" type="RichTextLabel" parent="effect" unique_id=1198381565]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -39.0
+offset_right = 88.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MILE
+STONE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="menu_btn" type="Button" parent="." unique_id=1521989391]
 layout_mode = 0
