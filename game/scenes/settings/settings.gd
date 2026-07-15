@@ -3,9 +3,8 @@ extends Control
 var on_screen: bool = false
 
 func _ready() -> void:
-	#for btn in $VBoxContainer.get_children():
-		#_set_up_btn(btn)
-	pass
+	for btn in $VBoxContainer.get_children():
+		_set_up_btn(btn)
 
 func _process(_delta: float) -> void:
 	if on_screen:
@@ -15,16 +14,14 @@ func _process(_delta: float) -> void:
 func _set_up_btn(btn: Button):
 	btn.pressed.connect(_on_setting_btn_clicked.bind(btn))
 	
-	if btn.get_meta("action") != SaveManager.action:
+	if btn.get_meta("action") != SaveManager.save_type:
 		btn.visible = false
 	else:
 		btn.visible = true
 		
 func _on_setting_btn_clicked(btn: Button):
 	match btn.name:
-		"reset_data": SaveManager.reset_data("reset_data")
-		"unlink_account": SaveManager.reset_data("unlink_account")
-		"migrate_data": pass
+		"unlink_account": SaveManager.unlink_online_account()
 
 func on_screen_change():
 	on_screen = true

@@ -159,6 +159,19 @@ func setup_game(type_picked: String, data):
 	var method = methods.setup.get(type_picked)
 	method.call(data)
 
+func unlink_online_account():
+	var device_cfg_exists = _check_config_exists(Constants.DEVICE_CFG_FILE_PATH)
+	
+	if device_cfg_exists:
+		var error = DirAccess.remove_absolute(Constants.DEVICE_CFG_FILE_PATH)
+		
+		if error == OK:
+			Signals.change_screen.emit("online_save")
+		else:
+			print("An error occurred deleting device.cfg")
+	else:
+		push_error("Fatal Error: device.cfg does not exist")
+		
 # Main
 func _check_save_type():
 	var device_cfg_exists = _check_config_exists(Constants.DEVICE_CFG_FILE_PATH)
