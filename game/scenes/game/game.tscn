@@ -40,10 +40,10 @@ text = "CLICK ME"
 
 [node name="cookie_counter" type="RichTextLabel" parent="." unique_id=950647285]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 123.0
-offset_right = 368.0
-offset_bottom = 194.0
+offset_left = 33.0
+offset_top = 160.0
+offset_right = 391.0
+offset_bottom = 231.0
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 42
 text = "COOKIES: 0.0"
@@ -92,10 +92,10 @@ vertical_alignment = 1
 
 [node name="menu_btn" type="Button" parent="." unique_id=1521989391]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 368.0
-offset_bottom = 108.0
+offset_left = 31.0
+offset_top = 45.0
+offset_right = 391.0
+offset_bottom = 145.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 46

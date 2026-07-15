@@ -1,6 +1,5 @@
 extends Control
 
-@onready var icon: TextureRect = $icon
 @onready var info_panel: Panel = $info_panel
 @onready var upgrade_name: RichTextLabel = $upgrade_name
 @onready var description: RichTextLabel = $description

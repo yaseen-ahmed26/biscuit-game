@@ -3,7 +3,6 @@
 		"id": "more_per_click",
 		"name": "Per Click",
 		"description": "Get more biscuits per click",
-		"icon": "",
 		"total_levels": 5,
 		"group": "clicker",
 		"levels": [
@@ -63,7 +62,6 @@
 		"id": "larger_multiplier",
 		"name": "Multiply Multiply",
 		"description": "Add a multipler for all the Biscuits you get",
-		"icon": "",
 		"total_levels": 5,
 		"group": "clicker",
 		"levels": [
@@ -123,7 +121,6 @@
 		"id": "double_chance",
 		"name": "Huh, Bonus?",
 		"description": "Increase the chance of getting double eggs!",
-		"icon": "",
 		"total_levels": 5,
 		"group": "clicker",
 		"levels": [
@@ -183,7 +180,6 @@
 		"id": "shrink_click_milestone",
 		"name": "Less Clicks..?",
 		"description": "Every 35th click, Biscuits are doubled, but you can shrink that right down!",
-		"icon": "",
 		"total_levels": 5,
 		"group": "clicker",
 		"levels": [
@@ -243,7 +239,6 @@
 		"id": "shrink_click_milestone",
 		"name": "Click Bonus",
 		"description": "Wanna get more just buy clicking? Well, I mean that IS the point of the game.",
-		"icon": "",
 		"total_levels": 5,
 		"group": "clicker",
 		"levels": [

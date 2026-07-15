@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://chr5pfem4oaqq" path="res://scenes/local_save/local_save.tscn" id="4_6nawd"]
 [ext_resource type="PackedScene" uid="uid://d261tlt78co74" path="res://scenes/game/game.tscn" id="7_5q4yu"]
 [ext_resource type="PackedScene" uid="uid://cqcu3iygflj3k" path="res://scenes/settings/settings.tscn" id="7_wxsgv"]
+[ext_resource type="FontFile" uid="uid://bwbbhi3v2x4v0" path="res://assets/jbmono_extrabold.ttf" id="9_qx04s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bahs"]
 content_margin_left = 0.0
@@ -101,18 +102,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.30014852, 0.6636234, 1)
 
 [node name="inner" type="ColorRect" parent="CanvasLayer/background" unique_id=144167998]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 21.0
-offset_bottom = -21.0
+offset_top = 7.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1.9059777e-05, 0.4037879, 0.8719074, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="main_menu" parent="CanvasLayer" unique_id=1672685815 instance=ExtResource("2_dy358")]
 
@@ -136,8 +136,6 @@ self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -151,6 +149,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_q20ay")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7bahs")
 
 [node name="background" type="Panel" parent="CanvasLayer/message_popup" unique_id=1566591721]
@@ -247,15 +246,18 @@ vertical_alignment = 1
 
 [node name="saving" type="RichTextLabel" parent="CanvasLayer" unique_id=1039942139]
 modulate = Color(1, 1, 1, 0)
-anchors_preset = -1
-anchor_left = 0.011979166
-anchor_top = 0.2
-anchor_right = 0.14479166
-anchor_bottom = 0.25925925
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = 33.0
+offset_right = 192.0
+offset_bottom = 104.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("9_qx04s")
 theme_override_font_sizes/normal_font_size = 46
 text = "SAVING.."
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="CanvasLayer/message_popup/background/proceed_btn" to="." method="_on_proceed_btn_pressed"]
