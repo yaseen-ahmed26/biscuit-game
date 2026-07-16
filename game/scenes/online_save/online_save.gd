@@ -70,7 +70,7 @@ func _get_user_country() -> String:
 	return country_name
 
 func _account_link_success(username: String):
-	welcome.text = "[color=green]Account Linked: Hello, %s!" % username
+	welcome.text = "[color=gold]Account Linked: Hello, %s!" % username
 	
 	var tween_in: Tween = create_tween()
 	tween_in.tween_property(link_success, "modulate:a", 1.0, 0.7)

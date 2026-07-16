@@ -36,12 +36,18 @@ anchor_bottom = 0.5
 offset_left = -901.0
 offset_top = -444.0
 offset_right = 901.0
-offset_bottom = -305.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 46
-text = "Log into your account at <website-url> and navigate to \"Login with Code\" and enter the 7 alphanumerical code below:
+bbcode_enabled = true
+text = "1. Sign into your account at <website url>
+2. Navigate to \"Link Game\"
+3. Enter the code displayed below
+
+[color=red]You should not share this code with anyone else.
+
 "
 horizontal_alignment = 1
 
@@ -56,31 +62,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 34
-text = "Once connected, your save data will be associated with this account. You cannot unlink your data from your account. 
-
-Create an account if you do not have one.
+text = "Once connected, you can login to other devices with this account and continue your save there.
 "
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="code" type="RichTextLabel" parent="." unique_id=741930022]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -805.0
-offset_top = -182.0
-offset_right = 809.0
-offset_bottom = -43.0
+anchors_preset = -1
+anchor_left = 0.080729164
+anchor_top = 0.4925926
+anchor_right = 0.9213542
+anchor_bottom = 0.6212963
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
-text = "-------
-"
+text = "CODE"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="link_success" type="Panel" parent="." unique_id=773163091]
 modulate = Color(1, 1, 1, 0)
@@ -108,6 +109,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "[color=green]Account Linked: Hello, username!"
+text = "[color=gold]Account Linked: Hello, username!"
 horizontal_alignment = 1
 vertical_alignment = 1
