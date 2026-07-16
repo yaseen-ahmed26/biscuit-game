@@ -200,6 +200,7 @@ disabled = true
 text = "NEW GAME"
 
 [node name="settings" type="Button" parent="menu_options" unique_id=1283049707]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 6
