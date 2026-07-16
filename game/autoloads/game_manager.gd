@@ -27,7 +27,7 @@ func get_formatted_time() -> String:
 	return "%02d:%02d:%02d" % [hours, minutes, seconds]
 
 func get_time_played():
-	return time_played
+	return int(time_played)
 
 func _on_data_loaded(data: Dictionary):
 	if data.get("total_playtime"):
