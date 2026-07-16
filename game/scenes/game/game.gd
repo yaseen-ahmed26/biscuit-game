@@ -41,6 +41,9 @@ func _on_clicker_btn_pressed() -> void:
 func _on_stats_changed(stats):
 	cookie_counter.text = "COOKIES: %.1f" % stats.biscuits
 
+func on_screen_change():
+	GameManager.enable_autosave()
+
 func _on_menu_btn_pressed() -> void:
 	SaveManager.save_game()
 	Signals.change_screen.emit("main_menu")

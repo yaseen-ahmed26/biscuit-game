@@ -37,3 +37,6 @@ func _play_intro():
 	_change_start_btn()
 	
 	await animation_player.animation_finished
+
+func on_screen_change():
+	GameManager.disable_autosave()

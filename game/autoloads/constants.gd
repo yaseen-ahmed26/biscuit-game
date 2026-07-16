@@ -1,7 +1,7 @@
 extends Node
 
 # GameManager
-const AUTOSAVE_TIMER: float = 15.0
+const AUTOSAVE_TIMER: float = 20.0
 
 # SaveManager
 const DEVICE_CFG_FILE_PATH: String = "user://device.cfg"

@@ -1,5 +1,7 @@
 extends Node
 
+var start_autosave: bool = false
+
 var autosave_timer: Timer = Timer.new()
 
 var time_played: float = 0.0
@@ -27,14 +29,28 @@ func get_formatted_time() -> String:
 	return "%02d:%02d:%02d" % [hours, minutes, seconds]
 
 func get_time_played():
-	return int(time_played)
+	return time_played
 
 func _on_data_loaded(data: Dictionary):
 	if data.get("total_playtime"):
 		time_played = data.total_playtime
+	
+	if not start_autosave: return
 		
 	set_process(true)
 	autosave_timer.start()
+	
+func enable_autosave():
+	start_autosave = true
+	
+	set_process(true)
+	autosave_timer.start()
+	
+func disable_autosave():
+	start_autosave = false
+	
+	set_process(false)
+	autosave_timer.stop()
 
 func _on_autosave_timer_timeout():
 	SaveManager.save_game()
