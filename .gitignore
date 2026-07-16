@@ -1,5 +1,6 @@
 #My stuff
 secrets.json
+media
 
 # Godot 4.2+ specific ignores
 ~*.dll
