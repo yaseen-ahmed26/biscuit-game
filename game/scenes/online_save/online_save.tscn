@@ -2,6 +2,10 @@
 
 [ext_resource type="Theme" uid="uid://13i4ei1xpjx3" path="res://resources/themes/standard.tres" id="1_82p65"]
 [ext_resource type="Script" uid="uid://c5ibjck0btnpq" path="res://scenes/online_save/online_save.gd" id="2_5b8vt"]
+[ext_resource type="StyleBox" uid="uid://dip8aehtt75n5" path="res://resources/buttons/standard.tres" id="3_o6qh4"]
+[ext_resource type="StyleBox" uid="uid://cjoum2urk02bg" path="res://resources/buttons/pressed.tres" id="4_imtjf"]
+[ext_resource type="StyleBox" uid="uid://dxryx6wa4aksi" path="res://resources/buttons/hover.tres" id="5_a4qrf"]
+[ext_resource type="StyleBox" uid="uid://cbglphv31xjd0" path="res://resources/buttons/disabled.tres" id="6_qtm0f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qrgy"]
 content_margin_left = 0.0
@@ -69,11 +73,15 @@ vertical_alignment = 1
 
 [node name="code" type="RichTextLabel" parent="." unique_id=741930022]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.080729164
-anchor_top = 0.4925926
-anchor_right = 0.9213542
-anchor_bottom = 0.6212963
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -768.0
+offset_top = -59.0
+offset_right = 768.0
+offset_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 6
@@ -81,6 +89,22 @@ theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "CODE"
 horizontal_alignment = 1
+
+[node name="copy_code_btn" type="Button" parent="." unique_id=1845040478]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.37395832
+anchor_top = 0.6027778
+anchor_right = 0.62604165
+anchor_bottom = 0.6574074
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("3_o6qh4")
+theme_override_styles/pressed = ExtResource("4_imtjf")
+theme_override_styles/hover = ExtResource("5_a4qrf")
+theme_override_styles/disabled = ExtResource("6_qtm0f")
+text = "Copy to clipboard"
 metadata/_edit_use_anchors_ = true
 
 [node name="link_success" type="Panel" parent="." unique_id=773163091]
@@ -107,8 +131,11 @@ offset_right = 866.0
 offset_bottom = 316.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "[color=gold]Account Linked: Hello, username!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="copy_code_btn" to="." method="_on_copy_code_btn_pressed"]

@@ -10,6 +10,8 @@ var websocket_url: String = ""
 
 var connected = false
 
+var code: String = ""
+
 func _ready() -> void:
 	set_process(false)
 	websocket_url = GameManager.read_json(Constants.SECRETS_PATH).websocket_url
@@ -70,6 +72,7 @@ func _get_user_country() -> String:
 	return country_name
 
 func _account_link_success(username: String):
+	link_success.mouse_filter = Control.MOUSE_FILTER_STOP
 	welcome.text = "[color=gold]Account Linked: Hello, %s!" % username
 	
 	var tween_in: Tween = create_tween()
@@ -84,6 +87,7 @@ func _on_message_received(message):
 	
 	if parsed.type == "information":
 		$code.text = "[color=green]%s" % parsed.login_code
+		code = parsed.login_code
 	elif parsed.type == "user_data":	
 		SaveManager.setup_game("online", parsed)
 		_account_link_success(parsed.username)
@@ -104,3 +108,10 @@ func _on_connected() -> void:
 
 func on_screen_change():
 	start_websocket()
+	
+func _on_copy_code_btn_pressed() -> void:
+	DisplayServer.clipboard_set(code)
+
+	$copy_code_btn.text = "COPIED"
+	await get_tree().create_timer(2.0).timeout
+	$copy_code_btn.text = "Copy to clipboard"
