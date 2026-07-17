@@ -51,6 +51,12 @@ const MESSAGES: Dictionary = {
 		"primary": "The Save ID associated with your account is invalid. Any progress you make will not be saved.",
 		"secondary": "Navigate to settings then click 'Switch Account' to relink your account.",
 		"btn": "Got it"
+	},
+	"account_link": {
+		"title": "LINK SUCCESS",
+		"primary": "Hello, %s!",
+		"secondary": "Successfully linked your account! You can log into other devices and access your data from there.",
+		"btn": "Start Game"
 	}
 }
 

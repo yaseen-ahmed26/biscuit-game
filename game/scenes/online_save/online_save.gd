@@ -72,13 +72,9 @@ func _get_user_country() -> String:
 	return country_name
 
 func _account_link_success(username: String):
-	link_success.mouse_filter = Control.MOUSE_FILTER_STOP
-	welcome.text = "[color=gold]Account Linked: Hello, %s!" % username
+	Signals.show_message_popup.emit("account_link", [username])
 	
-	var tween_in: Tween = create_tween()
-	tween_in.tween_property(link_success, "modulate:a", 1.0, 0.7)
-	
-	await get_tree().create_timer(4.0).timeout
+	await Signals.show_message_proceed
 		
 	Signals.change_screen.emit("game")
 	

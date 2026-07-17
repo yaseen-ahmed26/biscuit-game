@@ -5,6 +5,11 @@ extends Control
 @onready var saving: RichTextLabel = $CanvasLayer/saving
 @onready var message_popup: Panel = $CanvasLayer/message_popup
 
+@onready var primary: RichTextLabel = $CanvasLayer/message_popup/background/primary
+@onready var secondary: RichTextLabel = $CanvasLayer/message_popup/background/secondary
+@onready var proceed_btn: Button = $CanvasLayer/message_popup/background/proceed_btn
+@onready var message_title: RichTextLabel = $CanvasLayer/message_popup/message_title
+
 var current_screen: Control
 
 func _ready() -> void:
@@ -52,22 +57,30 @@ func _on_data_saved():
 	var tween_out: Tween = create_tween()
 	tween_out.tween_property(saving, "modulate:a", 0.0, 0.5)
 
-func _on_show_message_popup(info_name: String):
+func _on_show_message_popup(info_name: String, details: Array = []):
+	message_popup.mouse_filter = Control.MOUSE_FILTER_STOP
 	var information = Constants.MESSAGES.get(info_name)
 	
 	if not information:
 		return
 	
-	$CanvasLayer/message_popup/background/primary.text = information.primary
-	$CanvasLayer/message_popup/background/secondary.text = information.secondary
-	$CanvasLayer/message_popup/background/proceed_btn.text = information.btn
-	$CanvasLayer/message_popup/message_title.text = information.title
+	primary.text = information.primary
+	secondary.text = information.secondary
+	proceed_btn.text = information.btn
+	message_title.text = information.title
+	
+	if not details.is_empty():
+		primary.text = primary.text % details
 	
 	var tween_in: Tween = create_tween()
 	tween_in.tween_property(message_popup, "modulate:a", 1.0, 0.5)
-
+	
 func _on_proceed_btn_pressed() -> void:
 	var tween_out: Tween = create_tween()
 	tween_out.tween_property(message_popup, "modulate:a", 0.0, 0.5)
+	
+	await tween_out.finished
+	
+	message_popup.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	Signals.show_message_proceed.emit()
