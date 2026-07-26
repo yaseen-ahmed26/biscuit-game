@@ -16,8 +16,8 @@ Note that the future features on the README were not final.
 - [?] Offline Mode
 - [ ] Encrypted .cfg Files
 - [ ] Stats Screen
-- [/] Leaderboards
-- [ ] Request New Code for Online Linking
+- [ ] Leaderboards
+- [✓] Request New Code for Online Linking
 - Upgrade Upgrades
     - [?] Upgrade Dependencies
     - [ ] Big PATH COMPLETE Overlay

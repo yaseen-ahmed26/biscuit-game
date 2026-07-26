@@ -57,6 +57,12 @@ const MESSAGES: Dictionary = {
 		"primary": "Hello, %s!",
 		"secondary": "Successfully linked your account! You can log into other devices and access your data from there.",
 		"btn": "Start Game"
+	},
+	"websocket_expired": {
+		"title": "CODE EXPIRED",
+		"primary": "The code has expired.",
+		"secondary": "Click to continue online account linking.",
+		"btn": "Get New Code"
 	}
 }
 

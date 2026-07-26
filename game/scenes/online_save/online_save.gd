@@ -73,20 +73,33 @@ func _get_user_country() -> String:
 
 func _account_link_success(username: String):
 	Signals.show_message_popup.emit("account_link", [username])
-	
+		
 	await Signals.show_message_proceed
 		
 	Signals.change_screen.emit("game")
 	
+func _websocket_expired():
+	Signals.show_message_popup.emit("websocket_expired")
+	
+	$code.text = "-------"
+	$copy_code_btn.disabled = true
+	
+	await Signals.show_message_proceed
+	
+	$copy_code_btn.disabled = false
+	start_websocket()	
+	
 func _on_message_received(message):
 	var parsed = JSON.parse_string(message)
-	
+
 	if parsed.type == "information":
 		$code.text = "[color=green]%s" % parsed.login_code
 		code = parsed.login_code
 	elif parsed.type == "user_data":	
 		SaveManager.setup_game("online", parsed)
 		_account_link_success(parsed.username)
+	elif parsed.type == "expired":
+		_websocket_expired()
 
 func _send_message(message: String) -> void:
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
