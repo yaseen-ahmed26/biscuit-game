@@ -18,10 +18,11 @@ func _change_start_btn():
 func _on_option_pressed(btn: Button):
 	match btn.name:
 		"play":
-			if SaveManager.save_type != "none":
-				Signals.change_screen.emit("game")
-			else:
-				Signals.change_screen.emit("pick_save")
+			Signals.change_screen.emit("game")
+			# if SaveManager.save_type != "none":
+			# 	Signals.change_screen.emit("game")
+			# else:
+			#	Signals.change_screen.emit("pick_save")
 		"settings":
 			Signals.change_screen.emit("settings")
 		"quit":
@@ -34,7 +35,7 @@ func _enable_btns():
 func _play_intro():
 	animation_player.play("intro_sequence")
 	
-	_change_start_btn()
+	# _change_start_btn()
 	
 	await animation_player.animation_finished
 

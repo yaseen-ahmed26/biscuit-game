@@ -8,11 +8,11 @@ Note that the future features on the README were not final.
 #### Quick Overview
 **[ ]** = To-do | **[✓]** = Complete | **[?]** Under Consideration | **[/]** = In Progress
 
-- [ ] Boosts
+- ~~[ ] Boosts~~
 - [ ] Autoclicker
 - [ ] Passive Generation
-- [?] Prestige
-- [?] Convert Online Data to Local
+- ~~[ ] Prestige~~
+- [/] Convert Online Data to Local
 - [?] Offline Mode
 - [ ] Encrypted .cfg Files
 - [ ] Stats Screen

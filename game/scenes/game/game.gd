@@ -45,5 +45,5 @@ func on_screen_change():
 	GameManager.enable_autosave()
 
 func _on_menu_btn_pressed() -> void:
-	SaveManager.save_game()
+	# SaveManager.save_game()
 	Signals.change_screen.emit("main_menu")

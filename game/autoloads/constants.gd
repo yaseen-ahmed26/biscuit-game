@@ -7,6 +7,7 @@ const AUTOSAVE_TIMER: float = 20.0
 const DEVICE_CFG_FILE_PATH: String = "user://device.cfg"
 const SAVE_CFG_FILE_PATH: String = "user://save.cfg"
 const DEFAULT_STATS_FILE_PATH = "res://data/default_stats.json"
+const ONLINE_SAVE_THRESHOLD: int = 6
 
 # local_save.gd
 const MIN_USERNAME_LENGTH: int = 4
