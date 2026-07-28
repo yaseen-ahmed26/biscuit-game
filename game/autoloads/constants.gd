@@ -36,7 +36,7 @@ const EFFECT_COLOURS: Dictionary = {
 # ui_controller.gd
 const MESSAGES: Dictionary = {
 	"unlink_account": {
-		"title": "WARNING",
+		"title": "[color=yellow]WARNING",
 		"primary": "You are about to unlink this device from your online account. This does not erase your data.",
 		"secondary": "You must connect your account again via an invite code.",
 		"confirm": "Proceed",
@@ -44,24 +44,24 @@ const MESSAGES: Dictionary = {
 		"show_cancel_btn": true
 	},
 	"no_data": {
-		"title": "FATAL ERROR",
+		"title": "[color=red]FATAL ERROR",
 		"primary": "Your save data could not be retrieved from the server. Any progress you make will not be saved.",
 		"secondary": "Your existing data has not been deleted, please try logging on later.",
 		"confirm": "Got it",
 		"show_cancel_btn": false
 	},
 	"invalid_online_id": {
-		"title": "FATAL ERROR",
+		"title": "[color=red]FATAL ERROR",
 		"primary": "The Save ID associated with your account is invalid. Any progress you make will not be saved.",
 		"secondary": "Navigate to settings then click 'Switch Account' to relink your account.",
 		"confirm": "Got it",
 		"show_cancel_btn": false
 	},
 	"account_link": {
-		"title": "LINK SUCCESS",
-		"primary": "Hello, %s!",
+		"title": "[color=green]LINK SUCCESS",
+		"primary": "[color=green]Hello, %s!",
 		"secondary": "Successfully linked your account! You can log into other devices and access your data from there.",
-		"confirm": "Start Game",
+		"confirm": "[color=gold]Start Game",
 		"show_cancel_btn": false
 	},
 	"websocket_expired": {
@@ -75,7 +75,7 @@ const MESSAGES: Dictionary = {
 	"confirm_sign_in": {
 		"title": "NOTICE",
 		"primary": "Connect your Biscuit account and save your game data online. Access your save from any device.",
-		"secondary": "Your existing local data will be lost when you connect your online account. This cannot be recovered.",
+		"secondary": "[color=red]Your existing local data will be lost when you connect your online account. This cannot be recovered.",
 		"confirm": "Continue",
 		"cancel": "Cancel",
 		"show_cancel_btn": true
