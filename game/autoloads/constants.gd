@@ -69,8 +69,14 @@ const MESSAGES: Dictionary = {
 		"title": "WARNING",
 		"primary": "Connect your Biscuit account and save your game data online. Access your save from any device.",
 		"secondary": "Your existing local data will be lost when you connect your online account. This cannot be recovered.",
-		"btn": "Connect my account"
-	}
+		"btn": "Continue"
+	},
+	"redirect_to_website": {
+		"title": "WARNING",
+		"primary": "Redirect to website?",
+		"secondary": "You can view your game stats, edit your account details on the website.",
+		"btn": "Go to website"
+	},
 }
 
 # Global

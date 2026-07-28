@@ -41,14 +41,17 @@ func on_screen_change():
 	GameManager.disable_autosave()
 
 func _on_sign_in_pressed() -> void:
-	Signals.show_message_popup.emit("confirm_sign_in")
-	
-	await Signals.show_message_proceed
-	
 	if not SaveManager.account_connected:
+		Signals.show_message_popup.emit("confirm_sign_in")
+		
+		await Signals.show_message_proceed
+		
 		Signals.change_screen.emit("online_save")
 	else:
-		# TEMPORARY URL
+		Signals.show_message_popup.emit("redirect_to_website")
+		
+		await Signals.show_message_proceed
+		
 		OS.shell_open(Constants.WEBSITE_URL)
 
 func _on_account_connected(username):
