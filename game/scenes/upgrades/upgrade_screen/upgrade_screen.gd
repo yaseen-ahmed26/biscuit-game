@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _set_upgrade_lines():
 	var total_upgrades = upgrade_data.size()
-	var saved_upgrades = PlayerManager.runtime_stats.bought_upgrades
+	var saved_upgrades = PlayerManager.runtime_stats.owned_upgrades
 	
 	for i in total_upgrades:
 		var upgrade = upgrade_data[i]

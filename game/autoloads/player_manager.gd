@@ -12,8 +12,11 @@ var runtime_stats: Dictionary = {
 	"biscuits": 0.0,
 	"total_biscuits": 0.0,
 	"total_clicks": 0,
-	"bought_upgrades": {},
-	"completed_achievements": []
+	"owned_upgrades": {},
+	"owned_achievements": [],
+	"prestige": 0,
+	"crumbs": 0,
+	"owned_unlocks": []
 }
 
 var milestone_click = 0
@@ -44,7 +47,7 @@ func can_purchase(target: float) -> bool:
 	return false
 
 func bought_upgrade(upgrade_id: String, level: int):
-	runtime_stats["bought_upgrades"][upgrade_id] = level
+	runtime_stats["owned_upgrades"][upgrade_id] = level
 
 func _get_chance(probability):
 	return randf() < probability

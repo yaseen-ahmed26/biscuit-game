@@ -64,8 +64,16 @@ const MESSAGES: Dictionary = {
 		"primary": "The code has expired.",
 		"secondary": "Click to continue online account linking.",
 		"btn": "Get New Code"
+	},
+	"confirm_sign_in": {
+		"title": "WARNING",
+		"primary": "Connect your Biscuit account and save your game data online. Access your save from any device.",
+		"secondary": "Your existing local data will be lost when you connect your online account. This cannot be recovered.",
+		"btn": "Connect my account"
 	}
 }
 
 # Global
 const SECRETS_PATH: String = "res://secrets.json"
+# TEMPORARY, website not yet deployed
+const WEBSITE_URL: String = "https://github.com/yaseen-ahmed26/biscuit-game"

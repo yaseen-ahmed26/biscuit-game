@@ -1,8 +1,5 @@
 extends Control
 
-@onready var link_success: Panel = $link_success
-@onready var welcome: RichTextLabel = $link_success/welcome
-
 var client: HTTPClient = HTTPClient.new()
 var socket: WebSocketPeer = WebSocketPeer.new()
 
@@ -13,6 +10,8 @@ var connected = false
 var code: String = ""
 
 func _ready() -> void:
+	# $welcome.text = $welcome.text % Constants.WEBSITE_URL
+	
 	set_process(false)
 	websocket_url = GameManager.read_json(Constants.SECRETS_PATH).websocket_url
 
@@ -96,7 +95,7 @@ func _on_message_received(message):
 		$code.text = "[color=green]%s" % parsed.login_code
 		code = parsed.login_code
 	elif parsed.type == "user_data":	
-		SaveManager.setup_game("online", parsed)
+		SaveManager.connect_account(parsed)
 		_account_link_success(parsed.username)
 	elif parsed.type == "expired":
 		_websocket_expired()

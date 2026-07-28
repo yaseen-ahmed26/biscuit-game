@@ -8,6 +8,8 @@ func _ready() -> void:
 	
 	for btn in menu_options.get_children():
 		btn.pressed.connect(_on_option_pressed.bind(btn))
+		
+	Signals.account_connected.connect(_on_account_connected)
 
 func _change_start_btn():	
 	if SaveManager.save_type == "online" or SaveManager.save_type == "local":
@@ -31,6 +33,8 @@ func _on_option_pressed(btn: Button):
 func _enable_btns():
 	for btn in menu_options.get_children():
 		btn.disabled = false
+		
+	$sign_in.disabled = false
 
 func _play_intro():
 	animation_player.play("intro_sequence")
@@ -41,3 +45,17 @@ func _play_intro():
 
 func on_screen_change():
 	GameManager.disable_autosave()
+
+func _on_sign_in_pressed() -> void:
+	Signals.show_message_popup.emit("confirm_sign_in")
+	
+	await Signals.show_message_proceed
+	
+	if not SaveManager._connected_account():
+		Signals.change_screen.emit("online_save")
+	else:
+		# TEMPORARY URL
+		OS.shell_open(Constants.WEBSITE_URL)
+
+func _on_account_connected(username):
+	$sign_in.text = username

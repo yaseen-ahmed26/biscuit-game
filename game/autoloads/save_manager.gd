@@ -27,6 +27,8 @@ func _check_cfg_exists(file_path):
 func _setup_device_cfg():
 	device_config.set_value("DeviceConfig", "connected_account", false)
 	device_config.set_value("DeviceConfig", "save_id", "none")
+	device_config.set_value("DeviceConfig", "player_username", "johndoe")
+
 
 	device_config.save(Constants.DEVICE_CFG_FILE_PATH)
 	
@@ -65,6 +67,18 @@ func _connected_account():
 		return false
 		
 	return device_config.get_value("DeviceConfig", "connected_account", false)
+
+func connect_account(user_data: Dictionary):
+	device_config.set_value("DeviceConfig", "connected_account", true)
+	device_config.set_value("DeviceConfig", "save_id", user_data.save_id)
+	device_config.set_value("DeviceConfig", "player_username", user_data.username)
+
+	device_config.save(Constants.DEVICE_CFG_FILE_PATH)
+	
+	_save_local(user_data.save)
+	
+	Signals.account_connected.emit(user_data.username)
+	PlayerManager.set_runtime_stats(user_data.save)
 
 # Local
 func _load_local():

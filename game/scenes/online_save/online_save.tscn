@@ -46,7 +46,7 @@ grow_vertical = 2
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 46
 bbcode_enabled = true
-text = "1. Sign into your account at <website url>
+text = "1. Sign into your account at %s
 2. Navigate to \"Link Game\"
 3. Enter the code displayed below
 
@@ -87,7 +87,7 @@ grow_vertical = 2
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
-text = "CODE"
+text = "-------"
 horizontal_alignment = 1
 
 [node name="copy_code_btn" type="Button" parent="." unique_id=1845040478]

@@ -2,6 +2,9 @@
 	"biscuits": 0.0,
 	"total_biscuits": 0.0,
 	"total_clicks": 0,
-	"bought_upgrades": {},
-	"completed_achievements": []
+	"owned_upgrades": {},
+	"owned_achievements": [],
+	"prestige": 0,
+	"crumbs": 0,
+	"owned_unlocks": []
 }
