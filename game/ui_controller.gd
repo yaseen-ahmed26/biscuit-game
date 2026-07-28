@@ -7,17 +7,21 @@ extends Control
 
 @onready var primary: RichTextLabel = $CanvasLayer/message_popup/background/primary
 @onready var secondary: RichTextLabel = $CanvasLayer/message_popup/background/secondary
-@onready var proceed_btn: Button = $CanvasLayer/message_popup/background/proceed_btn
 @onready var message_title: RichTextLabel = $CanvasLayer/message_popup/message_title
+@onready var confirm_btn: Button = $CanvasLayer/message_popup/background/option_btns/confirm
+@onready var cancel_btn: Button = $CanvasLayer/message_popup/background/option_btns/cancel
 
 var current_screen: Control
 
 func _ready() -> void:
 	current_screen = $CanvasLayer/main_menu
 	
+	confirm_btn.pressed.connect(_on_option_btn_pressed.bind(confirm_btn))
+	cancel_btn.pressed.connect(_on_option_btn_pressed.bind(cancel_btn))
+	
 	Signals.change_screen.connect(_on_change_screen)
 	Signals.data_saved.connect(_on_data_saved)
-	Signals.show_message_popup.connect(_on_show_message_popup)
+	Signals.show_modal.connect(_on_show_message_popup)
 	
 func _on_change_screen(to_show: String):
 	fade.mouse_filter = MouseFilter.MOUSE_FILTER_STOP
@@ -66,21 +70,30 @@ func _on_show_message_popup(info_name: String, details: Array = []):
 	
 	primary.text = information.primary
 	secondary.text = information.secondary
-	proceed_btn.text = information.btn
+	confirm_btn.text = information.confirm
 	message_title.text = information.title
 	
 	if not details.is_empty():
 		primary.text = primary.text % details
+		
+	if not information.get("show_cancel_btn"):
+		cancel_btn.visible = false
+	else:
+		cancel_btn.text = information.cancel
+		cancel_btn.visible = true
 	
 	var tween_in: Tween = create_tween()
 	tween_in.tween_property(message_popup, "modulate:a", 1.0, 0.5)
 	
-func _on_proceed_btn_pressed() -> void:
+func _on_option_btn_pressed(option_btn: Button) -> void:
+	if option_btn.name == "confirm":
+		Signals.modal_response.emit(true)
+	else:
+		Signals.modal_response.emit(false)
+	
 	var tween_out: Tween = create_tween()
 	tween_out.tween_property(message_popup, "modulate:a", 0.0, 0.5)
 	
 	await tween_out.finished
 	
 	message_popup.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
-	Signals.show_message_proceed.emit()

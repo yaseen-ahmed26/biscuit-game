@@ -206,25 +206,37 @@ text = "This action cannot be done"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="proceed_btn" type="Button" parent="CanvasLayer/message_popup/background" unique_id=1216300693]
+[node name="option_btns" type="HBoxContainer" parent="CanvasLayer/message_popup/background" unique_id=904393284]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = 185.0
-offset_right = 208.0
-offset_bottom = 241.0
+anchors_preset = -1
+anchor_left = 0.22924902
+anchor_top = 0.81164384
+anchor_right = 0.770751
+anchor_bottom = 0.9212329
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+theme_override_constants/separation = 32
+metadata/_edit_use_anchors_ = true
+
+[node name="confirm" type="Button" parent="CanvasLayer/message_popup/background/option_btns" unique_id=803530808]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxFlat_qx04s")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_p4p2l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4yodi")
 text = "Got it"
+
+[node name="cancel" type="Button" parent="CanvasLayer/message_popup/background/option_btns" unique_id=1005622346]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_qx04s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p4p2l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4yodi")
+text = "Cancel"
 
 [node name="message_title" type="RichTextLabel" parent="CanvasLayer/message_popup" unique_id=200269595]
 layout_mode = 1
@@ -260,4 +272,5 @@ text = "SAVING.."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="CanvasLayer/message_popup/background/proceed_btn" to="." method="_on_proceed_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/message_popup/background/option_btns/confirm" to="." method="_on_proceed_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/message_popup/background/option_btns/cancel" to="." method="_on_proceed_btn_pressed"]

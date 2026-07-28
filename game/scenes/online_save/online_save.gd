@@ -71,22 +71,26 @@ func _get_user_country() -> String:
 	return country_name
 
 func _account_link_success(username: String):
-	Signals.show_message_popup.emit("account_link", [username])
+	Signals.show_modal.emit("account_link", [username])
 		
-	await Signals.show_message_proceed
-		
-	Signals.change_screen.emit("game")
+	var confirmation = await Signals.modal_response
+	
+	if confirmation:
+		Signals.change_screen.emit("game")
 	
 func _websocket_expired():
-	Signals.show_message_popup.emit("websocket_expired")
+	Signals.show_modal.emit("websocket_expired")
 	
 	$code.text = "-------"
 	$copy_code_btn.disabled = true
 	
-	await Signals.show_message_proceed
+	var confirmation = await Signals.modal_response
 	
-	$copy_code_btn.disabled = false
-	start_websocket()	
+	if confirmation:
+		$copy_code_btn.disabled = false
+		start_websocket()
+	else:
+		Signals.change_screen.emit("main_menu")
 	
 func _on_message_received(message):
 	var parsed = JSON.parse_string(message)

@@ -39,43 +39,54 @@ const MESSAGES: Dictionary = {
 		"title": "WARNING",
 		"primary": "You are about to unlink this device from your online account. This does not erase your data.",
 		"secondary": "You must connect your account again via an invite code.",
-		"btn": "Proceed"
+		"confirm": "Proceed",
+		"cancel": "Cancel",
+		"show_cancel_btn": true
 	},
 	"no_data": {
 		"title": "FATAL ERROR",
 		"primary": "Your save data could not be retrieved from the server. Any progress you make will not be saved.",
 		"secondary": "Your existing data has not been deleted, please try logging on later.",
-		"btn": "Got it"
+		"confirm": "Got it",
+		"show_cancel_btn": false
 	},
 	"invalid_online_id": {
 		"title": "FATAL ERROR",
 		"primary": "The Save ID associated with your account is invalid. Any progress you make will not be saved.",
 		"secondary": "Navigate to settings then click 'Switch Account' to relink your account.",
-		"btn": "Got it"
+		"confirm": "Got it",
+		"show_cancel_btn": false
 	},
 	"account_link": {
 		"title": "LINK SUCCESS",
 		"primary": "Hello, %s!",
 		"secondary": "Successfully linked your account! You can log into other devices and access your data from there.",
-		"btn": "Start Game"
+		"confirm": "Start Game",
+		"show_cancel_btn": false
 	},
 	"websocket_expired": {
 		"title": "CODE EXPIRED",
 		"primary": "The code has expired.",
-		"secondary": "Click to continue online account linking.",
-		"btn": "Get New Code"
+		"secondary": "Click to continue online account linking, or cancel the link.",
+		"confirm": "Continue",
+		"cancel": "End",
+		"show_cancel_btn": true
 	},
 	"confirm_sign_in": {
-		"title": "WARNING",
+		"title": "NOTICE",
 		"primary": "Connect your Biscuit account and save your game data online. Access your save from any device.",
 		"secondary": "Your existing local data will be lost when you connect your online account. This cannot be recovered.",
-		"btn": "Continue"
+		"confirm": "Continue",
+		"cancel": "Cancel",
+		"show_cancel_btn": true
 	},
 	"redirect_to_website": {
-		"title": "WARNING",
+		"title": "EXTERNAL",
 		"primary": "Redirect to website?",
 		"secondary": "You can view your game stats, edit your account details on the website.",
-		"btn": "Go to website"
+		"btn": "Go to website",
+		"cancel": "Cancel",
+		"show_cancel_btn": true
 	},
 }
 

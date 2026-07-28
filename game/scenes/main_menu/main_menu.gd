@@ -42,17 +42,19 @@ func on_screen_change():
 
 func _on_sign_in_pressed() -> void:
 	if not SaveManager.account_connected:
-		Signals.show_message_popup.emit("confirm_sign_in")
+		Signals.show_modal.emit("confirm_sign_in")
 		
-		await Signals.show_message_proceed
+		var confirmation = await Signals.modal_response
 		
-		Signals.change_screen.emit("online_save")
+		if confirmation:
+			Signals.change_screen.emit("online_save")
 	else:
-		Signals.show_message_popup.emit("redirect_to_website")
+		Signals.show_modal.emit("redirect_to_website")
 		
-		await Signals.show_message_proceed
+		var confirmation = await Signals.modal_response
 		
-		OS.shell_open(Constants.WEBSITE_URL)
+		if confirmation:
+			OS.shell_open(Constants.WEBSITE_URL)
 
 func _on_account_connected(username):
 	$sign_in.text = username
