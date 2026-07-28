@@ -11,20 +11,14 @@ func _ready() -> void:
 		
 	Signals.account_connected.connect(_on_account_connected)
 
-func _change_start_btn():	
-	if SaveManager.save_type == "online" or SaveManager.save_type == "local":
-		$menu_options/play.text = "PLAY"
-	else:
-		$menu_options/play.text = "NEW GAME"
+func _check_account_connected():	
+	if SaveManager.account_connected:
+		$sign_in.text = SaveManager.get_player_username()
 	
 func _on_option_pressed(btn: Button):
 	match btn.name:
 		"play":
 			Signals.change_screen.emit("game")
-			# if SaveManager.save_type != "none":
-			# 	Signals.change_screen.emit("game")
-			# else:
-			#	Signals.change_screen.emit("pick_save")
 		"settings":
 			Signals.change_screen.emit("settings")
 		"quit":
@@ -39,7 +33,7 @@ func _enable_btns():
 func _play_intro():
 	animation_player.play("intro_sequence")
 	
-	# _change_start_btn()
+	_check_account_connected()
 	
 	await animation_player.animation_finished
 
@@ -51,7 +45,7 @@ func _on_sign_in_pressed() -> void:
 	
 	await Signals.show_message_proceed
 	
-	if not SaveManager._connected_account():
+	if not SaveManager.account_connected:
 		Signals.change_screen.emit("online_save")
 	else:
 		# TEMPORARY URL

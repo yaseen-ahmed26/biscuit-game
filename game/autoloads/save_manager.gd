@@ -7,6 +7,8 @@ var default_stats: Dictionary
 
 var autosave_count: int = 0
 
+var account_connected: bool = false
+
 # Godot
 func _ready() -> void:
 	default_stats = GameManager.read_json(Constants.DEFAULT_STATS_FILE_PATH)
@@ -59,7 +61,7 @@ func _save_online(data_to_save):
 	var save_id = device_config.get_value("DeviceConfig", "save_id")
 	var _success = await RequestManager.send_put_request(save_id, data_to_save)
 	
-func _connected_account():
+func has_connected_account():
 	var error = device_config.load(Constants.DEVICE_CFG_FILE_PATH)
 
 	if error != OK:
@@ -77,8 +79,13 @@ func connect_account(user_data: Dictionary):
 	
 	_save_local(user_data.save)
 	
+	account_connected = true
+	
 	Signals.account_connected.emit(user_data.username)
 	PlayerManager.set_runtime_stats(user_data.save)
+
+func get_player_username():
+	return device_config.get_value("DeviceConfig", "player_username")
 
 # Local
 func _load_local():
@@ -120,7 +127,8 @@ func _load_game():
 	if not _check_cfg_exists(Constants.SAVE_CFG_FILE_PATH):
 		_setup_save_cfg()
 		
-	if _connected_account():
+	if has_connected_account():
+		account_connected = true
 		var online_details = await _load_online()
 		
 		if online_details[0]:
@@ -141,13 +149,13 @@ func save_game(quit: bool = false):
 	_save_local(data_to_save)
 	
 	if autosave_count == Constants.ONLINE_SAVE_THRESHOLD:
-		if _connected_account():
+		if account_connected:
 			await _save_online(data_to_save)
 			
 		autosave_count = 0
 	
 	if quit and autosave_count != Constants.ONLINE_SAVE_THRESHOLD:
-		if _connected_account():
+		if account_connected:
 			await _save_online(data_to_save)
 
 # Contingency
