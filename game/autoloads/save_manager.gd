@@ -77,12 +77,19 @@ func connect_account(user_data: Dictionary):
 
 	device_config.save(Constants.DEVICE_CFG_FILE_PATH)
 	
+	_save_local(default_stats)
 	_save_local(user_data.save)
 	
 	account_connected = true
 	
+	var load_details = _load_local()
+	
+	if load_details[0]:
+		PlayerManager.set_runtime_stats(load_details[1])
+	else:
+		PlayerManager.set_runtime_stats(default_stats)
+	
 	Signals.account_connected.emit(user_data.username)
-	PlayerManager.set_runtime_stats(user_data.save)
 
 func get_player_username():
 	return device_config.get_value("DeviceConfig", "player_username")
