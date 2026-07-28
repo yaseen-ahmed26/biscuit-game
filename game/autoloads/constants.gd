@@ -61,7 +61,7 @@ const MESSAGES: Dictionary = {
 		"title": "[color=green]LINK SUCCESS",
 		"primary": "[color=green]Hello, %s!",
 		"secondary": "Successfully linked your account! You can log into other devices and access your data from there.",
-		"confirm": "[color=gold]Start Game",
+		"confirm": "Start Game",
 		"show_cancel_btn": false
 	},
 	"websocket_expired": {
@@ -84,10 +84,17 @@ const MESSAGES: Dictionary = {
 		"title": "EXTERNAL",
 		"primary": "Redirect to website?",
 		"secondary": "You can view your game stats, edit your account details on the website.",
-		"btn": "Go to website",
+		"confirm": "Go to website",
 		"cancel": "Cancel",
 		"show_cancel_btn": true
 	},
+	"welcome_bonus": {
+		"title": "[color=gold]BONUS",
+		"primary": "Thank you for linking your account!",
+		"secondary": "As a bonus, you start off with 100 biscuits and a +10% autoclicker rate. We hope you enjoy playing!",
+		"confirm": "Can I start clicking now?",
+		"show_cancel_btn": false
+	}
 }
 
 # Global

@@ -5,9 +5,12 @@ extends Control
 
 @onready var effect: RichTextLabel = $effect
 
+var runtine_account_connected = false
+
 func _ready() -> void:
 	_on_stats_changed(PlayerManager.runtime_stats)
 	Signals.stats_changed.connect(_on_stats_changed)
+	Signals.account_connected.connect(_on_account_connected)
 
 func _on_clicker_btn_pressed() -> void:
 	var details = PlayerManager.click_cookie()
@@ -39,11 +42,19 @@ func _on_clicker_btn_pressed() -> void:
 	clone.queue_free()
 	
 func _on_stats_changed(stats):
-	cookie_counter.text = "COOKIES: %.1f" % stats.biscuits
+	cookie_counter.text = "BISCUITS: %.1f" % stats.biscuits
 
 func on_screen_change():
 	GameManager.enable_autosave()
+	
+	if runtine_account_connected:
+		await get_tree().create_timer(0.6).timeout
+		runtine_account_connected = false
+		Signals.show_modal.emit("welcome_bonus")	
 
 func _on_menu_btn_pressed() -> void:
-	# SaveManager.save_game()
 	Signals.change_screen.emit("main_menu")
+
+func _on_account_connected(_player_username):
+	_on_stats_changed(PlayerManager.runtime_stats)
+	runtine_account_connected = true
