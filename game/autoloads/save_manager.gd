@@ -13,6 +13,7 @@ var account_connected: bool = false
 func _ready() -> void:
 	default_stats = GameManager.read_json(Constants.DEFAULT_STATS_FILE_PATH)
 	
+	_load_cfg_files()
 	_load_game()
 	
 func _notification(what: int) -> void:
@@ -25,12 +26,22 @@ func _check_cfg_exists(file_path):
 		return true
 		
 	return false
-	
+
+func _load_cfg_files():
+	var device_error = device_config.load(Constants.DEVICE_CFG_FILE_PATH)
+
+	if device_error != OK:
+		print("An error occurred whilst laoding 'device.cfg': ", device_error)
+
+	var save_error = device_config.load(Constants.SAVE_CFG_FILE_PATH)
+
+	if save_error != OK:
+		print("An error occurred whilst laoding 'save.cfg': ", save_error)
+
 func _setup_device_cfg():
 	device_config.set_value("DeviceConfig", "connected_account", false)
 	device_config.set_value("DeviceConfig", "save_id", "none")
 	device_config.set_value("DeviceConfig", "player_username", "johndoe")
-
 
 	device_config.save(Constants.DEVICE_CFG_FILE_PATH)
 	
@@ -62,12 +73,6 @@ func _save_online(data_to_save):
 	var _success = await RequestManager.send_put_request(save_id, data_to_save)
 	
 func has_connected_account():
-	var error = device_config.load(Constants.DEVICE_CFG_FILE_PATH)
-
-	if error != OK:
-		print("An error occurred whilst laoding 'device.cfg': ", error)
-		return false
-		
 	return device_config.get_value("DeviceConfig", "connected_account", false)
 
 func connect_account(user_data: Dictionary):
@@ -95,13 +100,7 @@ func get_player_username():
 	return device_config.get_value("DeviceConfig", "player_username")
 
 # Local
-func _load_local():
-	var error = save_config.load(Constants.SAVE_CFG_FILE_PATH)
-
-	if error != OK:
-		print("An error occurred whilst laoding 'save.cfg': ", error)
-		return [false]
-		
+func _load_local():		
 	var save_data: Array = save_config.get_section_keys("LocalSave")
 	
 	if not save_data:
