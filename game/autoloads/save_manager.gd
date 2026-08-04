@@ -149,6 +149,7 @@ func _load_game():
 	PlayerManager.set_runtime_stats(saved_data)
 	
 func save_game(quit: bool = false):
+	var online_autosave: bool = false
 	autosave_count += 1
 	
 	var data_to_save = PlayerManager.get_data_to_save()
@@ -157,10 +158,11 @@ func save_game(quit: bool = false):
 	if autosave_count == Constants.ONLINE_SAVE_THRESHOLD:
 		if account_connected:
 			await _save_online(data_to_save)
+			online_autosave = true
 			
 		autosave_count = 0
 	
-	if quit and autosave_count != Constants.ONLINE_SAVE_THRESHOLD:
+	if quit and not online_autosave:
 		if account_connected:
 			await _save_online(data_to_save)
 

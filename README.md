@@ -6,6 +6,10 @@ This is the game part of the 'Biscuit' Project.
 [![Demo of the game](media/demo_thumbnail.png)](https://github.com/user-attachments/assets/590778dd-71f4-4143-9a33-5120fad38811)
 *(Click to watch)*
 
+Development Notes: [NOTES.md](docs/NOTES.md). Challenges solved, decisions made.
+
+Roadmap Notes: [ROADMAP.md](docs/ROADMAP.md). The current v2 plan.
+
 ---
 
 ### Repositories
@@ -14,34 +18,32 @@ This is the game part of the 'Biscuit' Project.
 ---
 
 ### Tech
-- **Engine**: Godot 4.7 (GDScript)
+- **Engine**: Godot 4.7
 
-- **Websockets**: When linking an online account, Godot establishes a Websocket connection with the Server to listen out for when the user inputs the code on the website.
+- **Language**: GDScript
 
 ---
 
 ### About
-This is a cookie clicker style game: click the button, gain biscuits, and purchase upgrades.
+This is a cookie clicker style game featuring:
 
-Features:
-- **Local Saves**: Save your data locally, on your device.
+- **Online Saves**: Connect your account and save future progress to the server, allowing for cross device progression.
 
-- **Online Saves**: Save your data to an online account stored on the server. Access your data from anywhere.
+- **Offline Mode**: Play the game without an internet connection, with your data stored locally.
 
-[![Demo of Local Saves](media/local_thumbnail.png)](https://github.com/user-attachments/assets/8d47ad9d-33a5-4ed1-b065-4aa0dbda9c71) | [![Demo of Online Saves](media/online_thumbnail.png)](https://github.com/user-attachments/assets/69ed9b30-c85c-4cf6-a3ea-9e1900fde0bb)
-:---: | :---:
-*(Click to watch Local Save Demo)* | *(Click to watch Online Save Demo)*
+- **Upgrades**: Gain more biscuits quicker.
+
+[![Demo of the game](media/demo_thumbnail.png)](https://github.com/user-attachments/assets/8f5f93ac-48ac-4834-8ba9-c177125e4a45)
+*(Click to watch)*
 
 ---
 
 ### Future Features
 
-Technical:
-- **Converting Online data to Local**: Allow players to convert online progress to a local save file.
-- **Offline mode**: Save local progress when the user has no internet and merge with online once reconnected.
-
 Gameplay:
-- **Passive Generation**: Upgradeable buildings.
-- **Prestige**: Reset your data back to the start in exchange for a currency.
-- **Autoclicker**: Make the game click for you.
-- **Boosts**: Short time boosts.
+- **Passive Generation**
+- **Prestige**
+- **Autoclicker**
+- **Boosts**
+
+More information can be found in roadmap notes.
