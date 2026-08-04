@@ -37,8 +37,17 @@ func _process(_delta: float) -> void:
 		
 		print("websocket closed: (%d) %s" % [code, reason])
 		set_process(false)
+		connected = false
 
-func start_websocket():	
+func start_websocket():
+	var current_state = socket.get_ready_state()
+	
+	if current_state != WebSocketPeer.STATE_CLOSED:
+		socket.close()
+		connected = false
+	
+	await get_tree().create_timer(1.0).timeout
+	
 	var os_name: String = OS.get_name()
 	var country_name: String = _get_user_country()
 
