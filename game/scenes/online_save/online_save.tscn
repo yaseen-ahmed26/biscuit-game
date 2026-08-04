@@ -46,8 +46,8 @@ grow_vertical = 2
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 46
 bbcode_enabled = true
-text = "1. Sign into your account at %s
-2. Navigate to \"Link Game\"
+text = "1. Sign into your account on the [color=green][url=https://yaseen-ahmed26.github.io/biscuit-website/]website[/url]
+[color=white]2. Navigate to \"Link Game\"
 3. Enter the code displayed below
 
 [color=red]You should not share this code with anyone else.
@@ -138,4 +138,5 @@ text = "[color=gold]Account Linked: Hello, username!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="meta_clicked" from="welcome" to="." method="_on_welcome_meta_clicked"]
 [connection signal="pressed" from="copy_code_btn" to="." method="_on_copy_code_btn_pressed"]

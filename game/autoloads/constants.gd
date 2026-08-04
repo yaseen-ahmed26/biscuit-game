@@ -99,5 +99,4 @@ const MESSAGES: Dictionary = {
 
 # Global
 const SECRETS_PATH: String = "res://secrets.json"
-# TEMPORARY, website not yet deployed
-const WEBSITE_URL: String = "https://github.com/yaseen-ahmed26/biscuit-game"
+const WEBSITE_URL: String = "https://yaseen-ahmed26.github.io/biscuit-website/"

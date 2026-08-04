@@ -9,9 +9,7 @@ var connected = false
 
 var code: String = ""
 
-func _ready() -> void:
-	# $welcome.text = $welcome.text % Constants.WEBSITE_URL
-	
+func _ready() -> void:	
 	set_process(false)
 	websocket_url = GameManager.read_json(Constants.SECRETS_PATH).websocket_url
 
@@ -40,7 +38,7 @@ func _process(_delta: float) -> void:
 		print("websocket closed: (%d) %s" % [code, reason])
 		set_process(false)
 
-func start_websocket():
+func start_websocket():	
 	var os_name: String = OS.get_name()
 	var country_name: String = _get_user_country()
 
@@ -127,3 +125,7 @@ func _on_copy_code_btn_pressed() -> void:
 	$copy_code_btn.text = "COPIED"
 	await get_tree().create_timer(2.0).timeout
 	$copy_code_btn.text = "Copy to clipboard"
+
+
+func _on_welcome_meta_clicked(meta: Variant) -> void:
+	OS.shell_open(Constants.WEBSITE_URL)
