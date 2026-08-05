@@ -1,14 +1,25 @@
 # Biscuit Game
 This is the game part of the 'Biscuit' Project.
 
-*Note all demo videos have been compressed.
+> **Live Demo**: [Download from Itch.io](https://corporalchicken.itch.io/biscuit)
+>
+> Available for **Windows** and **Linux** as a `.zip` download.
+> Note that an account isn't required to play, but is needed for online saves.
+
+---
+
+### Preview
+Note all demo videos have been compressed.
 
 [![Demo of the game](media/demo_thumbnail.png)](https://github.com/user-attachments/assets/590778dd-71f4-4143-9a33-5120fad38811)
 *(Click to watch)*
 
-Development Notes: [NOTES.md](docs/NOTES.md). Challenges solved, decisions made.
+---
 
-Roadmap Notes: [ROADMAP.md](docs/ROADMAP.md). The current v2 plan.
+### Docs
+- **Development Notes**: [NOTES.md](docs/NOTES.md). Challenges solved, decisions made.
+
+- **Roadmap Notes**: [ROADMAP.md](docs/ROADMAP.md). The current v2 plan.
 
 ---
 
