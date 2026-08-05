@@ -136,5 +136,5 @@ func _on_copy_code_btn_pressed() -> void:
 	$copy_code_btn.text = "Copy to clipboard"
 
 
-func _on_welcome_meta_clicked(meta: Variant) -> void:
+func _on_welcome_meta_clicked(_meta: Variant) -> void:
 	OS.shell_open(Constants.WEBSITE_URL)

@@ -33,7 +33,7 @@ func _load_cfg_files():
 	if device_error != OK:
 		print("An error occurred whilst laoding 'device.cfg': ", device_error)
 
-	var save_error = device_config.load(Constants.SAVE_CFG_FILE_PATH)
+	var save_error = save_config.load(Constants.SAVE_CFG_FILE_PATH)
 
 	if save_error != OK:
 		print("An error occurred whilst laoding 'save.cfg': ", save_error)
@@ -122,6 +122,9 @@ func _save_local(data_to_save):
 		save_config.set_value("LocalSave", k, v)
 		
 	save_config.save(Constants.SAVE_CFG_FILE_PATH)
+	
+	print("Saving to:")
+	print(ProjectSettings.globalize_path(Constants.SAVE_CFG_FILE_PATH))
 
 # Main
 func _load_game():
