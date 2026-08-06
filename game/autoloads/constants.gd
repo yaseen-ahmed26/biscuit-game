@@ -50,6 +50,11 @@ const UPGRADES_FILE_PATH = "res://data/upgrades.json"
 const OPEN_POSITION: Vector2 = Vector2(4.0, 459.0)
 const HIDDEN_POSITION: Vector2 = Vector2(4.0, 1086.0)
 
+# boosts_screen.gd
+const BOOSTS_FILE_PATH = "res://data/boosts.json"
+const BOOSTS_OPEN_POSITION: Vector2 = Vector2(751.0, 712.0)
+const BOOSTS_HIDDEN_POSITION: Vector2 = Vector2(751.0, 1086.0)
+
 # game.gd
 const EFFECT_LINGER_TIME: float = 1.0
 const EFFECT_FADE_TIME: float = 0.5

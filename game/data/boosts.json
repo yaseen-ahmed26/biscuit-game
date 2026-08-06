@@ -1,0 +1,18 @@
+[
+	{
+		"id": "click_boost",
+		"name": "Click",
+		"description": "Get +2 clicks per click",
+		"change": "+2 Clicks | Lasts 5s",
+		"group": "clicker",
+		"stats": {
+			"duration": 5.0,
+			"cooldown": 35.0,
+			"effect": {
+				"type": "add",
+				"target": "per_click",
+				"value": 2
+			},
+		}
+	}
+]

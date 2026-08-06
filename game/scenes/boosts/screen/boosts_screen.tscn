@@ -54,9 +54,9 @@ metadata/_edit_use_anchors_ = true
 visible = false
 layout_mode = 1
 anchor_left = 0.0
-anchor_top = 0.0504886
+anchor_top = 0.10586319
 anchor_right = 0.0
-anchor_bottom = 0.0504886
+anchor_bottom = 0.10586319
 offset_left = 229.60657
 offset_top = 15.0
 offset_right = 519.60657
@@ -68,9 +68,9 @@ grow_vertical = 1
 visible = false
 layout_mode = 1
 anchor_left = 0.0
-anchor_top = 0.0504886
+anchor_top = 0.10586319
 anchor_right = 0.0
-anchor_bottom = 0.0504886
+anchor_bottom = 0.10586319
 offset_left = -88.39343
 offset_top = 375.0
 offset_right = 201.60657
@@ -82,9 +82,9 @@ grow_vertical = 1
 visible = false
 layout_mode = 1
 anchor_left = 0.0
-anchor_top = 0.0504886
+anchor_top = 0.10586319
 anchor_right = 0.0
-anchor_bottom = 0.0504886
+anchor_bottom = 0.10586319
 offset_left = 229.60657
 offset_top = 375.0
 offset_right = 519.60657
@@ -110,7 +110,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_3u812")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2b6pm")
 text = "BOOSTS"
 
-[node name="lines" type="Control" parent="." unique_id=1188011022]
+[node name="holder" type="Control" parent="." unique_id=1188011022]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -118,12 +118,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" parent="lines" unique_id=390378219 instance=ExtResource("2_4puej")]
+[node name="0" parent="holder" unique_id=390378219 instance=ExtResource("2_4puej")]
 layout_mode = 1
 anchor_left = 0.0
-anchor_top = 0.0504886
+anchor_top = 0.10586319
 anchor_right = 0.0
-anchor_bottom = 0.0504886
+anchor_bottom = 0.10586319
 offset_left = -88.39343
 offset_top = 15.0
 offset_right = 201.60657

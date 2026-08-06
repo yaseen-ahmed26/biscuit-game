@@ -10,30 +10,10 @@ extends Control
 enum State{ACTIVE, COOLDOWN, READY, DISABLED}
 var state: State
 
-# TEST
-const TEST_BOOST = {
-	"id": "click_boost",
-	"name": "Click",
-	"description": "Get +5 clicks per click",
-	"change": "+5 Clicks | Lasts 5s",
-	"group": "clicker",
-	"stats": {
-		"duration": 5.0,
-		"cooldown": 15.0,
-		"effect": {
-			"type": "add",
-			"target": "per_click",
-			"value": 5
-		},
-	}
-}
-
 var boost_data: Dictionary
 
 func _ready() -> void:
 	state = State.DISABLED
-	
-	set_up_line(TEST_BOOST)
 	
 	timer.timeout.connect(_on_timer_ended)
 
@@ -49,8 +29,9 @@ func _process(_delta: float) -> void:
 		time_label.text = "%s: [color=white]%s" % [mode, time_string]
 
 func set_up_line(data):
+	print(data)
 	boost_data = data
-	
+
 	boost_name.text = data.get("name")
 	boost_description.text = data.get("description")
 	stat_increase.text = data.get("change")

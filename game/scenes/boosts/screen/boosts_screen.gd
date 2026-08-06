@@ -1,11 +1,36 @@
 extends Control
 
+@onready var holder: Control = $holder
 
-# Called when the node enters the scene tree for the first time.
+var open: bool = false
+var boost_data: Array
+
 func _ready() -> void:
-	pass # Replace with function body.
+	boost_data = GameManager.read_json(Constants.BOOSTS_FILE_PATH)
+	
+	_set_boost_lines()
 
+func _set_boost_lines():
+	var total_boosts = boost_data.size()
+	
+	for i in total_boosts:
+		var boost = boost_data[i]
+		var line = holder.get_node_or_null(str(i))
+		
+		if line:
+			line.call("set_up_line", boost)
+		else:
+			push_warning("Not enough upgrade lines")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_open_btn_pressed() -> void:
+	var use_position: Vector2
+	
+	if open:
+		use_position = Constants.BOOSTS_HIDDEN_POSITION
+		open = false
+	else:
+		use_position = Constants.BOOSTS_OPEN_POSITION
+		open = true
+	
+	var tween: Tween = create_tween()
+	tween.tween_property(self, "position", use_position, 0.3)
