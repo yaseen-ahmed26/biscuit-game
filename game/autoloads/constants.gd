@@ -9,6 +9,33 @@ const SAVE_CFG_FILE_PATH: String = "user://save.cfg"
 const DEFAULT_STATS_FILE_PATH = "res://data/default_stats.json"
 const ONLINE_SAVE_THRESHOLD: int = 6
 
+# PlayerManager
+const DEFAULT_RUNTIME_STATS: Dictionary = {
+	"per_click": 1.0,
+	"multiplier": 1.0,
+	"double_chance": 0.0000001,
+	"bonus_per_milestone": 35,
+	"click_milestone_bonus": 2.0,
+	"active_boosts": [],
+	
+	"biscuits": 0.0,
+	"total_biscuits": 0.0,
+	"total_clicks": 0,
+	"owned_upgrades": {},
+	"owned_achievements": [],
+	"prestige": 0,
+	"crumbs": 0,
+	"owned_unlocks": []
+}
+const FILTER_STATS_FOR_SAVE: Array = [
+	"per_click",
+	"multiplier",
+	"double_chance",
+	"bonus_per_milestone",
+	"click_milestone_bonus",
+	"active_boosts"
+]
+
 # local_save.gd
 const MIN_USERNAME_LENGTH: int = 4
 const MAX_USERNAME_LENGTH: int = 24

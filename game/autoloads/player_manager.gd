@@ -1,36 +1,28 @@
 extends Node
 
-var stats_loaded = false
+var runtime_stats: Dictionary = {}
 
-var runtime_stats: Dictionary = {
-	"per_click": 1.0,
-	"multiplier": 1.0,
-	"double_chance": 0.0000001,
-	"bonus_per_milestone": 35,
-	"click_milestone_bonus": 2.0,
-	
-	"biscuits": 0.0,
-	"total_biscuits": 0.0,
-	"total_clicks": 0,
-	"owned_upgrades": {},
-	"owned_achievements": [],
-	"prestige": 0,
-	"crumbs": 0,
-	"owned_unlocks": []
-}
-
-var active_boosts: Array = []
+var stats_loaded: bool = false
 var original_values: Dictionary = {}
+var milestone_click: int = 0
 
-var milestone_click = 0
-
+# Godot
 func _ready() -> void:
-	pass
-	
-func apply_effect(effect: Dictionary):	
-	if not runtime_stats[effect.target]:
+	runtime_stats = Constants.DEFAULT_RUNTIME_STATS.duplicate(true)
+
+# Helpers
+func _get_chance(probability):
+	return randf() < probability
+
+func has_enough(target: float) -> bool:
+	if runtime_stats.get("biscuits") >= target:
+		return true
+		
+	return false
+
+func apply_stat_change(effect: Dictionary):
+	if not runtime_stats.has(effect.target):
 		print("'%s' stat not found" % effect.target)
-		Signals.stats_changed.emit(runtime_stats)
 		return
 	
 	match effect.type:
@@ -38,45 +30,27 @@ func apply_effect(effect: Dictionary):
 		"subtract": runtime_stats[effect.target] -= effect.value
 		"multiply": runtime_stats[effect.target] *= effect.value
 		"divide": runtime_stats[effect.target] /= effect.value
-		"set": runtime_stats[effect.target] = effect.value
+		"set": runtime_stats[effect.target] = effect.value 
 		
 	Signals.stats_changed.emit(runtime_stats)
 
-func can_purchase(target: float) -> bool:
-	if runtime_stats.get("biscuits") >= target:
-		runtime_stats["biscuits"] -= target
-		return true
-		
-	return false
+# Economy
+func increase_biscuits(amount):
+	runtime_stats["biscuits"] += amount
+	runtime_stats["total_biscuits"] += amount
+	
+	Signals.stats_changed.emit(runtime_stats)
+	
+func decrease_biscuits(amount):
+	runtime_stats["biscuits"] -= amount
+	
+	Signals.stats_changed.emit(runtime_stats)
+	
+func calculate_passive_biscuits():
+	pass
 
-func bought_upgrade(upgrade_id: String, level: int):
-	runtime_stats["owned_upgrades"][upgrade_id] = level
-
-func apply_boost(effect, id):
-	if active_boosts.has(id): return
-	
-	active_boosts.append(id)
-	original_values[effect.target] = runtime_stats.get(effect.target)
-	
-	apply_effect(effect)
-	
-func boost_ended(effect, id: String):
-	if not active_boosts.has(id): return
-	
-	active_boosts.erase(id)
-	
-	apply_effect({
-		"type": "set",
-		"target": effect.get("target"),
-		"value": original_values.get(effect.target)
-	})
-	
-	original_values.erase(id)
-
-func _get_chance(probability):
-	return randf() < probability
-
-func click_cookie():
+# Unlockables
+func cookie_click():
 	var attribute: String = "REGULAR"
 	
 	runtime_stats["total_clicks"] += 1
@@ -93,28 +67,45 @@ func click_cookie():
 		amount *= runtime_stats["click_milestone_bonus"]
 		attribute = "MILE STONE"
 	
-	runtime_stats["biscuits"] += amount
-	runtime_stats["total_biscuits"] += amount
-	
-	Signals.stats_changed.emit(runtime_stats)
+	increase_biscuits(amount)
 	
 	return [amount, attribute]
 
+func upgrade_bought(upgrade_id: String, level: int):
+	runtime_stats["owned_upgrades"][upgrade_id] = level
+
+func apply_boost(effect, id):
+	var active_boosts = runtime_stats.get("active_boosts")
+	
+	if active_boosts.has(id): return
+	
+	active_boosts.append(id)
+	original_values[effect.target] = runtime_stats.get(effect.target)
+	
+	apply_stat_change(effect)
+	
+func boost_ended(effect, id: String):
+	var active_boosts = runtime_stats.get("active_boosts")
+	
+	if not active_boosts.has(id): return
+	
+	active_boosts.erase(id)
+	
+	apply_stat_change({
+		"type": "set",
+		"target": effect.get("target"),
+		"value": original_values.get(effect.target)
+	})
+	
+	original_values.erase(id)
+	
+# Data
 func get_data_to_save():
 	var total_playtime: float = GameManager.get_time_played()
-	
-	var filter_stats = [
-		"per_click",
-		"multiplier",
-		"double_chance",
-		"bonus_per_milestone",
-		"click_milestone_bonus",
-	]
-	
 	var stats_to_save = {}
 	
 	for k in runtime_stats:
-		if k in filter_stats:
+		if k in Constants.FILTER_STATS_FOR_SAVE:
 			continue
 		
 		var v = runtime_stats[k]

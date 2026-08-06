@@ -13,7 +13,7 @@ func _ready() -> void:
 	Signals.account_connected.connect(_on_account_connected)
 
 func _on_clicker_btn_pressed() -> void:
-	var details = PlayerManager.click_cookie()
+	var details = PlayerManager.cookie_click()
 	var effect_colour = Constants.EFFECT_COLOURS.get(details[1])
 	var clone: RichTextLabel = effect.duplicate()
 	
