@@ -87,6 +87,30 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kgfau")
 
+[node name="time" type="Panel" parent="." unique_id=54497731]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -53.0
+offset_bottom = -289.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kgfau")
+
+[node name="label" type="RichTextLabel" parent="time" unique_id=1644706647]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[color=red]COOLDOWN: [color=white]00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="activate_btn" type="Button" parent="." unique_id=1873484981]
 layout_mode = 1
 anchors_preset = 8
@@ -107,7 +131,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_mniou")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_attbr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3o2xh")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_m7gqw")
-text = "ACTIVATE"
+disabled = true
+text = "Not Ready"
 
 [node name="seperator2" type="ColorRect" parent="." unique_id=606649088]
 layout_mode = 1
@@ -164,3 +189,8 @@ text = "+50 clicks"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="." unique_id=333683674]
+one_shot = true
+
+[connection signal="pressed" from="activate_btn" to="." method="_on_activate_btn_pressed"]

@@ -1,7 +1,98 @@
 extends Control
 
-func _ready() -> void:
-	pass
+@onready var stat_increase: RichTextLabel = $stat_increase
+@onready var boost_description: RichTextLabel = $boost_description
+@onready var boost_name: RichTextLabel = $boost_name
+@onready var timer: Timer = $Timer
+@onready var time_label: RichTextLabel = $time/label
+@onready var activate_btn: Button = $activate_btn
 
-func _process(delta: float) -> void:
-	pass
+enum State{ACTIVE, COOLDOWN, READY, DISABLED}
+var state: State
+
+# TEST
+const TEST_BOOST = {
+	"id": "click_boost",
+	"name": "Click",
+	"description": "Get +5 clicks per click",
+	"change": "+5 Clicks | Lasts 5s",
+	"group": "clicker",
+	"stats": {
+		"duration": 5.0,
+		"cooldown": 15.0,
+		"effect": {
+			"type": "add",
+			"target": "per_click",
+			"value": 5
+		},
+	}
+}
+
+var boost_data: Dictionary
+
+func _ready() -> void:
+	state = State.DISABLED
+	
+	set_up_line(TEST_BOOST)
+	
+	timer.timeout.connect(_on_timer_ended)
+
+func _process(_delta: float) -> void:
+	if not timer.is_stopped():
+		var total_secs: int = int(timer.time_left)
+		var minutes: int = (total_secs % 3600) / 60
+		var seconds: int = total_secs % 60
+		
+		var time_string = "%02d:%02d" % [minutes, seconds]
+		var mode = "[color=red]COOLDOWN" if state == 1 else "[color=green]ACTIVE"
+		
+		time_label.text = "%s: [color=white]%s" % [mode, time_string]
+
+func set_up_line(data):
+	boost_data = data
+	
+	boost_name.text = data.get("name")
+	boost_description.text = data.get("description")
+	stat_increase.text = data.get("change")
+			
+	self.set_meta("id", data.id)
+	self.set_meta("group", data.group)
+	self.name = data.id
+	
+	state = State.COOLDOWN
+	
+	timer.wait_time = data.get("stats").get("cooldown")
+	
+	timer.start()
+
+func _start_timer():
+	match state:
+		0: # active
+			timer.start(boost_data.get("stats").get("duration"))
+			activate_btn.disabled = true
+			activate_btn.text = "Active"
+			
+			# call playermanager.apply_boost(boost_data.get("stats").get("effect"))
+		1: # cooldown
+			timer.start(boost_data.get("stats").get("cooldown"))
+			activate_btn.text = "Not Ready"
+			activate_btn.disabled = true
+
+func _on_timer_ended():
+	match state:
+		0: # active
+			state = State.COOLDOWN
+			_start_timer()
+			
+			# call playermanager.boost_ended(boost_data.get("stats").get("effect"))
+		1: # cooldown
+			state = State.READY
+			time_label.text = "[color=gold]READY"
+			activate_btn.text = "Boost"
+			activate_btn.disabled = false
+
+func _on_activate_btn_pressed() -> void:
+	if not state == 2: return
+	
+	state = State.ACTIVE
+	_start_timer()
