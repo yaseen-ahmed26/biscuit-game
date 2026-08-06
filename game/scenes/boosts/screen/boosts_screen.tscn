@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://cfthyvllfb1oh"]
+
+[ext_resource type="Script" uid="uid://bed6u7gnghr50" path="res://scenes/boosts/screen/boosts_screen.gd" id="1_ju7co"]
+[ext_resource type="PackedScene" uid="uid://dfl2u58whwfik" path="res://scenes/boosts/line/boost_line.tscn" id="2_4puej"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxav6"]
+bg_color = Color(0.17280158, 0.51884127, 0.9999768, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u812"]
+bg_color = Color(0, 0.37793618, 0.8222012, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2b6pm"]
+bg_color = Color(0, 0.37793618, 0.8222012, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="boosts_screen" type="Control" unique_id=706605568]
+layout_mode = 3
+anchor_left = 0.3828125
+anchor_top = 0.21574074
+anchor_right = 0.6171875
+anchor_bottom = 0.78425926
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ju7co")
+metadata/_edit_use_anchors_ = true
+
+[node name="2" parent="." unique_id=483829419 instance=ExtResource("2_4puej")]
+visible = false
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.0504886
+anchor_right = 0.0
+anchor_bottom = 0.0504886
+offset_left = 229.60657
+offset_top = 15.0
+offset_right = 519.60657
+offset_bottom = 295.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="3" parent="." unique_id=1955874727 instance=ExtResource("2_4puej")]
+visible = false
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.0504886
+anchor_right = 0.0
+anchor_bottom = 0.0504886
+offset_left = -88.39343
+offset_top = 375.0
+offset_right = 201.60657
+offset_bottom = 655.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="4" parent="." unique_id=2028217362 instance=ExtResource("2_4puej")]
+visible = false
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.0504886
+anchor_right = 0.0
+anchor_bottom = 0.0504886
+offset_left = 229.60657
+offset_top = 375.0
+offset_right = 519.60657
+offset_bottom = 655.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="open_btn" type="Button" parent="." unique_id=350847119]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -242.0
+offset_top = -74.0
+offset_right = 242.0
+offset_bottom = -30.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_sxav6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3u812")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2b6pm")
+text = "BOOSTS"
+
+[node name="lines" type="Control" parent="." unique_id=1188011022]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" parent="lines" unique_id=390378219 instance=ExtResource("2_4puej")]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.0504886
+anchor_right = 0.0
+anchor_bottom = 0.0504886
+offset_left = -88.39343
+offset_top = 15.0
+offset_right = 201.60657
+offset_bottom = 295.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="open_btn" to="." method="_on_open_btn_pressed"]
