@@ -72,7 +72,7 @@ func _start_timer():
 			activate_btn.disabled = true
 			activate_btn.text = "Active"
 			
-			# call playermanager.apply_boost(boost_data.get("stats").get("effect"))
+			PlayerManager.apply_boost(boost_data.get("stats").get("effect"), boost_data.get("id"))
 		1: # cooldown
 			timer.start(boost_data.get("stats").get("cooldown"))
 			activate_btn.text = "Not Ready"
@@ -84,7 +84,7 @@ func _on_timer_ended():
 			state = State.COOLDOWN
 			_start_timer()
 			
-			# call playermanager.boost_ended(boost_data.get("stats").get("effect"))
+			PlayerManager.boost_ended(boost_data.get("stats").get("effect"),boost_data.get("id"))
 		1: # cooldown
 			state = State.READY
 			time_label.text = "[color=gold]READY"

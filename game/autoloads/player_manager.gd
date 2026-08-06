@@ -19,6 +19,9 @@ var runtime_stats: Dictionary = {
 	"owned_unlocks": []
 }
 
+var active_boosts: Array = []
+var original_values: Dictionary = {}
+
 var milestone_click = 0
 
 func _ready() -> void:
@@ -48,6 +51,27 @@ func can_purchase(target: float) -> bool:
 
 func bought_upgrade(upgrade_id: String, level: int):
 	runtime_stats["owned_upgrades"][upgrade_id] = level
+
+func apply_boost(effect, id):
+	if active_boosts.has(id): return
+	
+	active_boosts.append(id)
+	original_values[effect.target] = runtime_stats.get(effect.target)
+	
+	apply_effect(effect)
+	
+func boost_ended(effect, id: String):
+	if not active_boosts.has(id): return
+	
+	active_boosts.erase(id)
+	
+	apply_effect({
+		"type": "set",
+		"target": effect.get("target"),
+		"value": original_values.get(effect.target)
+	})
+	
+	original_values.erase(id)
 
 func _get_chance(probability):
 	return randf() < probability
