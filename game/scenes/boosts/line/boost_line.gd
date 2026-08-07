@@ -29,7 +29,6 @@ func _process(_delta: float) -> void:
 		time_label.text = "%s: [color=white]%s" % [mode, time_string]
 
 func set_up_line(data):
-	print(data)
 	boost_data = data
 
 	boost_name.text = data.get("name")
@@ -53,6 +52,8 @@ func _start_timer():
 			activate_btn.disabled = true
 			activate_btn.text = "Active"
 			
+			owner.call("update_counter", false)
+			
 			PlayerManager.apply_boost(boost_data.get("stats").get("effect"), boost_data.get("id"))
 		1: # cooldown
 			timer.start(boost_data.get("stats").get("cooldown"))
@@ -71,9 +72,12 @@ func _on_timer_ended():
 			time_label.text = "[color=gold]READY"
 			activate_btn.text = "Boost"
 			activate_btn.disabled = false
+			
+			owner.call("update_counter", true)
 
 func _on_activate_btn_pressed() -> void:
 	if not state == 2: return
 	
 	state = State.ACTIVE
 	_start_timer()
+	
