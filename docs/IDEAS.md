@@ -14,18 +14,6 @@ Note that the future features on the README were not final.
 
 Ideas
 
-[ ] **Boosts**
-- There will be 2 scenes: 'boost_line.tscn' and 'boost_screen.tscn'.
-- Functionally similar to upgrades.
-    - 'boost_screen.tscn' handles the main screen where boosts live, filter logic etc.
-    - 'boost_line.tscn' handles the loop and state. It will have 1 timer with 2 states: cooldown and active.
-- Some initial boosts can be double per click and 50% crit chance.
-- Boost meta (descriptiom, id, name etc), stats (length, cooldown etc) will live in a 'boosts.json' like upgrades do.
-- Boosts can have upgrades.
-    - They can either live in the upgrades screen or under the boosts itself. The former may be better UX as upgrades are in 1 place and not scattered.
-- PlayerManager should have an _apply_boost() with a match statement. Loop through an array to apply.
-    - There'll be an array called active_boosts for any boost currently active (thought only 1 should be available at once, this is future planning in case I want to change to multiple at once).
-
 [ ] **Autoclicker**
 [ ] **Passive Generation**
 - Both can be implemented similarly.
@@ -86,3 +74,15 @@ Completed
     - A timestamp is likely needed to be saved on the server.
     - Server shouldn't accept old saves.
     - Timestamps or version numbers.
+
+[✓] **Boosts**
+- There will be 2 scenes: 'boost_line.tscn' and 'boost_screen.tscn'.
+- Functionally similar to upgrades.
+    - 'boost_screen.tscn' handles the main screen where boosts live, filter logic etc.
+    - 'boost_line.tscn' handles the loop and state. It will have 1 timer with 2 states: cooldown and active.
+- Some initial boosts can be double per click and 50% crit chance.
+- Boost meta (descriptiom, id, name etc), stats (length, cooldown etc) will live in a 'boosts.json' like upgrades do.
+- Boosts can have upgrades.
+    - They can either live in the upgrades screen or under the boosts itself. The former may be better UX as upgrades are in 1 place and not scattered.
+- PlayerManager should have an _apply_boost() with a match statement. Loop through an array to apply.
+    - There'll be an array called active_boosts for any boost currently active (thought only 1 should be available at once, this is future planning in case I want to change to multiple at once).
