@@ -17,9 +17,9 @@ Note all demo videos have been compressed.
 ---
 
 ### Docs
-- **Development Notes**: [NOTES.md](docs/NOTES.md). Challenges solved, decisions made.
+- **Development**: [NOTES.md](docs/NOTES.md). Challenges solved, decisions made.
 
-- **Roadmap Notes**: [ROADMAP.md](docs/ROADMAP.md). The current v2 plan.
+- **Ideas**: [IDEAS.md](docs/IDEAS.md). A collection of ideas that may be added.
 
 ---
 
@@ -57,4 +57,4 @@ Gameplay:
 - **Autoclicker**
 - **Boosts**
 
-More information can be found in roadmap notes.
+More information can be found in the ideas file.

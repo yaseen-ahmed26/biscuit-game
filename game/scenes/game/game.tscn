@@ -7,6 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://dxryx6wa4aksi" path="res://resources/buttons/hover.tres" id="5_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://c8yjgafcgkyls" path="res://scenes/upgrades/upgrade_screen/upgrade_screen.tscn" id="6_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://cfthyvllfb1oh" path="res://scenes/boosts/screen/boosts_screen.tscn" id="7_bdhmt"]
+[ext_resource type="Script" uid="uid://cbn7rganq3b6" path="res://scenes/game/scripts/hover_spots.gd" id="8_87uf6"]
 
 [node name="game" type="Control" unique_id=806070042]
 layout_mode = 3
@@ -25,15 +26,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -268.0
-offset_top = -78.0
-offset_right = 268.0
-offset_bottom = 78.0
+offset_left = -160.0
+offset_top = -36.0
+offset_right = 160.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("3_lfrn8")
 theme_override_styles/pressed = ExtResource("4_5i0tg")
 theme_override_styles/hover = ExtResource("5_bdhmt")
@@ -115,6 +116,69 @@ theme_override_styles/normal = ExtResource("3_lfrn8")
 theme_override_styles/pressed = ExtResource("4_5i0tg")
 theme_override_styles/hover = ExtResource("5_bdhmt")
 text = "Main Menu"
+
+[node name="hover_spots" type="Control" parent="." unique_id=1169579934]
+layout_mode = 1
+anchor_left = 0.25416666
+anchor_top = 0.24537037
+anchor_right = 0.74583334
+anchor_bottom = 0.7546296
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_87uf6")
+metadata/_edit_use_anchors_ = true
+
+[node name="multiplier_four" type="Button" parent="hover_spots" unique_id=1534071357]
+layout_mode = 1
+offset_left = 148.0
+offset_top = 288.0
+offset_right = 218.0
+offset_bottom = 358.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("3_lfrn8")
+theme_override_styles/pressed = ExtResource("4_5i0tg")
+theme_override_styles/hover = ExtResource("5_bdhmt")
+text = "x4"
+
+[node name="multiplier_three" type="Button" parent="hover_spots" unique_id=1530120174]
+layout_mode = 1
+offset_left = 592.0
+offset_right = 682.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = ExtResource("3_lfrn8")
+theme_override_styles/pressed = ExtResource("4_5i0tg")
+theme_override_styles/hover = ExtResource("5_bdhmt")
+text = "x3"
+
+[node name="multiplier_two" type="Button" parent="hover_spots" unique_id=537955139]
+layout_mode = 1
+offset_right = 110.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("3_lfrn8")
+theme_override_styles/pressed = ExtResource("4_5i0tg")
+theme_override_styles/hover = ExtResource("5_bdhmt")
+text = "x2"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1298236929]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -261.0
+offset_top = 784.0
+offset_right = 215.0
+offset_bottom = 888.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 60
+text = "TEST"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="clicker_btn" to="." method="_on_clicker_btn_pressed"]
 [connection signal="pressed" from="menu_btn" to="." method="_on_menu_btn_pressed"]

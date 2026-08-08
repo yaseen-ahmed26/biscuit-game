@@ -39,6 +39,23 @@ Ideas
 - Will likely need to change 'upgrade_line.tscn' to have a locked/unlocked state.
 - First dependency can be the player must max the autoclicker upgrade to unlock passive generation uggrade.
 
+[ ] **Random Hover Spots**
+- Random spots that appear around the main clicker.
+- They provide multiples, such as 2x, 3x, 4x etc.
+- PlayerManager needs a rewrite.
+    - Need to specifiy the place who's asking PlayerManager to add biscuits so we can add extra paramters.
+    - Also would need to standardize a formula for adding biscuits. Something like ((((per_click * click_multiplier) + milestone_bonus) * global_multipler) * double_chance) * source_multipler
+
+[ ] **Micro Tasks**
+- Essentially a list of small tasks to do to earn rewards, like a new currency or unlocks.
+- Doubles as a tutorial and 'what to do' list.
+- Would have a tasks.json, or Godot resources can be used for additonal helpers.
+- Would require a new manager, TaskManager.
+
+[ ] **Switch to Godot Resources than JSON**
+- For boosts.json, upgrades.json, Resources are the Godot way of doing and better to prevent errors. 
+- Can also attach helpers which can be removed from upgrade_line.tscn so it only handles the UI updates.
+
 ---
 
 QoL
