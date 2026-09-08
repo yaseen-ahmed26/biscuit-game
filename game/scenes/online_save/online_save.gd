@@ -18,24 +18,24 @@ func _process(_delta: float) -> void:
 	
 	var state = socket.get_ready_state()
 	
-	if state == WebSocketPeer.STATE_OPEN:
+	while socket.get_available_packet_count() > 0:
+		var packet = socket.get_packet()
+		var message = packet.get_string_from_utf8()
 		
+		_on_message_received(message)
+	
+	if state == WebSocketPeer.STATE_OPEN:
 		if not connected:
 			_on_connected()
 			connected = true
-
-		while socket.get_available_packet_count() > 0:
-			var packet = socket.get_packet()
-			var message = packet.get_string_from_utf8()
 			
-			_on_message_received(message)
 	elif state == WebSocketPeer.STATE_CLOSING:
 		pass
 	elif state == WebSocketPeer.STATE_CLOSED:
-		var code = socket.get_close_code()
+		var close_code = socket.get_close_code()
 		var reason = socket.get_close_reason()
 		
-		print("websocket closed: (%d) %s" % [code, reason])
+		print("websocket closed: (%d) %s" % [close_code, reason])
 		set_process(false)
 		connected = false
 
@@ -108,6 +108,8 @@ func _on_message_received(message):
 	elif parsed.type == "user_data":	
 		SaveManager.connect_account(parsed)
 		_account_link_success(parsed.username)
+		
+		socket.close()
 	elif parsed.type == "expired":
 		_websocket_expired()
 
