@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 	var state = socket.get_ready_state()
 	
 	if state == WebSocketPeer.STATE_OPEN:
-
+		
 		if not connected:
 			_on_connected()
 			connected = true

@@ -60,17 +60,25 @@ func _load_online():
 		print("No save ID found")
 		return [false]
 		
-	var saved_stats = await RequestManager.get_saved_data(save_id)
+	var details = await RequestManager.send_request(
+		save_id,
+		HTTPClient.METHOD_GET
+	)
 	
-	if not saved_stats:
+	if not details[0]:
 		print("An error occurred getting save data")
 		return [false]
 	
-	return [true, saved_stats]
+	return [true, details[1]]
 	
 func _save_online(data_to_save):
-	var save_id = device_config.get_value("DeviceConfig", "save_id")
-	var _success = await RequestManager.send_put_request(save_id, data_to_save)
+	var save_id = device_config.get_value("DeviceConfig", "save_id")	
+	var _details = await RequestManager.send_request(
+		save_id,
+		HTTPClient.METHOD_PUT,
+		JSON.stringify(data_to_save),
+		["Content-Type: application/json"]
+	)
 	
 func has_connected_account():
 	return device_config.get_value("DeviceConfig", "connected_account", false)

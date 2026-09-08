@@ -25,6 +25,11 @@ PlayerManager="*uid://baalclsuo4y42"
 RequestManager="*uid://b8cbshx1as8g0"
 SaveManager="*uid://c2gdadhem7y8g"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=1920
