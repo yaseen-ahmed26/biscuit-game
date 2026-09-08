@@ -4,6 +4,8 @@ Challenges solved, designs notes etc.
 Note that some fixed challenges are missing and will be added later.
 
 ### 1. Fixed Issues and Challenges
+1. Edge case and account linking bug
+- A mix of an edge case and logic bug. The websocket was only polling if it successfully opened. Linux Pop!_OS suspends Godot completely if using different workspaces so it wasn't checking immediately once the socket was requested. 
 
 ---
 ### 2. Notes
