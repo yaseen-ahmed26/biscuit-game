@@ -94,3 +94,7 @@ func _on_buy_btn_pressed():
 		_update_ui()
 	else:
 		print("not enough")
+
+func can_purchase():
+	var level_info: Dictionary = _get_current_level_data()
+	return PlayerManager.has_enough(level_info.cost)

@@ -1,6 +1,7 @@
 extends Control
 
 @onready var holder: VBoxContainer = $ScrollContainer/holder
+@onready var counter: RichTextLabel = $counter
 
 var open: bool = false
 
@@ -10,6 +11,7 @@ func _ready() -> void:
 	upgrade_data = GameManager.read_json(Constants.UPGRADES_FILE_PATH)
 	
 	Signals.data_loaded.connect(_on_data_loaded)
+	Signals.stats_changed.connect(_on_stats_changed)
 	
 	if PlayerManager.stats_loaded:
 		_set_upgrade_lines()
@@ -44,5 +46,15 @@ func _on_open_btn_pressed() -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(self, "position", use_position, 0.3)
 
-func _on_data_loaded(_data):
+func _on_data_loaded(data):
 	_set_upgrade_lines()
+	_on_stats_changed(data)
+
+func _on_stats_changed(_data):
+	var can_afford: int = 0
+	
+	for line in holder.get_children():
+		if line.can_purchase():
+			can_afford += 1
+	
+	counter.text = "%d/5" % can_afford
