@@ -1,15 +1,14 @@
 extends Control
 
+@export var upgrade_pool: Array[UpgradeBase]
+
 @onready var holder: VBoxContainer = $ScrollContainer/holder
 @onready var counter: RichTextLabel = $counter
 
+var upgrade_line: PackedScene = preload("res://scenes/upgrades/upgrade_line/upgrade_line.tscn")
 var open: bool = false
 
-var upgrade_data: Array
-
-func _ready() -> void:
-	upgrade_data = GameManager.read_json(Constants.UPGRADES_FILE_PATH)
-	
+func _ready() -> void:	
 	Signals.data_loaded.connect(_on_data_loaded)
 	Signals.stats_changed.connect(_on_stats_changed)
 	
@@ -17,21 +16,19 @@ func _ready() -> void:
 		_set_upgrade_lines()
 
 func _set_upgrade_lines():
-	var total_upgrades = upgrade_data.size()
 	var saved_upgrades = PlayerManager.runtime_stats.owned_upgrades
 	
-	for i in total_upgrades:
-		var upgrade = upgrade_data[i]
+	for upgrade in upgrade_pool:
 		var saved_level = 0
-		var line = holder.get_node_or_null(str(i))
 		
 		if saved_upgrades.get(upgrade.id):
 			saved_level = saved_upgrades[upgrade.id]
 		
-		if line:
-			line.call("set_up_line", upgrade, saved_level)
-		else:
-			push_warning("Not enough upgrade lines")
+		var clone = upgrade_line.instantiate()
+		holder.add_child(clone)
+		
+		clone.name = upgrade.id
+		clone.setup(upgrade, saved_level)
 
 func _on_open_btn_pressed() -> void:
 	var use_position: Vector2
@@ -57,4 +54,4 @@ func _on_stats_changed(_data):
 		if line.can_purchase():
 			can_afford += 1
 	
-	counter.text = "%d/5" % can_afford
+	counter.text = "%d/4" % can_afford

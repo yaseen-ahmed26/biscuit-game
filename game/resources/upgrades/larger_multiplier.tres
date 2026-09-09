@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="UpgradeBase" format=3 uid="uid://i1pfl5lc2a5x"]
+
+[ext_resource type="Script" uid="uid://dx1m5a6ge4mke" path="res://resources/upgrades/scripts/upgrade_effect.gd" id="1_uq6yw"]
+[ext_resource type="Script" uid="uid://cpql4l11pij5s" path="res://resources/upgrades/scripts/upgrade.gd" id="2_n5ee3"]
+
+[sub_resource type="Resource" id="Resource_0duv3"]
+script = ExtResource("1_uq6yw")
+display_name = "Level I"
+description = "Unlock a x1.1 Multiplier"
+cost = 110.0
+operation = 4
+target = "multiplier"
+value = 1.1
+metadata/_custom_type_script = "uid://dx1m5a6ge4mke"
+
+[sub_resource type="Resource" id="Resource_aao0k"]
+script = ExtResource("1_uq6yw")
+display_name = "Level II"
+description = "x1.1 -> x1.2 Multiplier"
+cost = 120.0
+target = "multiplier"
+value = 0.1
+metadata/_custom_type_script = "uid://dx1m5a6ge4mke"
+
+[sub_resource type="Resource" id="Resource_crket"]
+script = ExtResource("1_uq6yw")
+display_name = "Level III"
+description = "x1.2 -> x1.3 Multiplier"
+cost = 130.0
+target = "multiplier"
+value = 0.1
+metadata/_custom_type_script = "uid://dx1m5a6ge4mke"
+
+[sub_resource type="Resource" id="Resource_84o2x"]
+script = ExtResource("1_uq6yw")
+display_name = "Level IV"
+description = "x1.3 -> x1.5 Multiplier"
+cost = 160.0
+target = "multiplier"
+value = 0.2
+metadata/_custom_type_script = "uid://dx1m5a6ge4mke"
+
+[sub_resource type="Resource" id="Resource_m6xbd"]
+script = ExtResource("1_uq6yw")
+display_name = "Level V"
+description = "x1.5 -> x1.8 Multiplier"
+cost = 200.0
+target = "multiplier"
+value = 0.3
+metadata/_custom_type_script = "uid://dx1m5a6ge4mke"
+
+[resource]
+script = ExtResource("2_n5ee3")
+id = "larger_multiplier"
+display_name = "Larger Multiplier"
+description = "Add a multipler for all the Biscuits you get"
+levels = Array[ExtResource("1_uq6yw")]([SubResource("Resource_0duv3"), SubResource("Resource_aao0k"), SubResource("Resource_crket"), SubResource("Resource_84o2x"), SubResource("Resource_m6xbd")])
+metadata/_custom_type_script = "uid://cpql4l11pij5s"

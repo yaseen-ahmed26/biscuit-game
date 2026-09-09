@@ -9,7 +9,7 @@ var red_panel: StyleBoxFlat = preload("res://resources/panels/red.tres")
 var green_panel: StyleBoxFlat = preload("res://resources/panels/green.tres")
 var gold_panel: StyleBoxFlat = preload("res://resources/panels/gold.tres")
 
-var upgrade_data: Dictionary
+var upgrade_data: UpgradeBase
 var current_level: int = 0
 
 func _get_current_level_data():
@@ -24,16 +24,16 @@ func _update_panel(panel_name, colour):
 	cost_label.text = "BOUGHT"
 
 func _apply_effect():
-	var level_info: Dictionary = _get_current_level_data()
+	var level_info = _get_current_level_data()
 	
 	_update_panel(str(current_level), green_panel)
 	
 	current_level += 1
-	PlayerManager.apply_stat_change(level_info.effect)
+	PlayerManager.apply_stat_change(level_info)
 	PlayerManager.upgrade_bought(self.get_meta("id"), current_level)
 
 func _update_ui():
-	if current_level >= upgrade_data.total_levels:
+	if current_level >= 5:
 		_update_panel(str(current_level - 1), gold_panel)
 		
 		$info_panel/level_name.visible = false
@@ -45,14 +45,14 @@ func _update_ui():
 		
 		return
 	
-	var level_info: Dictionary = _get_current_level_data()
+	var level_info = _get_current_level_data()
 	
-	$info_panel/level_name.text = level_info.name
+	$info_panel/level_name.text = level_info.display_name
 	$info_panel/level_description.text = level_info.description
 	$info_panel/level_cost.text = "%d Biscuits" % level_info.cost
 
 func reset_line():
-	set_up_line(upgrade_data, 0)
+	setup(upgrade_data, 0)
 	$buy_btn.text = "BUY"
 	$buy_btn.disabled = false
 	
@@ -60,14 +60,14 @@ func reset_line():
 	$info_panel/level_description.visible = true
 	$info_panel/level_cost.visible = true
 
-func set_up_line(data, saved_level):
+func setup(data: UpgradeBase, saved_level):
 	var level_data = data.levels
 	
 	current_level = 0
 	
 	upgrade_data = data
 
-	upgrade_name.text = data.name
+	upgrade_name.text = data.display_name
 	description.text = data.description
 			
 	self.set_meta("id", data.id)
@@ -86,7 +86,7 @@ func set_up_line(data, saved_level):
 	_update_ui()
 
 func _on_buy_btn_pressed():
-	var level_info: Dictionary = _get_current_level_data()
+	var level_info = _get_current_level_data()
 	
 	if PlayerManager.has_enough(level_info.cost):	
 		_apply_effect()
@@ -96,5 +96,5 @@ func _on_buy_btn_pressed():
 		print("not enough")
 
 func can_purchase():
-	var level_info: Dictionary = _get_current_level_data()
+	var level_info = _get_current_level_data()
 	return PlayerManager.has_enough(level_info.cost)

@@ -20,17 +20,17 @@ func has_enough(target: float) -> bool:
 		
 	return false
 
-func apply_stat_change(effect: Dictionary):
+func apply_stat_change(effect: UpgradeEffect):
 	if not runtime_stats.has(effect.target):
 		print("'%s' stat not found" % effect.target)
 		return
 	
-	match effect.type:
-		"add": runtime_stats[effect.target] += effect.value
-		"subtract": runtime_stats[effect.target] -= effect.value
-		"multiply": runtime_stats[effect.target] *= effect.value
-		"divide": runtime_stats[effect.target] /= effect.value
-		"set": runtime_stats[effect.target] = effect.value 
+	match effect.operation:
+		UpgradeEffect.Operation.ADD: runtime_stats[effect.target] += effect.value
+		UpgradeEffect.Operation.SUBTRACT: runtime_stats[effect.target] -= effect.value
+		UpgradeEffect.Operation.MULTIPLY: runtime_stats[effect.target] *= effect.value
+		UpgradeEffect.Operation.DIVIDE: runtime_stats[effect.target] /= effect.value
+		UpgradeEffect.Operation.SET: runtime_stats[effect.target] = effect.value 
 		
 	Signals.stats_changed.emit(runtime_stats)
 
@@ -91,11 +91,7 @@ func boost_ended(effect, id: String):
 	
 	active_boosts.erase(id)
 	
-	apply_stat_change({
-		"type": "set",
-		"target": effect.get("target"),
-		"value": original_values.get(effect.target)
-	})
+	runtime_stats[effect.get("target")] = original_values.get(effect.target)
 	
 	original_values.erase(id)
 	

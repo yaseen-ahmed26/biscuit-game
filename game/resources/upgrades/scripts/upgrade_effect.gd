@@ -13,3 +13,5 @@ enum Operation {
 @export var description: String
 @export var cost: float = 0.0
 @export var operation: Operation = Operation.ADD
+@export var target: String
+@export var value: float

@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="UpgradeBase" format=3 uid="uid://cllg7dkabh58r"]
+
+[ext_resource type="Script" uid="uid://dx1m5a6ge4mke" path="res://resources/upgrades/scripts/upgrade_effect.gd" id="1_vnhh5"]
+[ext_resource type="Script" uid="uid://cpql4l11pij5s" path="res://resources/upgrades/scripts/upgrade.gd" id="2_eucal"]
+
+[sub_resource type="Resource" id="Resource_knr63"]
+script = ExtResource("1_vnhh5")
+display_name = "Level I"
+description = "35 -> 30 Clicks"
+cost = 200.0
+operation = 1
+target = "bonus_per_milestone"
+value = 5.0
+metadata/_custom_type_script = "uid://dx1m5a6ge4mke"
+
+[sub_resource type="Resource" id="Resource_q3ojg"]
+script = ExtResource("1_vnhh5")
+display_name = "Level II"
+description = "30 -> 25 Clicks"
+cost = 250.0
+operation = 1
+target = "bonus_per_milestone"
+value = 5.0
+metadata/_custom_type_script = "uid://dx1m5a6ge4mke"
+
+[sub_resource type="Resource" id="Resource_fcppx"]
+script = ExtResource("1_vnhh5")
+display_name = "Level III"
+description = "25 -> 20 Clicks"
+cost = 300.0
+operation = 1
+target = "bonus_per_milestone"
+value = 5.0
+metadata/_custom_type_script = "uid://dx1m5a6ge4mke"
+
+[sub_resource type="Resource" id="Resource_f8v8w"]
+script = ExtResource("1_vnhh5")
+display_name = "Level IV"
+description = "20 -> 15 Clicks"
+cost = 350.0
+operation = 1
+target = "bonus_per_milestone"
+value = 5.0
+metadata/_custom_type_script = "uid://dx1m5a6ge4mke"
+
+[sub_resource type="Resource" id="Resource_qy5yc"]
+script = ExtResource("1_vnhh5")
+display_name = "Level V"
+description = "15 -> 10 Clicks"
+cost = 400.0
+operation = 1
+target = "bonus_per_milestone"
+value = 5.0
+metadata/_custom_type_script = "uid://dx1m5a6ge4mke"
+
+[resource]
+script = ExtResource("2_eucal")
+id = "shrink_click_milestone"
+display_name = "Less Clicks"
+description = "Every 35th click, Biscuits are doubled, but you can shrink that right down!"
+levels = Array[ExtResource("1_vnhh5")]([SubResource("Resource_knr63"), SubResource("Resource_q3ojg"), SubResource("Resource_fcppx"), SubResource("Resource_f8v8w"), SubResource("Resource_qy5yc")])
+metadata/_custom_type_script = "uid://cpql4l11pij5s"
