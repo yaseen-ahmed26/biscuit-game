@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://chr5pfem4oaqq" path="res://scenes/local_save/local_save.tscn" id="4_6nawd"]
 [ext_resource type="PackedScene" uid="uid://d261tlt78co74" path="res://scenes/game/game.tscn" id="7_5q4yu"]
 [ext_resource type="PackedScene" uid="uid://cqcu3iygflj3k" path="res://scenes/settings/settings.tscn" id="7_wxsgv"]
+[ext_resource type="PackedScene" uid="uid://cmw4rniv4uf3i" path="res://scenes/update_log/update_log.tscn" id="9_p4p2l"]
 [ext_resource type="FontFile" uid="uid://bwbbhi3v2x4v0" path="res://assets/jbmono_extrabold.ttf" id="9_qx04s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bahs"]
@@ -129,6 +130,9 @@ visible = false
 visible = false
 
 [node name="game" parent="CanvasLayer" unique_id=806070042 instance=ExtResource("7_5q4yu")]
+visible = false
+
+[node name="update_log" parent="CanvasLayer" unique_id=1240972440 instance=ExtResource("9_p4p2l")]
 visible = false
 
 [node name="fade" type="ColorRect" parent="CanvasLayer" unique_id=812301052]

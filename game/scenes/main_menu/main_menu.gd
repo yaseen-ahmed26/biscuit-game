@@ -4,6 +4,8 @@ extends Control
 @onready var menu_options: VBoxContainer = $menu_options
 
 func _ready() -> void:
+	animation_player.play("RESET")
+	
 	_play_intro()
 	
 	for btn in menu_options.get_children():
@@ -19,6 +21,8 @@ func _on_option_pressed(btn: Button):
 	match btn.name:
 		"play":
 			Signals.change_screen.emit("game")
+		"update_log":
+			Signals.change_screen.emit("update_log")
 		"settings":
 			Signals.change_screen.emit("settings")
 		"quit":

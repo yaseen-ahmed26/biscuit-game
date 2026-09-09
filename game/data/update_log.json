@@ -1,0 +1,13 @@
+{
+	"latest": "version_2",
+	"version_2": {
+		"added": [
+			"Added boosts, currently only 1 for now. Usable every 30s for a short time",
+			"Update log on the main menu"
+		],
+		"changed": [
+			"Fixed an edge case where tabbing out caused account linking to fail"
+		],
+		"removed": [],
+	}
+}
