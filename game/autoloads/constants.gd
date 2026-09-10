@@ -1,13 +1,13 @@
 extends Node
 
 # GameManager
-const AUTOSAVE_TIMER: float = 20.0
+const AUTOSAVE_TIMER: float = 10.0
 
 # SaveManager
 const DEVICE_CFG_FILE_PATH: String = "user://device.cfg"
 const SAVE_CFG_FILE_PATH: String = "user://save.cfg"
 const DEFAULT_STATS_FILE_PATH = "res://data/default_stats.json"
-const ONLINE_SAVE_THRESHOLD: int = 6
+const ONLINE_SAVE_THRESHOLD: int = 1
 
 # PlayerManager
 const DEFAULT_RUNTIME_STATS: Dictionary = {

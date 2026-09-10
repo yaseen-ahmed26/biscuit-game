@@ -4,11 +4,8 @@ var device_config: ConfigFile = ConfigFile.new()
 var save_config: ConfigFile = ConfigFile.new()
 
 var default_stats: Dictionary
-
 var autosave_count: int = 0
-
 var account_connected: bool = false
-
 var access_token: String
 
 # Godot
@@ -56,16 +53,11 @@ func _setup_save_cfg():
 	save_config.save(Constants.SAVE_CFG_FILE_PATH)
 
 # Online
-func _load_online():
-	var save_id: String = device_config.get_value("DeviceConfig", "save_id")
-		
-	if not save_id:
-		print("No save ID found")
-		return [false]
-		
+func _load_online():		
 	var details = await RequestManager.send_request(
-		save_id,
-		HTTPClient.METHOD_GET
+		true,
+		HTTPClient.METHOD_GET,
+		["Authorization: Bearer %s" % access_token]
 	)
 	
 	if not details[0]:
@@ -75,12 +67,14 @@ func _load_online():
 	return [true, details[1]]
 	
 func _save_online(data_to_save):
-	var save_id = device_config.get_value("DeviceConfig", "save_id")	
 	var _details = await RequestManager.send_request(
-		save_id,
+		true,
 		HTTPClient.METHOD_PUT,
+		[
+			"Content-Type: application/json",
+			"Authorization: Bearer %s" % access_token
+		],
 		JSON.stringify(data_to_save),
-		["Content-Type: application/json"]
 	)
 	
 func has_connected_account():
@@ -181,6 +175,16 @@ func save_game(quit: bool = false):
 	if quit and not online_autosave:
 		if account_connected:
 			await _save_online(data_to_save)
+
+func update_tokens(new_tokens: Dictionary):
+	access_token = new_tokens.access_token
+	
+	device_config.set_value("DeviceConfig", "refresh_token", new_tokens.refresh_token)
+	device_config.save(Constants.DEVICE_CFG_FILE_PATH)
+
+func get_refresh_token():
+	var refresh_token = device_config.get_value("DeviceConfig", "refresh_token")
+	return refresh_token
 
 # Contingency
 func safe_exit():

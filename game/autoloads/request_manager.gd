@@ -1,22 +1,23 @@
 extends Node
 
-var url: String = ""
+var saves_url: String
+var refresh_url: String
 
 func _ready() -> void:
-	url = GameManager.read_json("res://secrets.json").saves_url
+	saves_url = GameManager.read_json("res://secrets.json").saves_url
+	refresh_url = GameManager.read_json("res://secrets.json").refresh_url
 
-func send_request(save_id: String, method: HTTPClient.Method, data: String = "", headers: Array = []) -> Array:
-	if save_id.is_empty() or save_id == null: return [false]
-	
+func send_request(use_saves_url: bool, method: HTTPClient.Method, headers: Array = [], data: String = "", is_refresh: bool = false) -> Array:	
 	var http_request: HTTPRequest = HTTPRequest.new()
 	add_child(http_request)
 
 	var error: Error
+	var url: String = saves_url if use_saves_url else refresh_url
 
 	if method == HTTPClient.METHOD_GET:
-		error = http_request.request("%s/%s" % [url, save_id])
+		error = http_request.request(url, headers)
 	else:
-		error = http_request.request("%s/%s" % [url, save_id], headers, method, data)
+		error = http_request.request(url, headers, method, data)
 
 	if error != OK:
 		print("An error occurred making the HTTP request")
@@ -32,6 +33,30 @@ func send_request(save_id: String, method: HTTPClient.Method, data: String = "",
 	http_request.queue_free()
 	
 	if result == HTTPRequest.RESULT_SUCCESS:
+		if response_code == 401:
+			if is_refresh:
+				print("Refresh failed.")
+				return [false]
+			
+			var refresh_payload = JSON.stringify({"refresh_token": SaveManager.get_refresh_token()})
+			var refresh_headers = ["Content-Type: application/json"]
+			var refresh_result = await send_request(false, HTTPClient.METHOD_POST, refresh_headers, refresh_payload, true)
+			
+			if not refresh_result[0]:
+				return [false]
+			
+			SaveManager.update_tokens(refresh_result[1])
+		
+			var new_headers: Array = []
+			
+			for h in headers:
+				if not h.begins_with("Authorization:"):
+					new_headers.append(h)
+					
+			new_headers.append("Authorization: Bearer " + SaveManager.access_token)
+					
+			return await send_request(true, method, new_headers, data, true)
+		
 		var json = JSON.parse_string(body.get_string_from_utf8())
 		return [true, json]
 	else:
