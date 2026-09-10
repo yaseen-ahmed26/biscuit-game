@@ -4,7 +4,9 @@
 		"added": [
 			"Added boosts, currently only 1 for now. Usable every 30s for a short time",
 			"Update log on the main menu",
-			"Possible upgrades counter on the upgrade screen"
+			"Possible upgrades counter on the upgrade screen",
+			"Version counter in the bottom right",
+			"Allow reconnecting an online account if the old one has been deleted"
 		],
 		"changed": [
 			"Fixed an edge case where tabbing out caused account linking to fail",
