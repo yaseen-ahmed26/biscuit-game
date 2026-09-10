@@ -9,6 +9,8 @@ var autosave_count: int = 0
 
 var account_connected: bool = false
 
+var access_token: String
+
 # Godot
 func _ready() -> void:
 	default_stats = GameManager.read_json(Constants.DEFAULT_STATS_FILE_PATH)
@@ -40,8 +42,9 @@ func _load_cfg_files():
 
 func _setup_device_cfg():
 	device_config.set_value("DeviceConfig", "connected_account", false)
-	device_config.set_value("DeviceConfig", "save_id", "none")
+	# device_config.set_value("DeviceConfig", "save_id", "none")
 	device_config.set_value("DeviceConfig", "player_username", "johndoe")
+	device_config.set_value("DeviceConfig", "refresh_token", "none")
 
 	device_config.save(Constants.DEVICE_CFG_FILE_PATH)
 	
@@ -85,8 +88,9 @@ func has_connected_account():
 
 func connect_account(user_data: Dictionary):
 	device_config.set_value("DeviceConfig", "connected_account", true)
-	device_config.set_value("DeviceConfig", "save_id", user_data.save_id)
+	# device_config.set_value("DeviceConfig", "save_id", user_data.save_id)
 	device_config.set_value("DeviceConfig", "player_username", user_data.username)
+	device_config.set_value("DeviceConfig", "refresh_token", user_data.refresh_token)
 
 	device_config.save(Constants.DEVICE_CFG_FILE_PATH)
 	
@@ -94,6 +98,7 @@ func connect_account(user_data: Dictionary):
 	_save_local(user_data.save)
 	
 	account_connected = true
+	access_token = user_data.access_token
 	
 	var load_details = _load_local()
 	
