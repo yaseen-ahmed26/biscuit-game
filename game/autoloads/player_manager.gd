@@ -89,11 +89,10 @@ func boost_ended(effect, id: String):
 	
 	if not active_boosts.has(id): return
 	
-	active_boosts.erase(id)
-	
 	runtime_stats[effect.get("target")] = original_values.get(effect.target)
 	
-	original_values.erase(id)
+	active_boosts.erase(id)
+	original_values.erase(effect.target)
 	
 # Data
 func get_data_to_save():
