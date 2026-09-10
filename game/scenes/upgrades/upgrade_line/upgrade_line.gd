@@ -96,5 +96,6 @@ func _on_buy_btn_pressed():
 		print("not enough")
 
 func can_purchase():
+	if current_level >= upgrade_data.levels.size(): return false
 	var level_info = _get_current_level_data()
 	return PlayerManager.has_enough(level_info.cost)

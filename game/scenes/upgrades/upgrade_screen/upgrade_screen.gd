@@ -54,4 +54,4 @@ func _on_stats_changed(_data):
 		if line.can_purchase():
 			can_afford += 1
 	
-	counter.text = "%d/4" % can_afford
+	counter.text = "%d/%d" % [can_afford, upgrade_pool.size()]
