@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ModalBase" format=3 uid="uid://bhmfm14biuubj"]
+
+[ext_resource type="Script" uid="uid://c5x0ppliyfy1y" path="res://resources/modals/scripts/modal_base.gd" id="1_cm54b"]
+
+[resource]
+script = ExtResource("1_cm54b")
+modal_id = "redirect_to_website"
+title = "EXTERNAL"
+primary_text = "Redirect to website?"
+secondary_text = "You can edit your account details as well as delete your account there."
+confirm_btn_text = "Continue"
+show_cancel_btn = true
+cancel_btn_text = "Cancel"
+metadata/_custom_type_script = "uid://c5x0ppliyfy1y"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ModalBase" format=3 uid="uid://bod8ykqn11uhq"]
+
+[ext_resource type="Script" uid="uid://c5x0ppliyfy1y" path="res://resources/modals/scripts/modal_base.gd" id="1_seurr"]
+
+[resource]
+script = ExtResource("1_seurr")
+modal_id = "confirm_account"
+title = "NOTICE"
+primary_text = "Connect your Biscuit account and save your game data online. Access your save from any device."
+secondary_text = "[color=red]Your existing local data will be lost when you connect your online account. This cannot be recovered."
+confirm_btn_text = "Continue"
+show_cancel_btn = true
+cancel_btn_text = "Cancel"
+metadata/_custom_type_script = "uid://c5x0ppliyfy1y"

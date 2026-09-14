@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ModalBase" format=3 uid="uid://dlmn23sadl3gb"]
+
+[ext_resource type="Script" uid="uid://c5x0ppliyfy1y" path="res://resources/modals/scripts/modal_base.gd" id="1_x8txp"]
+
+[resource]
+script = ExtResource("1_x8txp")
+modal_id = "welcome_bonus"
+title = "[color=gold]BONUS"
+primary_text = "Thank you for linking your account!"
+secondary_text = "As a bonus, you start off with 100 biscuits and a +10% autoclicker rate. We hope you enjoy playing!"
+confirm_btn_text = "Can I start clicking now?"
+metadata/_custom_type_script = "uid://c5x0ppliyfy1y"
