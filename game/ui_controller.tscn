@@ -5,9 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://b0jv3byjpmtw3" path="res://scenes/pick_save/pick_save.tscn" id="2_1ajqp"]
 [ext_resource type="PackedScene" uid="uid://1x5v2og6yriv" path="res://scenes/main_menu/main_menu.tscn" id="2_dy358"]
 [ext_resource type="PackedScene" uid="uid://mpd5mdbmxpe7" path="res://scenes/online_save/online_save.tscn" id="3_rlpp8"]
+[ext_resource type="Script" uid="uid://c5x0ppliyfy1y" path="res://resources/modals/scripts/modal_base.gd" id="3_srujj"]
 [ext_resource type="PackedScene" uid="uid://chr5pfem4oaqq" path="res://scenes/local_save/local_save.tscn" id="4_6nawd"]
+[ext_resource type="Resource" uid="uid://cd0iuvmt446rn" path="res://resources/modals/account_link.tres" id="4_smdyi"]
+[ext_resource type="Resource" uid="uid://dlmn23sadl3gb" path="res://resources/modals/welcome_bonus.tres" id="5_mm5gi"]
+[ext_resource type="Resource" uid="uid://bod8ykqn11uhq" path="res://resources/modals/confirm_sign_in.tres" id="6_6crn1"]
 [ext_resource type="PackedScene" uid="uid://d261tlt78co74" path="res://scenes/game/game.tscn" id="7_5q4yu"]
+[ext_resource type="Resource" uid="uid://cb0ml7kf6a27n" path="res://resources/modals/websocket_expired.tres" id="7_8pwax"]
 [ext_resource type="PackedScene" uid="uid://cqcu3iygflj3k" path="res://scenes/settings/settings.tscn" id="7_wxsgv"]
+[ext_resource type="Resource" uid="uid://bhmfm14biuubj" path="res://resources/modals/redirect_to_website.tres" id="8_rs37c"]
 [ext_resource type="PackedScene" uid="uid://cmw4rniv4uf3i" path="res://scenes/update_log/update_log.tscn" id="9_p4p2l"]
 [ext_resource type="FontFile" uid="uid://bwbbhi3v2x4v0" path="res://assets/jbmono_extrabold.ttf" id="9_qx04s"]
 
@@ -93,6 +99,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_q20ay")
 script = ExtResource("1_3ga5c")
+modal_pool = Array[ExtResource("3_srujj")]([ExtResource("4_smdyi"), ExtResource("5_mm5gi"), ExtResource("7_8pwax"), ExtResource("8_rs37c"), ExtResource("6_6crn1")])
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2018975771]

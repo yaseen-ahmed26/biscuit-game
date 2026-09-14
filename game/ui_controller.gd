@@ -1,5 +1,7 @@
 extends Control
 
+@export var modal_pool: Array[ModalBase]
+
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var fade: ColorRect = $CanvasLayer/fade
 @onready var saving: RichTextLabel = $CanvasLayer/saving
@@ -13,7 +15,7 @@ extends Control
 
 var current_screen: Control
 
-func _ready() -> void:
+func _ready() -> void:	
 	current_screen = $CanvasLayer/main_menu
 	
 	confirm_btn.pressed.connect(_on_option_btn_pressed.bind(confirm_btn))
@@ -63,23 +65,29 @@ func _on_data_saved():
 
 func _on_show_message_popup(info_name: String, details: Array = []):
 	message_popup.mouse_filter = Control.MOUSE_FILTER_STOP
-	var information = Constants.MESSAGES.get(info_name)
+	var information: ModalBase
+	
+	for modal in modal_pool:
+		if modal.modal_id == info_name:
+			information = modal
+			break
 	
 	if not information:
+		push_warning("No ModalBase Resource found in pool for '%s'" % info_name)
 		return
 	
-	primary.text = information.primary
-	secondary.text = information.secondary
-	confirm_btn.text = information.confirm
+	primary.text = information.primary_text
+	secondary.text = information.secondary_text
+	confirm_btn.text = information.confirm_btn_text
 	message_title.text = information.title
 	
 	if not details.is_empty():
 		primary.text = primary.text % details
 		
-	if not information.get("show_cancel_btn"):
+	if not information.show_cancel_btn:
 		cancel_btn.visible = false
 	else:
-		cancel_btn.text = information.cancel
+		cancel_btn.text = information.cancel_btn_text
 		cancel_btn.visible = true
 	
 	var tween_in: Tween = create_tween()

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_seurr")
-modal_id = "confirm_account"
+modal_id = "confirm_sign_in"
 title = "NOTICE"
 primary_text = "Connect your Biscuit account and save your game data online. Access your save from any device."
 secondary_text = "[color=red]Your existing local data will be lost when you connect your online account. This cannot be recovered."
