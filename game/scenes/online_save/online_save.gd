@@ -77,13 +77,17 @@ func _get_user_country() -> String:
 	
 	return country_name
 
-func _account_link_success(username: String):
+func _account_link_success(username: String, game_connected: bool):
 	Signals.show_modal.emit("account_link", [username])
 		
 	var confirmation = await Signals.modal_response
 	
 	if confirmation:
 		Signals.change_screen.emit("game")
+		
+		if not game_connected:
+			await get_tree().create_timer(1.0).timeout
+			Signals.show_modal.emit("welcome_bonus")
 	
 func _websocket_expired():
 	Signals.show_modal.emit("websocket_expired")
@@ -107,7 +111,7 @@ func _on_message_received(message):
 		code = parsed.login_code
 	elif parsed.type == "user_data":	
 		SaveManager.connect_account(parsed)
-		_account_link_success(parsed.username)
+		_account_link_success(parsed.username, parsed.game_connected)
 		
 		socket.close()
 	elif parsed.type == "expired":

@@ -46,11 +46,6 @@ func _on_stats_changed(stats):
 
 func on_screen_change():
 	GameManager.enable_autosave()
-	
-	if runtine_account_connected:
-		await get_tree().create_timer(0.6).timeout
-		runtine_account_connected = false
-		Signals.show_modal.emit("welcome_bonus")	
 
 func _on_menu_btn_pressed() -> void:
 	Signals.change_screen.emit("main_menu")
