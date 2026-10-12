@@ -53,7 +53,8 @@ func start_websocket():
 
 	var websocket_metadata = {
 		"os": os_name,
-		"country": country_name
+		"country": country_name,
+		"game_id": "biscuit"
 	}
 	
 	var query_string = client.query_string_from_dict(websocket_metadata)
@@ -77,7 +78,7 @@ func _get_user_country() -> String:
 	
 	return country_name
 
-func _account_link_success(username: String, game_connected: bool):
+func _account_link_success(username: String, save: Dictionary):
 	Signals.show_modal.emit("account_link", [username])
 		
 	var confirmation = await Signals.modal_response
@@ -85,7 +86,7 @@ func _account_link_success(username: String, game_connected: bool):
 	if confirmation:
 		Signals.change_screen.emit("game")
 		
-		if not game_connected:
+		if save.is_empty():
 			await get_tree().create_timer(1.0).timeout
 			Signals.show_modal.emit("welcome_bonus")
 	
@@ -111,7 +112,7 @@ func _on_message_received(message):
 		code = parsed.login_code
 	elif parsed.type == "user_data":	
 		SaveManager.connect_account(parsed)
-		_account_link_success(parsed.username, parsed.game_connected)
+		_account_link_success(parsed.username, parsed.save)
 		
 		socket.close()
 	elif parsed.type == "expired":

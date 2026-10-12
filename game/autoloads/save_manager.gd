@@ -67,6 +67,11 @@ func _load_online():
 	return [true, details[1]]
 	
 func _save_online(data_to_save):
+	var data = {
+		"version_number": 1.0,
+		"save_data": data_to_save
+	}
+	
 	var _details = await RequestManager.send_request(
 		true,
 		HTTPClient.METHOD_PUT,
@@ -74,7 +79,7 @@ func _save_online(data_to_save):
 			"Content-Type: application/json",
 			"Authorization: Bearer %s" % access_token
 		],
-		JSON.stringify(data_to_save),
+		JSON.stringify(data),
 	)
 	
 func has_connected_account():
@@ -89,7 +94,7 @@ func connect_account(user_data: Dictionary):
 	device_config.save(Constants.DEVICE_CFG_FILE_PATH)
 	
 	_save_local(default_stats)
-	_save_local(user_data.save)
+	_save_local(user_data.save if not user_data.is_empty() else default_stats)
 	
 	account_connected = true
 	access_token = user_data.access_token
@@ -149,7 +154,7 @@ func _load_game():
 		
 		if online_details[0]:
 			online_details[1].erase("save_id")
-			_save_local(online_details[1])
+			_save_local(online_details[1].get("save_data"))
 		
 	var local_details = _load_local()
 	
