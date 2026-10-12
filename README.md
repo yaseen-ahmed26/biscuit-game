@@ -1,4 +1,8 @@
-# Biscuit Game
+# [ARCHIVED] Biscuit Game
+
+> This game isn't being worked on anymore. Have a look at my new game, [RPR](https://github.com/yaseen-ahmed26/rock-paper-revamp.git)
+
+---
 This is the game part of the 'Biscuit' Project.
 
 > **Live Demo**: [Download from Itch.io](https://corporalchicken.itch.io/biscuit)
