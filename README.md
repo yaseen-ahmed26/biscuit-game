@@ -5,7 +5,7 @@
 ---
 This is the game part of the 'Biscuit' Project.
 
-> **Live Demo**: [Download from Itch.io](https://corporalchicken.itch.io/biscuit)
+> **Live Demo**: [Download from Itch.io](https://snowstrixstudios.itch.io/biscuit)
 >
 > Available for **Windows** and **Linux** as a `.zip` download.
 > Note that an account isn't required to play, but is needed for online saves.
